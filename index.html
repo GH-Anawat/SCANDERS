@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>Scander V.1.0 (BETA - Realtime Edition)</title>
+    <title>SCANDER V.1.0 (เวอร์ชั่นทดลอง)</title>
     
     <!-- Google Fonts: Space Grotesk, JetBrains Mono, Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,136 +17,259 @@
 
     <style>
         /* ========================================================= */
-        /* MULTI-THEME COLOR PALETTES ( CSS VARIABLES ) */
+        /* UPGRADED MULTI-THEME COLOR PALETTES ( CSS VARIABLES ) */
         /* ========================================================= */
         
-        /* 1. Cyber Dark (Default) */
-        :root, body[data-theme="dark"] {
-            --bg-main: #050811;
-            --panel-bg: rgba(11, 17, 32, 0.85);
-            --accent-cyan: #00f2fe;
-            --accent-blue: #4facfe;
-            --accent-purple: #7f00ff;
-            --accent-glow: rgba(0, 242, 254, 0.25);
-            --text-main: #f8fafc;
-            --text-sub: #94a3b8;
-            --border-glow: rgba(0, 242, 254, 0.2);
-            --card-inner: rgba(16, 24, 45, 0.8);
-            --input-bg: #090e1a;
-            --conn-bg: rgba(13, 20, 36, 0.7);
-            --stat-item-bg: rgba(18, 28, 51, 0.9);
-            --history-item-bg: rgba(18, 28, 51, 0.7);
+        /* 1. Rainbow Vivid (Dynamic Glowing & Running Lights Edition) */
+        :root, body[data-theme="rainbow"] {
+            --bg-main: #060609;
+            --panel-bg: rgba(18, 18, 24, 0.88);
+            --accent-cyan: #ff2a85;
+            --accent-blue: #7928ca;
+            --accent-purple: #00dfd8;
+            --accent-glow: rgba(255, 42, 133, 0.45);
+            --text-main: #ffffff;
+            --text-sub: #b4b4bd;
+            --border-glow: rgba(255, 42, 133, 0.4);
+            --card-inner: rgba(28, 28, 38, 0.85);
+            --input-bg: #0e0e13;
+            --conn-bg: rgba(24, 24, 32, 0.85);
+            --stat-item-bg: rgba(28, 28, 38, 0.92);
+            --history-item-bg: rgba(28, 28, 38, 0.75);
             --body-gradient: 
-                radial-gradient(circle at 10% 10%, rgba(127, 0, 255, 0.12) 0px, transparent 40%),
-                radial-gradient(circle at 90% 90%, rgba(0, 242, 254, 0.12) 0px, transparent 40%),
-                linear-gradient(180deg, #050811 0%, #020307 100%);
+                radial-gradient(circle at 10% 20%, rgba(255, 42, 133, 0.22) 0px, transparent 40%),
+                radial-gradient(circle at 90% 15%, rgba(121, 40, 202, 0.22) 0px, transparent 40%),
+                radial-gradient(circle at 50% 85%, rgba(0, 223, 216, 0.22) 0px, transparent 40%),
+                radial-gradient(circle at 15% 90%, rgba(255, 184, 0, 0.18) 0px, transparent 40%),
+                linear-gradient(180deg, #060609 0%, #020204 100%);
         }
 
-        /* 2. Matrix Cyber Green */
+        /* 2. Matrix Quantum Green */
         body[data-theme="matrix"] {
-            --bg-main: #020d06;
-            --panel-bg: rgba(6, 24, 14, 0.88);
-            --accent-cyan: #00ff66;
-            --accent-blue: #00d26a;
-            --accent-purple: #059669;
-            --accent-glow: rgba(0, 255, 102, 0.25);
-            --text-main: #f0fdf4;
+            --bg-main: #010c05;
+            --panel-bg: rgba(4, 20, 10, 0.9);
+            --accent-cyan: #10b981;
+            --accent-blue: #059669;
+            --accent-purple: #047857;
+            --accent-glow: rgba(16, 185, 129, 0.35);
+            --text-main: #ecfdf5;
             --text-sub: #86efac;
-            --border-glow: rgba(0, 255, 102, 0.25);
-            --card-inner: rgba(11, 36, 21, 0.85);
-            --input-bg: #03140a;
-            --conn-bg: rgba(8, 30, 18, 0.75);
-            --stat-item-bg: rgba(12, 42, 25, 0.9);
-            --history-item-bg: rgba(12, 42, 25, 0.75);
+            --border-glow: rgba(16, 185, 129, 0.3);
+            --card-inner: rgba(8, 32, 18, 0.88);
+            --input-bg: #021208;
+            --conn-bg: rgba(6, 28, 15, 0.8);
+            --stat-item-bg: rgba(10, 38, 22, 0.95);
+            --history-item-bg: rgba(10, 38, 22, 0.8);
             --body-gradient: 
-                radial-gradient(circle at 10% 10%, rgba(0, 255, 102, 0.12) 0px, transparent 40%),
-                radial-gradient(circle at 90% 90%, rgba(5, 150, 105, 0.15) 0px, transparent 40%),
-                linear-gradient(180deg, #020d06 0%, #010603 100%);
+                radial-gradient(circle at 10% 10%, rgba(16, 185, 129, 0.18) 0px, transparent 45%),
+                radial-gradient(circle at 90% 90%, rgba(5, 150, 105, 0.2) 0px, transparent 45%),
+                linear-gradient(180deg, #010c05 0%, #000402 100%);
         }
 
-        /* 3. Synthwave Neon Pink */
+        /* 3. Synthwave Ultraviolet */
         body[data-theme="synthwave"] {
-            --bg-main: #120318;
-            --panel-bg: rgba(30, 10, 40, 0.88);
-            --accent-cyan: #ff007f;
-            --accent-blue: #bd00ff;
-            --accent-purple: #7928ca;
-            --accent-glow: rgba(255, 0, 127, 0.3);
-            --text-main: #fff0f7;
-            --text-sub: #f472b6;
-            --border-glow: rgba(255, 0, 127, 0.25);
-            --card-inner: rgba(45, 14, 60, 0.8);
-            --input-bg: #1a0524;
-            --conn-bg: rgba(36, 12, 48, 0.75);
-            --stat-item-bg: rgba(52, 16, 68, 0.9);
-            --history-item-bg: rgba(52, 16, 68, 0.75);
+            --bg-main: #140320;
+            --panel-bg: rgba(35, 10, 52, 0.9);
+            --accent-cyan: #ec4899;
+            --accent-blue: #d946ef;
+            --accent-purple: #a855f7;
+            --accent-glow: rgba(236, 72, 153, 0.4);
+            --text-main: #fdf2f8;
+            --text-sub: #fbcfe8;
+            --border-glow: rgba(236, 72, 153, 0.3);
+            --card-inner: rgba(50, 15, 75, 0.85);
+            --input-bg: #1c052d;
+            --conn-bg: rgba(42, 12, 64, 0.8);
+            --stat-item-bg: rgba(62, 18, 92, 0.95);
+            --history-item-bg: rgba(62, 18, 92, 0.8);
             --body-gradient: 
-                radial-gradient(circle at 10% 10%, rgba(255, 0, 127, 0.18) 0px, transparent 40%),
-                radial-gradient(circle at 90% 90%, rgba(189, 0, 255, 0.18) 0px, transparent 40%),
-                linear-gradient(180deg, #120318 0%, #08010b 100%);
+                radial-gradient(circle at 15% 15%, rgba(236, 72, 153, 0.22) 0px, transparent 45%),
+                radial-gradient(circle at 85% 85%, rgba(168, 85, 247, 0.22) 0px, transparent 45%),
+                linear-gradient(180deg, #140320 0%, #07010f 100%);
         }
 
-        /* 4. Cyber Amber */
+        /* 4. Solar Cyber Amber */
         body[data-theme="amber"] {
-            --bg-main: #140d02;
-            --panel-bg: rgba(32, 20, 5, 0.88);
-            --accent-cyan: #ffb703;
-            --accent-blue: #fb8500;
-            --accent-purple: #d4a373;
-            --accent-glow: rgba(255, 183, 3, 0.25);
+            --bg-main: #140a02;
+            --panel-bg: rgba(36, 20, 5, 0.9);
+            --accent-cyan: #f59e0b;
+            --accent-blue: #d97706;
+            --accent-purple: #b45309;
+            --accent-glow: rgba(245, 158, 11, 0.35);
             --text-main: #fffbeb;
             --text-sub: #fde68a;
-            --border-glow: rgba(255, 183, 3, 0.25);
-            --card-inner: rgba(48, 30, 8, 0.8);
-            --input-bg: #1f1203;
-            --conn-bg: rgba(40, 25, 7, 0.75);
-            --stat-item-bg: rgba(56, 35, 10, 0.9);
-            --history-item-bg: rgba(56, 35, 10, 0.75);
+            --border-glow: rgba(245, 158, 11, 0.3);
+            --card-inner: rgba(54, 30, 8, 0.85);
+            --input-bg: #1d0f02;
+            --conn-bg: rgba(45, 24, 6, 0.8);
+            --stat-item-bg: rgba(68, 38, 10, 0.95);
+            --history-item-bg: rgba(68, 38, 10, 0.8);
             --body-gradient: 
-                radial-gradient(circle at 10% 10%, rgba(255, 183, 3, 0.15) 0px, transparent 40%),
-                radial-gradient(circle at 90% 90%, rgba(251, 133, 0, 0.15) 0px, transparent 40%),
-                linear-gradient(180deg, #140d02 0%, #080501 100%);
+                radial-gradient(circle at 10% 10%, rgba(245, 158, 11, 0.2) 0px, transparent 45%),
+                radial-gradient(circle at 90% 90%, rgba(217, 119, 6, 0.2) 0px, transparent 45%),
+                linear-gradient(180deg, #140a02 0%, #080301 100%);
         }
 
-        /* 5. OLED Obsidian Black */
+        /* 5. Deep Obsidian OLED */
         body[data-theme="oled"] {
             --bg-main: #000000;
-            --panel-bg: rgba(12, 12, 12, 0.95);
+            --panel-bg: rgba(10, 10, 12, 0.95);
             --accent-cyan: #38bdf8;
-            --accent-blue: #3b82f6;
+            --accent-blue: #0284c7;
             --accent-purple: #6366f1;
-            --accent-glow: rgba(56, 189, 248, 0.2);
+            --accent-glow: rgba(56, 189, 248, 0.25);
             --text-main: #ffffff;
-            --text-sub: #a1a1aa;
-            --border-glow: rgba(255, 255, 255, 0.18);
-            --card-inner: rgba(20, 20, 20, 0.9);
-            --input-bg: #080808;
-            --conn-bg: rgba(18, 18, 18, 0.9);
-            --stat-item-bg: rgba(24, 24, 27, 0.95);
-            --history-item-bg: rgba(24, 24, 27, 0.85);
+            --text-sub: #cbd5e1;
+            --border-glow: rgba(56, 189, 248, 0.25);
+            --card-inner: rgba(18, 18, 22, 0.92);
+            --input-bg: #050507;
+            --conn-bg: rgba(15, 15, 18, 0.9);
+            --stat-item-bg: rgba(22, 22, 28, 0.98);
+            --history-item-bg: rgba(22, 22, 28, 0.88);
             --body-gradient: #000000;
         }
 
-        /* 6. Light Silver */
-        body[data-theme="light"] {
-            --bg-main: #f1f5f9;
-            --panel-bg: rgba(255, 255, 255, 0.92);
-            --accent-cyan: #0284c7;
-            --accent-blue: #2563eb;
-            --accent-purple: #7c3aed;
-            --accent-glow: rgba(2, 132, 199, 0.15);
-            --text-main: #0f172a;
-            --text-sub: #64748b;
-            --border-glow: rgba(2, 132, 199, 0.25);
-            --card-inner: rgba(241, 245, 249, 0.95);
-            --input-bg: #ffffff;
-            --conn-bg: rgba(241, 245, 249, 0.85);
-            --stat-item-bg: rgba(255, 255, 255, 0.95);
-            --history-item-bg: rgba(255, 255, 255, 0.9);
-            --body-gradient: 
-                radial-gradient(circle at 10% 10%, rgba(124, 58, 237, 0.08) 0px, transparent 40%),
-                radial-gradient(circle at 90% 90%, rgba(2, 132, 199, 0.08) 0px, transparent 40%),
-                linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+        /* ========================================================= */
+        /* 🚀 NEXT-GEN STACKABLE NOTIFICATIONS STYLES                */
+        /* ========================================================= */
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            pointer-events: none;
+            width: 100%;
+            max-width: 420px;
+            padding: 0 15px;
+        }
+
+        @media (min-width: 900px) {
+            .toast-container {
+                left: auto;
+                right: 20px;
+                transform: none;
+                align-items: flex-end;
+            }
+        }
+
+        .cyber-toast {
+            pointer-events: auto;
+            position: relative;
+            background: rgba(10, 15, 30, 0.9);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 16px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            width: 100%;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+            overflow: hidden;
+            cursor: pointer;
+            animation: toastEnter 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            transition: all 0.3s ease;
+        }
+
+        .cyber-toast.closing {
+            animation: toastLeave 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .cyber-toast:hover {
+            transform: translateY(-2px) scale(1.02);
+        }
+
+        .cyber-toast.success { border-color: rgba(16, 185, 129, 0.5); box-shadow: 0 10px 30px rgba(16, 185, 129, 0.25); }
+        .cyber-toast.warning { border-color: rgba(245, 158, 11, 0.5); box-shadow: 0 10px 30px rgba(245, 158, 11, 0.25); }
+        .cyber-toast.info { border-color: rgba(59, 130, 246, 0.5); box-shadow: 0 10px 30px rgba(59, 130, 246, 0.25); }
+        .cyber-toast.off { border-color: rgba(239, 68, 68, 0.5); box-shadow: 0 10px 30px rgba(239, 68, 68, 0.25); }
+        .cyber-toast.error { border-color: rgba(239, 68, 68, 0.5); box-shadow: 0 10px 30px rgba(239, 68, 68, 0.25); }
+
+        .toast-icon-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            flex-shrink: 0;
+        }
+
+        .cyber-toast.success .toast-icon-wrapper { background: rgba(16, 185, 129, 0.2); color: #10b981; }
+        .cyber-toast.warning .toast-icon-wrapper { background: rgba(245, 158, 11, 0.2); color: #f59e0b; }
+        .cyber-toast.info .toast-icon-wrapper { background: rgba(59, 130, 246, 0.2); color: #3b82f6; }
+        .cyber-toast.off .toast-icon-wrapper { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
+        .cyber-toast.error .toast-icon-wrapper { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
+
+        .toast-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .toast-title {
+            font-family: var(--font-title);
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--text-sub);
+        }
+
+        .cyber-toast.success .toast-title { color: #34d399; }
+        .cyber-toast.warning .toast-title { color: #fbbf24; }
+        .cyber-toast.info .toast-title { color: #60a5fa; }
+        .cyber-toast.off .toast-title { color: #f87171; }
+        .cyber-toast.error .toast-title { color: #f87171; }
+
+        .toast-message {
+            font-family: var(--font-mono);
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-main);
+            word-break: break-all;
+        }
+
+        .toast-progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .toast-progress-bar {
+            height: 100%;
+            width: 100%;
+            transform-origin: left;
+            animation: progressShrink 0s linear forwards;
+        }
+
+        .cyber-toast.success .toast-progress-bar { background: #10b981; }
+        .cyber-toast.warning .toast-progress-bar { background: #f59e0b; }
+        .cyber-toast.info .toast-progress-bar { background: #3b82f6; }
+        .cyber-toast.off .toast-progress-bar { background: #ef4444; }
+        .cyber-toast.error .toast-progress-bar { background: #ef4444; }
+
+        @keyframes toastEnter {
+            0% { opacity: 0; transform: translateY(-20px) scale(0.9); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        @keyframes toastLeave {
+            0% { opacity: 1; transform: translateY(0) scale(1); max-height: 100px; margin-bottom: 12px; }
+            100% { opacity: 0; transform: translateY(-10px) scale(0.9); max-height: 0; margin-bottom: 0; padding-top: 0; padding-bottom: 0; border-width: 0; }
+        }
+        @keyframes progressShrink {
+            0% { transform: scaleX(1); }
+            100% { transform: scaleX(0); }
         }
 
         * { box-sizing: border-box; scroll-behavior: smooth; }
@@ -158,7 +281,7 @@
             --font-mono: 'JetBrains Mono', monospace;
 
             margin: 0; 
-            padding: clamp(10px, 2vw, 24px);
+            padding: clamp(12px, 2vw, 24px);
             background-color: var(--bg-main); 
             background-image: var(--body-gradient);
             background-attachment: fixed;
@@ -168,35 +291,50 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: background 0.4s ease, color 0.4s ease;
+            transition: background 0.3s ease, color 0.3s ease;
         }
 
         .lucide {
-            width: 18px;
-            height: 18px;
-            stroke-width: 2px;
+            width: 20px;
+            height: 20px;
+            stroke-width: 2.2px;
             vertical-align: middle;
             display: inline-block;
         }
 
         .container { 
             width: 100%;
-            max-width: 480px; 
+            max-width: 500px; 
             background: var(--panel-bg); 
-            backdrop-filter: blur(28px);
-            -webkit-backdrop-filter: blur(28px);
-            padding: 20px 16px; 
-            border-radius: 24px; 
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), 0 0 40px var(--accent-glow), inset 0 1px 1px rgba(255, 255, 255, 0.15); 
+            backdrop-filter: blur(32px);
+            -webkit-backdrop-filter: blur(32px);
+            padding: 24px 20px; 
+            border-radius: 28px; 
+            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.45), 0 0 50px var(--accent-glow), inset 0 1px 1px rgba(255, 255, 255, 0.18); 
             border: 1px solid var(--border-glow);
             position: relative;
             overflow: hidden;
-            transition: all 0.4s ease;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .container::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+        /* Rainbow Mode Running Animated Border Line */
+        body[data-theme="rainbow"] .container::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+            background: linear-gradient(90deg, #ff2a85, #7928ca, #00dfd8, #ffb800, #ff2a85);
+            background-size: 300% 100%;
+            box-shadow: 0 0 18px #ff2a85, 0 0 30px #00dfd8;
+            animation: rainbowBorderRunning 3s linear infinite;
+        }
+
+        body:not([data-theme="rainbow"]) .container::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3.5px;
             background: linear-gradient(90deg, var(--accent-cyan), var(--accent-blue), var(--accent-purple));
+            box-shadow: 0 0 12px var(--accent-cyan);
+        }
+
+        @keyframes rainbowBorderRunning {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 300% 50%; }
         }
 
         /* Fullscreen Custom Modifier Mode for Container */
@@ -211,7 +349,7 @@
             height: 100dvh !important;
             border-radius: 0 !important;
             border: none !important;
-            padding: 12px 16px !important;
+            padding: 16px 20px !important;
             display: flex !important;
             flex-direction: column !important;
             overflow-y: auto !important;
@@ -223,7 +361,7 @@
             flex: 1;
             max-height: none !important;
             aspect-ratio: auto !important;
-            min-height: 50vh;
+            min-height: 52vh;
         }
 
         /* ========================================================= */
@@ -233,14 +371,14 @@
             .container {
                 max-width: 1120px;
                 display: grid;
-                grid-template-columns: 1.15fr 0.85fr;
+                grid-template-columns: 1.25fr 0.75fr;
                 gap: 28px;
                 align-content: start;
-                padding: 28px 32px;
+                padding: 32px 36px;
             }
             .app-header-area { 
                 grid-column: span 2; 
-                margin-bottom: 4px !important; 
+                margin-bottom: 6px !important; 
             }
             .scanner-column { 
                 display: flex; 
@@ -254,63 +392,65 @@
             }
         }
 
-        .app-header-area { margin-bottom: 12px; }
+        .app-header-area { margin-bottom: 14px; }
 
         .top-bar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 8px;
-            gap: 10px;
+            margin-bottom: 10px;
+            gap: 12px;
         }
 
         .top-controls-group {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
 
-        /* Futuristic Theme Switcher Dropdown */
+        /* Theme Selector Dropdown */
         .theme-selector-wrapper {
             position: relative;
             display: flex;
             align-items: center;
             background: var(--conn-bg);
             border: 1px solid var(--border-glow);
-            border-radius: 12px;
-            padding: 0 10px;
+            border-radius: 14px;
+            padding: 0 12px;
             transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+            height: 42px;
         }
         .theme-selector-wrapper:hover {
             border-color: var(--accent-cyan);
-            box-shadow: 0 0 15px var(--accent-glow);
+            box-shadow: 0 0 18px var(--accent-glow);
         }
         .theme-select-icon {
             color: var(--accent-cyan);
             margin-right: 6px;
+            width: 16px; height: 16px;
         }
         .theme-select {
             background: transparent;
             border: none;
             color: var(--text-main);
             font-family: var(--font-title);
-            font-size: 12px;
+            font-size: 13px;
             font-weight: 600;
-            padding: 10px 4px;
+            padding: 4px 4px;
             outline: none;
             cursor: pointer;
             appearance: none;
             -webkit-appearance: none;
-            padding-right: 18px;
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300f2fe' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            padding-right: 20px;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ff2a85' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
             background-repeat: no-repeat;
             background-position: right center;
-            background-size: 12px;
+            background-size: 13px;
         }
         .theme-select option {
-            background: #090e1a;
-            color: #f8fafc;
+            background: #09090b;
+            color: #fafafa;
             padding: 10px;
         }
 
@@ -319,30 +459,32 @@
             background: var(--conn-bg);
             border: 1px solid var(--border-glow);
             color: var(--text-main);
-            width: 40px;
-            height: 40px;
-            border-radius: 12px;
+            width: 42px;
+            height: 42px;
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             transition: all 0.25s ease;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
         }
         .fullscreen-btn:hover {
             border-color: var(--accent-cyan);
             color: var(--accent-cyan);
-            box-shadow: 0 0 15px var(--accent-glow);
+            box-shadow: 0 0 18px var(--accent-glow);
             transform: translateY(-1px);
         }
+        .fullscreen-btn .lucide { width: 18px; height: 18px; }
 
         .app-title {
             font-family: var(--font-title);
-            font-size: clamp(20px, 4vw, 26px); font-weight: 700; margin: 0;
-            background: linear-gradient(135deg, var(--text-main) 30%, var(--accent-cyan));
+            font-size: clamp(22px, 4vw, 28px); font-weight: 700; margin: 0;
+            background: linear-gradient(135deg, var(--text-main) 25%, var(--accent-cyan) 100%);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.5px;
-            display: flex; align-items: center; gap: 8px;
+            display: flex; align-items: center; gap: 10px;
         }
+        .app-title .lucide { width: 26px; height: 26px; stroke: var(--accent-cyan); }
 
         .ai-badge {
             display: inline-flex; align-items: center; gap: 6px;
@@ -352,64 +494,146 @@
             border: 1px solid var(--border-glow); margin-bottom: 8px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
+        .ai-badge .lucide { width: 14px; height: 14px; }
 
-        .conn-panel {
+        /* ========================================================= */
+        /* 💎 UNIFIED QUICK ACCESS TOOLBAR (ALL 3 BUTTONS IN ONE ROW)  */
+        /* ========================================================= */
+        .dashboard-quick-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 14px;
+            width: 100%;
+        }
+
+        .quick-action-card {
+            flex: 1;
+            min-width: 0;
             background: var(--conn-bg);
             border: 1px solid var(--border-glow);
-            border-radius: 18px;
-            padding: 16px;
-            margin-bottom: 16px;
-            text-align: left;
-            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 12px 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
         }
-        @media (min-width: 900px) {
-            .conn-panel { margin-bottom: 0; }
+        .quick-action-card:hover {
+            border-color: var(--accent-cyan);
+            transform: translateY(-2px);
+            box-shadow: 0 0 22px var(--accent-glow);
+            background: var(--card-inner);
         }
-
-        .conn-header {
-            font-size: 13px; font-weight: 600; color: var(--text-sub); margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center;
-            font-family: var(--font-title);
+        .quick-action-icon {
+            width: 38px; height: 38px; border-radius: 12px;
+            background: var(--accent-glow); color: var(--accent-cyan);
+            display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+            border: 1px solid var(--border-glow);
         }
-
-        .conn-status {
-            font-size: 11px; font-weight: 600; padding: 4px 12px; border-radius: 20px; background: rgba(239, 68, 68, 0.12); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3);
-            display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-title);
-        }
-        .conn-status::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
-        .conn-status.connected {
-            background: rgba(16, 185, 129, 0.12); color: #10b981; border-color: rgba(16, 185, 129, 0.3);
-        }
-
-        .conn-input-group { display: flex; gap: 10px; flex-wrap: wrap; }
+        .quick-action-icon .lucide { width: 20px; height: 20px; }
         
+        .quick-action-info {
+            display: flex; flex-direction: column; gap: 3px; overflow: hidden; width: 100%;
+        }
+        .quick-action-label {
+            font-family: var(--font-title); font-size: 10px; font-weight: 700; color: var(--text-sub); text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .quick-action-value {
+            font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: var(--text-main);
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: flex; align-items: center;
+        }
+
+        .conn-status-badge {
+            font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 10px; 
+            background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3);
+            display: inline-flex; align-items: center; gap: 5px; font-family: var(--font-title);
+        }
+        .conn-status-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+        .conn-status-badge.connected {
+            background: rgba(16, 185, 129, 0.15); color: #10b981; border-color: rgba(16, 185, 129, 0.3);
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.25);
+        }
+
+        .conn-form-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .ip-input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            background: var(--input-bg);
+            border: 1px solid var(--border-glow);
+            border-radius: 14px;
+            transition: all 0.25s ease;
+            overflow: hidden;
+        }
+        .ip-input-wrapper:focus-within {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 18px var(--accent-glow);
+        }
+        .ip-prefix-icon {
+            padding-left: 14px;
+            color: var(--accent-cyan);
+            display: flex;
+            align-items: center;
+        }
         .conn-input {
-            flex: 1; min-width: 180px; background: var(--input-bg); border: 1px solid var(--border-glow); color: var(--text-main);
-            padding: 10px 14px; border-radius: 12px; font-family: var(--font-mono); font-size: 13px;
-            transition: all 0.2s ease;
+            width: 100%; 
+            background: transparent; 
+            border: none; 
+            color: var(--text-main);
+            padding: 14px 16px; 
+            font-family: var(--font-mono); 
+            font-size: 14px;
+            outline: none;
         }
-        .conn-input:focus { outline: none; border-color: var(--accent-cyan); box-shadow: 0 0 15px var(--accent-glow); }
-        
+
+        .conn-actions-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+        }
+        @media (max-width: 400px) {
+            .conn-actions-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Buttons Styling */
+        body[data-theme="rainbow"] .conn-btn:not(.btn-secondary) {
+            background: linear-gradient(135deg, #ff2a85, #7928ca, #00dfd8);
+            background-size: 200% 200%;
+            animation: rainbowButtonGradient 5s ease infinite;
+            box-shadow: 0 6px 22px rgba(255, 42, 133, 0.45);
+        }
+
+        @keyframes rainbowButtonGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
         .conn-btn {
             background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
-            border: none; color: #fff; padding: 10px 20px; border-radius: 12px; 
+            border: none; color: #fff; padding: 12px 18px; border-radius: 14px; 
             font-family: var(--font-title); font-size: 13px; font-weight: 600; cursor: pointer; 
             transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 15px rgba(79, 172, 254, 0.3);
+            box-shadow: 0 4px 18px rgba(79, 172, 254, 0.35);
             display: inline-flex; align-items: center; justify-content: center; gap: 8px;
             text-decoration: none; position: relative; overflow: hidden;
-            min-height: 42px;
+            min-height: 46px;
         }
-        .conn-btn::after {
-            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-            background: linear-gradient(60deg, transparent, rgba(255,255,255,0.2), transparent);
-            transform: rotate(30deg); transition: 0.5s; opacity: 0;
-        }
-        .conn-btn:hover::after { opacity: 1; left: 100%; }
-        .conn-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(79, 172, 254, 0.5); }
+        .conn-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 22px rgba(255, 42, 133, 0.65); }
         .conn-btn:active { transform: translateY(0) scale(0.98); }
 
         .btn-secondary {
-            background: var(--conn-bg);
+            background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--border-glow);
             color: var(--text-main);
             box-shadow: none;
@@ -418,22 +642,34 @@
             border-color: var(--accent-cyan);
             background: var(--card-inner);
             color: var(--accent-cyan);
-            box-shadow: 0 0 15px var(--accent-glow);
+            box-shadow: 0 0 18px var(--accent-glow);
+        }
+
+        .btn-test {
+            background: rgba(16, 185, 129, 0.12);
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            color: #34d399;
+        }
+        .btn-test:hover {
+            background: rgba(16, 185, 129, 0.25);
+            box-shadow: 0 0 18px rgba(16, 185, 129, 0.3);
+            color: #ffffff;
         }
 
         /* VIEWPORT & CAMERA OPTIMIZATION */
         .viewport-wrapper { 
             position: relative; 
-            border-radius: 20px; 
+            border-radius: 22px; 
             overflow: hidden; 
             border: 1px solid var(--border-glow); 
-            background: #020408; 
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px var(--accent-glow); 
+            background: #010306; 
+            box-shadow: 0 22px 45px rgba(0, 0, 0, 0.65), 0 0 25px var(--accent-glow); 
             aspect-ratio: 4/3;
-            max-height: 50vh;
+            max-height: 48vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
         @media (min-width: 900px) {
             .viewport-wrapper {
@@ -442,186 +678,264 @@
             }
         }
 
+        .viewport-wrapper.success-flash {
+            border-color: #10b981 !important;
+            box-shadow: 0 0 35px rgba(16, 185, 129, 0.7), inset 0 0 25px rgba(16, 185, 129, 0.4) !important;
+        }
+
+        .viewport-wrapper.camera-paused .scan-line {
+            animation-play-state: paused !important;
+            opacity: 0 !important;
+        }
+        .viewport-wrapper.camera-paused .corner-bracket { opacity: 0.25; filter: none; }
+        .viewport-wrapper.camera-paused .crosshair { opacity: 0.15; }
+        .viewport-wrapper.camera-paused .scan-target-box { box-shadow: inset 0 0 70px rgba(2, 6, 16, 0.92); }
+
         video { width: 100%; height: 100%; display: block; object-fit: cover; }
 
         .hud-overlay { 
             position: absolute; inset: 0; pointer-events: none; 
-            box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.85); 
-            display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 16px;
+            box-shadow: inset 0 0 70px rgba(0, 0, 0, 0.88); 
+            display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 14px;
         }
 
         .hud-top-bar { width: 100%; display: flex; justify-content: space-between; align-items: center; z-index: 2; }
 
         .hud-badge {
-            font-family: var(--font-title); font-size: 10px; font-weight: 700; letter-spacing: 1px;
-            padding: 5px 12px; border-radius: 20px; background: rgba(5, 8, 17, 0.75);
-            backdrop-filter: blur(8px); border: 1px solid var(--border-glow); color: var(--text-main);
+            font-family: var(--font-title); font-size: 11px; font-weight: 700; letter-spacing: 1px;
+            padding: 6px 14px; border-radius: 20px; background: rgba(3, 7, 18, 0.85);
+            backdrop-filter: blur(10px); border: 1px solid var(--border-glow); color: var(--text-main);
             display: flex; align-items: center; gap: 6px; text-transform: uppercase;
         }
 
-        .hud-dot { width: 6px; height: 6px; border-radius: 50%; background: #ef4444; box-shadow: 0 0 8px #ef4444; animation: pulseDot 1.5s infinite ease-in-out; }
-        .hud-badge.live .hud-dot { background: #10b981; box-shadow: 0 0 8px #10b981; }
+        .hud-dot { width: 7px; height: 7px; border-radius: 50%; background: #ef4444; box-shadow: 0 0 10px #ef4444; animation: pulseDot 1.5s infinite ease-in-out; }
+        .viewport-wrapper.camera-paused .hud-dot { background: #64748b; box-shadow: none; animation: none; }
+        .hud-badge.live .hud-dot { background: #10b981; box-shadow: 0 0 10px #10b981; }
 
-        @keyframes pulseDot { 0%, 100% { opacity: 0.3; transform: scale(0.8); } 50% { opacity: 1; transform: scale(1.2); } }
+        .hud-badge.batch-mode { background: rgba(6, 182, 212, 0.22); border-color: var(--accent-cyan); color: var(--accent-cyan); box-shadow: 0 0 12px var(--accent-glow); }
+
+        @keyframes pulseDot { 0%, 100% { opacity: 0.3; transform: scale(0.8); } 50% { opacity: 1; transform: scale(1.25); } }
+
+        /* 🌟 EXTERNAL SCANNER CONTROLS BAR (MOVED OUT OF VIEWPORT) */
+        .external-controls-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 10px;
+            background: var(--conn-bg);
+            padding: 10px;
+            border-radius: 16px;
+            border: 1px solid var(--border-glow);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            flex-wrap: wrap;
+        }
+
+        .ext-ctrl-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-glow);
+            color: var(--text-sub);
+            padding: 8px 12px;
+            border-radius: 12px;
+            font-family: var(--font-title);
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s ease;
+            flex: 1;
+            min-width: 120px;
+            justify-content: center;
+        }
+        .ext-ctrl-btn:hover { color: var(--text-main); border-color: var(--accent-cyan); background: var(--card-inner); }
+        .ext-ctrl-btn.active { color: #030712; background: var(--accent-cyan); border-color: var(--accent-cyan); box-shadow: 0 0 15px var(--accent-glow); }
+        .ext-ctrl-btn .lucide { width: 16px; height: 16px; }
 
         .scan-target-box { 
             width: 82%; height: 55%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            border-radius: 16px; box-shadow: 0 0 0 9999px rgba(3, 7, 18, 0.65); 
+            border-radius: 18px; box-shadow: 0 0 0 9999px rgba(2, 6, 16, 0.68); transition: border-color 0.3s;
         }
 
         .corner-bracket {
-            position: absolute; width: 20px; height: 20px; border-color: var(--accent-cyan); border-style: solid;
-            filter: drop-shadow(0 0 6px var(--accent-cyan));
+            position: absolute; width: 22px; height: 22px; border-color: var(--accent-cyan); border-style: solid;
+            filter: drop-shadow(0 0 8px var(--accent-cyan));
+            transition: opacity 0.3s ease;
         }
+        .corner-bracket.top-left { top: -2px; left: -2px; border-width: 3.5px 0 0 3.5px; border-top-left-radius: 14px; }
+        .corner-bracket.top-right { top: -2px; right: -2px; border-width: 3.5px 3.5px 0 0; border-top-right-radius: 14px; }
+        .corner-bracket.bottom-left { bottom: -2px; left: -2px; border-width: 0 0 3.5px 3.5px; border-bottom-left-radius: 14px; }
+        .corner-bracket.bottom-right { bottom: -2px; right: -2px; border-width: 0 3.5px 3.5px 0; border-bottom-right-radius: 14px; }
 
-        .corner-bracket.top-left { top: -2px; left: -2px; border-width: 3.5px 0 0 3.5px; border-top-left-radius: 12px; }
-        .corner-bracket.top-right { top: -2px; right: -2px; border-width: 3.5px 3.5px 0 0; border-top-right-radius: 12px; }
-        .corner-bracket.bottom-left { bottom: -2px; left: -2px; border-width: 0 0 3.5px 3.5px; border-bottom-left-radius: 12px; }
-        .corner-bracket.bottom-right { bottom: -2px; right: -2px; border-width: 0 3.5px 3.5px 0; border-bottom-right-radius: 12px; }
-
-        .crosshair { position: absolute; top: 50%; left: 50%; width: 16px; height: 16px; transform: translate(-50%, -50%); opacity: 0.4; }
+        .crosshair { position: absolute; top: 50%; left: 50%; width: 16px; height: 16px; transform: translate(-50%, -50%); opacity: 0.45; }
         .crosshair::before, .crosshair::after { content: ''; position: absolute; background: var(--accent-cyan); }
         .crosshair::before { top: 7px; left: 0; right: 0; height: 2px; }
         .crosshair::after { left: 7px; top: 0; bottom: 0; width: 2px; }
 
         .scan-line { 
-            position: absolute; top: 0; left: 0; right: 0; height: 2.5px; 
+            position: absolute; top: 0; left: 0; right: 0; height: 3px; 
             background: linear-gradient(90deg, transparent 0%, var(--accent-cyan) 50%, transparent 100%); 
-            box-shadow: 0 0 18px var(--accent-cyan); animation: scanAnim 2.2s infinite ease-in-out; 
+            box-shadow: 0 0 20px var(--accent-cyan); animation: scanAnim 2.2s infinite ease-in-out; 
         }
 
         @keyframes scanAnim { 0% { top: 6%; opacity: 0.2; } 50% { top: 90%; opacity: 1; } 100% { top: 6%; opacity: 0.2; } }
 
         .status-text { margin-top: 10px; font-size: 13px; font-weight: 500; color: var(--text-sub); text-align: center; display: flex; align-items: center; justify-content: center; gap: 6px; }
 
-        #result-box { margin-top: 16px; padding: 16px; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 18px; display: none; text-align: left; animation: fadeIn 0.3s ease; }
-        .result-header { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #10b981; margin-bottom: 8px; font-weight: 700; font-family: var(--font-title); display: flex; align-items: center; gap: 6px; }
-        
+        #result-box { margin-top: 14px; padding: 18px; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.35); border-radius: 20px; display: none; text-align: left; animation: fadeIn 0.3s ease; }
+        .result-header { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #10b981; margin-bottom: 10px; font-weight: 700; font-family: var(--font-title); display: flex; align-items: center; justify-content: space-between; gap: 6px; }
+
         .result-input-field {
             width: 100%; background: var(--input-bg); border: 1px solid var(--border-glow); color: var(--accent-cyan);
-            padding: 12px 14px; border-radius: 12px; font-family: var(--font-mono); font-size: 15px; font-weight: 700;
-            margin-bottom: 12px;
+            padding: 14px 16px; border-radius: 14px; font-family: var(--font-mono); font-size: 15px; font-weight: 700;
+            margin-bottom: 14px;
         }
 
         .result-actions { display: flex; gap: 10px; }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
         #history-section { text-align: left; }
-        @media (max-width: 899px) { #history-section { margin-top: 20px; border-top: 1px solid var(--border-glow); padding-top: 18px; } }
         
-        .history-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
-        .history-title { font-size: 14px; font-weight: 700; color: var(--text-main); font-family: var(--font-title); display: flex; align-items: center; gap: 8px; }
-        
-        .today-summary-card { background: var(--card-inner); border: 1px solid var(--border-glow); border-radius: 18px; padding: 16px; margin-bottom: 16px; }
-        .today-summary-title { font-size: 11px; font-weight: 700; color: var(--accent-cyan); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; font-family: var(--font-title); display: flex; align-items: center; gap: 6px; }
+        .today-summary-card { 
+            background: var(--card-inner); border: 1px solid var(--border-glow); border-radius: 20px; padding: 18px; margin-bottom: 14px;
+            cursor: pointer; transition: all 0.25s ease;
+        }
+        .today-summary-card:hover { border-color: var(--accent-cyan); transform: translateY(-2px); box-shadow: 0 8px 25px var(--accent-glow); }
+        .today-summary-title { font-size: 12px; font-weight: 700; color: var(--accent-cyan); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; font-family: var(--font-title); display: flex; align-items: center; justify-content: space-between; gap: 6px; }
         .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; text-align: center; }
         .stat-item { background: var(--stat-item-bg); padding: 12px 8px; border-radius: 14px; border: 1px solid var(--border-glow); }
         .stat-value { font-family: var(--font-mono); font-size: 20px; font-weight: 700; color: var(--text-main); }
         .stat-label { font-size: 11px; color: var(--text-sub); margin-top: 4px; font-weight: 500; }
         
         .recent-list { display: flex; flex-direction: column; gap: 10px; }
+        
+        /* 📞 CALL-LOG STYLE HISTORY ITEM */
         .history-item { 
             background: var(--history-item-bg); border: 1px solid var(--border-glow); 
-            border-left: 3px solid #3b82f6; padding: 12px 14px; border-radius: 14px; font-size: 13px; transition: all 0.25s ease;
+            padding: 12px 14px; border-radius: 16px; font-size: 13px; transition: all 0.25s ease;
+            cursor: pointer; display: flex; align-items: center; gap: 12px; position: relative;
         }
-        .history-item:hover { border-color: var(--accent-cyan); transform: translateX(3px); }
-        .history-item.ocr { border-left-color: var(--accent-purple); }
-        .history-item.pending { border-left-color: #f59e0b; }
-        .history-item .item-meta { display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--text-sub); margin-top: 8px; font-family: var(--font-mono); }
+        .history-item:hover { border-color: var(--accent-cyan); transform: translateX(3px); box-shadow: 0 6px 18px var(--accent-glow); }
+        
+        .call-log-icon {
+            width: 38px; height: 38px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+        .call-log-icon.success { background: rgba(16, 185, 129, 0.15); color: #10b981; border-color: rgba(16, 185, 129, 0.3); }
+        .call-log-icon.pending { background: rgba(245, 158, 11, 0.15); color: #f59e0b; border-color: rgba(245, 158, 11, 0.3); }
+        .call-log-icon.failed { background: rgba(239, 68, 68, 0.15); color: #ef4444; border-color: rgba(239, 68, 68, 0.3); }
 
-        .badge { font-size: 9px; padding: 3px 8px; border-radius: 6px; font-weight: 700; font-family: var(--font-title); letter-spacing: 0.5px; }
+        .call-log-details { flex: 1; display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+        .call-log-code { font-family: var(--font-mono); font-size: 14px; font-weight: 700; color: var(--text-main); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .call-log-meta { font-family: var(--font-mono); font-size: 11px; color: var(--text-sub); display: flex; align-items: center; gap: 8px; }
+
+        .badge { font-size: 10px; padding: 3px 8px; border-radius: 6px; font-weight: 700; font-family: var(--font-title); letter-spacing: 0.5px; }
         .badge-success { background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-fail { background: rgba(239, 68, 68, 0.15); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.3); }
         .badge-pending { background: rgba(245, 158, 11, 0.15); color: #f59e0b; border: 1px solid rgba(245, 158, 11, 0.3); }
 
-        .view-all-link {
-            display: flex; align-items: center; justify-content: center; gap: 8px;
-            width: 100%; margin-top: 14px; padding: 12px; border-radius: 14px;
-            background: var(--conn-bg); border: 1px solid var(--border-glow);
-            color: var(--accent-cyan); font-size: 13px; font-weight: 700;
-            text-decoration: none; transition: all 0.25s ease; cursor: pointer;
-            font-family: var(--font-title); min-height: 44px;
+        /* ========================================================= */
+        /* 📱 SWIPE-TO-DELETE STYLES FOR HISTORY LIST                */
+        /* ========================================================= */
+        .swipe-item-wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            margin-bottom: 2px;
         }
-        .view-all-link:hover { background: var(--accent-glow); border-color: var(--accent-cyan); transform: translateY(-2px); }
 
-        /* EDGE PANEL STYLES */
+        .swipe-delete-background {
+            position: absolute;
+            inset: 0;
+            background: #ef4444;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 24px;
+            color: #ffffff;
+            font-family: var(--font-title);
+            font-size: 13px;
+            font-weight: 700;
+            gap: 8px;
+            border-radius: 16px;
+            z-index: 1;
+        }
+
+        .swipeable-card {
+            position: relative;
+            z-index: 2;
+            background: var(--history-item-bg);
+            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            touch-action: pan-y;
+            user-select: none;
+        }
+
+        /* EDGE PANEL & MODALS */
         .edge-panel-overlay {
-            position: fixed; inset: 0; background: rgba(2, 4, 8, 0.65);
-            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            position: fixed; inset: 0; background: rgba(2, 4, 8, 0.75);
+            backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
             z-index: 1000; opacity: 0; visibility: hidden;
             transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s ease;
+            display: flex; align-items: center; justify-content: center;
         }
         .edge-panel-overlay.active { opacity: 1; visibility: visible; }
 
         .edge-panel-card {
             position: fixed; top: 0; right: 0; bottom: 0;
-            width: 100%; max-width: 440px; height: 100vh; height: 100dvh;
-            background: var(--panel-bg); 
-            border-left: 1px solid var(--border-glow);
-            box-shadow: -15px 0 45px rgba(0, 0, 0, 0.7), 0 0 30px var(--accent-glow);
+            width: 100%; max-width: 420px; height: 100vh; height: 100dvh;
+            background: var(--panel-bg); border-left: 1px solid var(--border-glow);
+            box-shadow: -20px 0 50px rgba(0, 0, 0, 0.75), 0 0 35px var(--accent-glow);
             display: flex; flex-direction: column; overflow: hidden;
-            transform: translateX(100%);
-            transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateX(100%); transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1);
             z-index: 1001;
         }
         .edge-panel-overlay.active .edge-panel-card { transform: translateX(0); }
 
         .edge-panel-header {
-            padding: 18px 20px; border-bottom: 1px solid var(--border-glow);
-            display: flex; justify-content: space-between; align-items: center;
-            background: rgba(0, 0, 0, 0.2);
+            padding: 20px; border-bottom: 1px solid var(--border-glow);
+            display: flex; justify-content: space-between; align-items: center; background: rgba(0, 0, 0, 0.25);
         }
-
-        .edge-panel-title {
-            font-family: var(--font-title); font-size: 16px; font-weight: 700;
-            color: var(--text-main); margin: 0; display: flex; align-items: center; gap: 8px;
-        }
-
+        .edge-panel-title { font-family: var(--font-title); font-size: 16px; font-weight: 700; color: var(--text-main); margin: 0; display: flex; align-items: center; gap: 8px; }
         .edge-panel-close-btn {
-            background: var(--conn-bg); border: 1px solid var(--border-glow);
-            color: var(--text-sub); width: 36px; height: 36px; border-radius: 10px;
-            cursor: pointer; display: flex; align-items: center; justify-content: center;
-            transition: all 0.2s ease;
+            background: var(--conn-bg); border: 1px solid var(--border-glow); color: var(--text-sub);
+            width: 38px; height: 38px; border-radius: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s;
         }
         .edge-panel-close-btn:hover { color: var(--text-main); border-color: var(--accent-cyan); background: var(--accent-glow); }
-
-        .edge-panel-search-bar {
-            padding: 14px 20px; border-bottom: 1px solid var(--border-glow);
-            display: flex; gap: 10px; background: rgba(0, 0, 0, 0.15);
-        }
-
-        .edge-panel-body-list {
-            padding: 16px 20px; overflow-y: auto; display: flex;
-            flex-direction: column; gap: 10px; flex: 1;
-        }
+        .edge-panel-search-bar { padding: 14px 20px; border-bottom: 1px solid var(--border-glow); display: flex; gap: 10px; background: rgba(0, 0, 0, 0.18); }
+        .edge-panel-body-list { padding: 16px 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; flex: 1; }
 
         .modal-history-item {
-            background: var(--history-item-bg); border: 1px solid var(--border-glow);
-            border-left: 3px solid #3b82f6; padding: 12px 14px; border-radius: 14px;
-            font-size: 13px; display: flex; flex-direction: column; gap: 8px;
-            transition: all 0.2s ease;
+            background: var(--history-item-bg); border: 1px solid var(--border-glow); 
+            padding: 12px 14px; border-radius: 16px; font-size: 13px; display: flex; align-items: center; gap: 12px; transition: all 0.2s; cursor: pointer;
         }
-        .modal-history-item:hover { border-color: var(--accent-cyan); }
-        .modal-history-item.pending { border-left-color: #f59e0b; }
-        .modal-history-item.failed { border-left-color: #ef4444; }
-
-        .modal-history-item .item-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
-        .modal-history-item .item-code { font-weight: 700; color: var(--text-main); font-family: var(--font-mono); word-break: break-all; }
-        .modal-history-item .item-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--text-sub); font-family: var(--font-mono); }
-
-        .item-action-btns { display: flex; gap: 6px; }
+        .modal-history-item:hover { border-color: var(--accent-cyan); background: var(--card-inner); }
+        .modal-history-item.active-conn { border-color: var(--accent-cyan) !important; background: var(--card-inner); }
 
         .icon-btn {
             background: var(--conn-bg); border: 1px solid var(--border-glow); color: var(--text-sub); cursor: pointer;
-            padding: 6px; border-radius: 8px; transition: all 0.2s; display: flex; align-items: center; justify-content: center;
-            min-width: 32px; min-height: 32px;
+            padding: 6px; border-radius: 10px; transition: all 0.2s; display: flex; align-items: center; justify-content: center;
+            min-width: 34px; min-height: 34px;
         }
-        .icon-btn:hover { color: var(--accent-cyan); border-color: var(--accent-cyan); }
-        .icon-btn.danger:hover { color: #ef4444; border-color: rgba(239, 68, 68, 0.5); }
+        .icon-btn:hover { color: var(--accent-cyan); border-color: var(--accent-cyan); background: var(--accent-glow); }
+        .icon-btn.primary { color: var(--accent-cyan); border-color: rgba(6, 182, 212, 0.4); }
+        .icon-btn.danger:hover { color: #ef4444; border-color: rgba(239, 68, 68, 0.5); background: rgba(239, 68, 68, 0.12); }
+
+        .conn-modal-card {
+            position: relative; width: 90%; max-width: 440px; max-height: 85vh; background: var(--panel-bg);
+            border: 1px solid var(--border-glow); border-radius: 24px; box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 35px var(--accent-glow);
+            display: flex; flex-direction: column; overflow: hidden; transform: translateY(20px) scale(0.95);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s; margin: auto; backdrop-filter: blur(24px); z-index: 1002;
+        }
+        .edge-panel-overlay.active .conn-modal-card { transform: translateY(0) scale(1); }
+        .conn-modal-body { padding: 22px; overflow-y: auto; display: flex; flex-direction: column; gap: 16px; }
     </style>
 </head>
-<body data-theme="dark">
+<body data-theme="rainbow">
+
+    <!-- Notification Container -->
+    <div id="toast-container" class="toast-container"></div>
 
     <div class="container" id="app-container">
         <!-- Header Section -->
@@ -630,37 +944,36 @@
                 <h2 class="app-title"><i data-lucide="scan"></i>SCANDER</h2>
                 
                 <div class="top-controls-group">
-                    <!-- Multi-Theme Selector Dropdown -->
                     <div class="theme-selector-wrapper" title="เปลี่ยนธีมสี">
                         <i data-lucide="palette" class="theme-select-icon"></i>
                         <select id="theme-select" class="theme-select" onchange="changeTheme(this.value)">
-                            <option value="dark"> Cyber Dark</option>
-                            <option value="matrix"> Matrix Green</option>
-                            <option value="synthwave"> Synthwave Pink</option>
-                            <option value="amber"> Cyber Amber</option>
-                            <option value="oled"> OLED Black</option>
-                            <option value="light"> Light Silver</option>
+                            <option value="rainbow">Rainbow Vivid</option>
+                            <option value="matrix">Matrix Green</option>
+                            <option value="synthwave">Synthwave Pink</option>
+                            <option value="amber">Cyber Amber</option>
+                            <option value="oled">OLED Black</option>
                         </select>
                     </div>
 
-                    <!-- Fullscreen Toggle Button -->
                     <button id="fullscreen-toggle-btn" class="fullscreen-btn" onclick="toggleFullScreen()" title="สลับโหมดเต็มหน้าจอ">
                         <i data-lucide="maximize" id="fullscreen-icon"></i>
                     </button>
                 </div>
             </div>
-            <div class="ai-badge"><i data-lucide="zap"></i>Scander Realtime (Beta)</div>
+            <div class="ai-badge"><i data-lucide="zap"></i>SCANDER V.1.0 (เวอร์ชั่นทดลอง)</div>
         </div>
 
         <!-- Left Column: Unified Camera & Scanner Viewport -->
         <div class="scanner-column">
-            <div class="viewport-wrapper">
+            <div id="viewport-wrapper" class="viewport-wrapper">
                 <video id="camera-feed" autoplay playsinline></video>
+
                 <div class="hud-overlay">
                     <div class="hud-top-bar">
-                        <div class="hud-badge live"><span class="hud-dot"></span> LIVE</div>
-                        <div class="hud-badge">AUTO SCAN</div>
+                        <div id="hud-live-badge" class="hud-badge live"><span class="hud-dot"></span> กำลังสตรีม</div>
+                        <div id="mode-hud-badge" class="hud-badge">บาร์โค้ด / QR</div>
                     </div>
+
                     <div class="scan-target-box">
                         <div class="corner-bracket top-left"></div>
                         <div class="corner-bracket top-right"></div>
@@ -672,43 +985,83 @@
                 </div>
             </div>
 
+            <!-- 🌟 EXTERNAL CONTROLS BAR (MOVED OUT OF VIEWPORT) -->
+            <div class="external-controls-bar">
+                <button id="btn-toggle-scan-engine" class="ext-ctrl-btn" onclick="toggleScanEngineMode()" title="สลับโหมดสแกน">
+                    <i data-lucide="cpu" id="scan-engine-icon"></i>
+                    <span id="scan-engine-label">โหมด: บาร์โค้ด</span>
+                </button>
+                <button id="btn-toggle-continuous" class="ext-ctrl-btn" onclick="toggleContinuousMode()" title="โหมดสแกนต่อเนื่อง">
+                    <i data-lucide="repeat"></i>
+                    <span id="continuous-label">ต่อเนื่อง: ปิด</span>
+                </button>
+                <button id="btn-toggle-notifications" class="ext-ctrl-btn active" onclick="toggleNotifications()" title="เปิด/ปิด การแจ้งเตือนทั้งหมด">
+                    <i data-lucide="bell" id="notification-icon"></i>
+                    <span>แจ้งเตือน</span>
+                </button>
+                <button id="btn-toggle-camera" class="ext-ctrl-btn active" onclick="toggleCamera()" title="เปิด/ปิด กล้อง">
+                    <i data-lucide="camera" id="camera-icon"></i>
+                    <span>กล้อง</span>
+                </button>
+            </div>
+
             <canvas id="ocr-canvas" style="display: none;"></canvas>
-            <div class="status-text" id="scan-status"><i data-lucide="scan-line"></i> ส่อง Barcode, QR Code หรือ Serial ในกรอบ</div>
+            <div class="status-text" id="scan-status"><i data-lucide="scan-line"></i> นำบาร์โค้ดหรือซีเรียลมาไว้ในกรอบเพื่อสแกน</div>
 
             <div id="result-box">
                 <div class="result-header">
                     <span id="result-title"><i data-lucide="check-circle-2"></i> อ่านข้อมูลสำเร็จ</span>
                 </div>
-                <input type="text" id="result-input" class="result-input-field" placeholder="ข้อความที่สแกนได้...">
+                <input type="text" id="result-input" class="result-input-field" placeholder="ซีเรียลที่สแกน...">
                 
                 <div class="result-actions">
                     <button id="send-data-btn" class="conn-btn" style="flex: 2;" onclick="confirmAndSend()">
-                        <i data-lucide="send"></i> Send to PC
+                        <i data-lucide="send"></i> ส่งไปยัง PC
                     </button>
                     <button class="conn-btn btn-secondary" style="flex: 1;" onclick="resetScanForNext()">
-                        <i data-lucide="refresh-cw"></i> Rescan
+                        <i data-lucide="refresh-cw"></i> สแกนใหม่
                     </button>
                 </div>
             </div>
         </div>
 
-        <!-- Right Column: Control Panel, Dashboard & Recent Items -->
+        <!-- Right Column: Compact Dashboard & Quick Action Popups -->
         <div class="dashboard-column">
-            <!-- Connection Panel -->
-            <div class="conn-panel">
-                <div class="conn-header">
-                    <span><i data-lucide="monitor"></i> ตั้งค่า API ปลายทาง (PC)</span>
-                    <span id="conn-status-badge" class="conn-status">ออฟไลน์</span>
+            
+            <!-- 🌟 UNIFIED QUICK ACCESS TOOLBAR (ALL 3 BUTTONS IN ONE ROW) -->
+            <div class="dashboard-quick-actions">
+                <div class="quick-action-card" onclick="openConnConfigModal()" title="ตั้งค่าเชื่อมต่อ PC Host">
+                    <div class="quick-action-icon"><i data-lucide="network"></i></div>
+                    <div class="quick-action-info">
+                        <span class="quick-action-label">เชื่อมต่อ PC</span>
+                        <span class="quick-action-value"><span id="conn-status-badge" class="conn-status-badge">ออฟไลน์</span></span>
+                    </div>
                 </div>
-                <div class="conn-input-group">
-                    <input type="text" id="pc-ip-input" class="conn-input" placeholder="เช่น http://192.168.1.10:5000">
-                    <button class="conn-btn" onclick="saveConnection()"><i data-lucide="link"></i> เชื่อมต่อ</button>
+
+                <div class="quick-action-card" onclick="openManualEntryModal()" title="พิมพ์รหัสด้วยตนเอง">
+                    <div class="quick-action-icon"><i data-lucide="keyboard"></i></div>
+                    <div class="quick-action-info">
+                        <span class="quick-action-label">กรอกSN</span>
+                        <span class="quick-action-value">Manual</span>
+                    </div>
+                </div>
+
+                <div class="quick-action-card" onclick="openSeqGeneratorModal()" title="สร้างรหัสเรียงลำดับต่อเนื่องอัตโนมัติ">
+                    <div class="quick-action-icon"><i data-lucide="list-ordered"></i></div>
+                    <div class="quick-action-info">
+                        <span class="quick-action-label">RUN</span>
+                        <span class="quick-action-value">SN</span>
+                    </div>
                 </div>
             </div>
 
+            <!-- TODAY STATS & RECENT HISTORY WIDGET -->
             <div id="history-section">
-                <div class="today-summary-card">
-                    <div class="today-summary-title"><i data-lucide="bar-chart-2"></i> สรุปการสแกนวันนี้</div>
+                <div class="today-summary-card" onclick="openHistoryEdgePanel()" title="แตะเพื่อดูประวัติการสแกนทั้งหมด">
+                    <div class="today-summary-title">
+                        <span><i data-lucide="bar-chart-2"></i> จำนวนที่สแกน</span>
+                        <span style="font-size: 12px; color: var(--accent-cyan); display: flex; align-items: center; gap: 4px;">ดูทั้งหมด <i data-lucide="chevron-right" style="width: 15px; height: 15px;"></i></span>
+                    </div>
                     <div class="stat-grid">
                         <div class="stat-item">
                             <div class="stat-value" id="count-today-total">0</div>
@@ -716,39 +1069,142 @@
                         </div>
                         <div class="stat-item">
                             <div class="stat-value" style="color: #10b981;" id="count-today-success">0</div>
-                            <div class="stat-label">ส่งสำเร็จ</div>
+                            <div class="stat-label">สำเร็จ</div>
                         </div>
                         <div class="stat-item">
                             <div class="stat-value" style="color: #f59e0b;" id="count-today-pending">0</div>
-                            <div class="stat-label">รอส่ง/ล้มเหลว</div>
+                            <div class="stat-label">รอส่ง</div>
                         </div>
                     </div>
                 </div>
 
-                <div class="history-header">
-                    <div class="history-title"><i data-lucide="clock"></i> รายการล่าสุด</div>
-                </div>
-                
                 <div id="recent-list" class="recent-list"></div>
-
-                <button type="button" class="view-all-link" onclick="openHistoryEdgePanel()">
-                    <i data-lucide="panel-right-open"></i> ดูประวัติทั้งหมด
-                </button>
             </div>
         </div>
     </div>
 
-    <!-- Edge Panel Sliding Side Drawer สำหรับแสดงประวัติสแกนทั้งหมด -->
+    <!-- ========================================================= -->
+    <!-- 🪟 POPUP MODALS & EDGE PANELS                              -->
+    <!-- ========================================================= -->
+
+    <!-- 1. Connection Config Modal (Popup) -->
+    <div id="conn-config-modal" class="edge-panel-overlay">
+        <div class="conn-modal-card">
+            <div class="edge-panel-header">
+                <h3 class="edge-panel-title"><i data-lucide="network"></i> ตั้งค่าการเชื่อมต่อ PC Host</h3>
+                <button class="edge-panel-close-btn" onclick="closeConnConfigModal()" title="ปิดหน้าต่าง"><i data-lucide="x"></i></button>
+            </div>
+            <div class="conn-modal-body">
+                <div style="font-size: 13px; color: var(--text-sub);">ระบุ IP Address หรือ URL</div>
+                <div class="ip-input-wrapper">
+                    <div class="ip-prefix-icon"><i data-lucide="globe"></i></div>
+                    <input type="text" id="pc-ip-input" class="conn-input" placeholder="http://192.168.1.50:5000">
+                </div>
+
+                <div class="conn-actions-grid">
+                    <button class="conn-btn btn-test" onclick="testConnection()" title="ทดสอบลิงก์เชื่อมต่อ">
+                        <i data-lucide="activity"></i> ทดสอบ
+                    </button>
+                    <button class="conn-btn btn-secondary" onclick="autoDetectLocalIP()" title="ค้นหาอัตโนมัติ">
+                        <i data-lucide="wifi"></i> ค้นหา
+                    </button>
+                    <button class="conn-btn" onclick="saveConnection()" title="บันทึก">
+                        <i data-lucide="shield-check"></i> บันทึก
+                    </button>
+                </div>
+
+                <div style="border-top: 1px solid var(--border-glow); padding-top: 14px; margin-top: 4px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                        <span style="font-family: var(--font-title); font-size: 13px; font-weight: 700; color: var(--text-sub);">ประวัติการเชื่อมต่อ</span>
+                    </div>
+                    <div id="conn-history-list" style="display: flex; flex-direction: column; gap: 8px; max-height: 200px; overflow-y: auto;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Manual Entry Modal (Popup) -->
+    <div id="manual-entry-modal" class="edge-panel-overlay">
+        <div class="conn-modal-card" style="max-width: 400px;">
+            <div class="edge-panel-header">
+                <h3 class="edge-panel-title"><i data-lucide="keyboard"></i>SN</h3>
+                <button class="edge-panel-close-btn" onclick="closeManualEntryModal()" title="ปิดหน้าต่าง"><i data-lucide="x"></i></button>
+            </div>
+            <div class="conn-modal-body">
+                <div style="font-size: 13px; color: var(--text-sub);">กรอกบาร์โค้ด ซีเรียลนัมเบอร์</div>
+                <input type="text" id="manual-code-input" class="conn-input" placeholder="กรอกบาร์โค้ดหรือซีเรียล..." style="background: var(--input-bg); border: 1px solid var(--border-glow); border-radius: 14px; padding: 14px 16px; font-size: 15px;">
+                
+                <div style="display: flex; gap: 8px; margin-top: 4px;">
+                    <button class="conn-btn btn-secondary" onclick="saveManualAsPending()" style="flex: 1; justify-content: center; padding: 14px; border-color: rgba(245, 158, 11, 0.4); color: #f59e0b;" title="บันทึกเก็บไว้ในรายการ (รอส่ง)">
+                        <i data-lucide="save"></i> บันทึก (รอส่ง)
+                    </button>
+                    <button class="conn-btn" onclick="submitManualEntry()" style="flex: 1; justify-content: center; padding: 14px;" title="ส่งไปยัง PC ทันที">
+                        <i data-lucide="send"></i> ส่งไปยัง PC
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. Sequence Generator Modal (New Feature + Cancel All Button) -->
+    <div id="seq-generator-modal" class="edge-panel-overlay">
+        <div class="conn-modal-card" style="max-width: 440px;">
+            <div class="edge-panel-header">
+                <h3 class="edge-panel-title"><i data-lucide="list-ordered"></i>RUN SN</h3>
+                <button class="edge-panel-close-btn" onclick="closeSeqGeneratorModal()" title="ปิดหน้าต่าง"><i data-lucide="x"></i></button>
+            </div>
+            <div class="conn-modal-body">
+                <div style="font-size: 13px; color: var(--text-sub);">กำหนดค่าเริ่มต้นและค่าสิ้นสุดเพื่อให้ระบบสร้างซีเรียลหรือบาร์โค้ดต่อเนื่องกัน</div>
+                
+                <div style="display: flex; flex-direction: column; gap: 12px;">
+                    <div>
+                        <label style="font-size: 12px; font-weight: 700; color: var(--text-sub); display: block; margin-bottom: 6px;">คำนำหน้า</label>
+                        <input type="text" id="seq-prefix-input" class="conn-input" placeholder="เช่น SN-, LOT2026-" oninput="updateSeqPreview()" style="background: var(--input-bg); border: 1px solid var(--border-glow); border-radius: 12px; padding: 12px 14px; font-size: 14px;">
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                        <div>
+                            <label style="font-size: 12px; font-weight: 700; color: var(--text-sub); display: block; margin-bottom: 6px;">START</label>
+                            <input type="number" id="seq-start-input" class="conn-input" value="1" placeholder="1" oninput="updateSeqPreview()" style="background: var(--input-bg); border: 1px solid var(--border-glow); border-radius: 12px; padding: 12px 14px; font-size: 14px;">
+                        </div>
+                        <div>
+                            <label style="font-size: 12px; font-weight: 700; color: var(--text-sub); display: block; margin-bottom: 6px;">END</label>
+                            <input type="number" id="seq-end-input" class="conn-input" value="10" placeholder="10" oninput="updateSeqPreview()" style="background: var(--input-bg); border: 1px solid var(--border-glow); border-radius: 12px; padding: 12px 14px; font-size: 14px;">
+                        </div>
+                    </div>
+
+                    <input type="hidden" id="seq-pad-input" value="10">
+                    <input type="hidden" id="seq-step-input" value="1">
+                </div>
+
+                <div style="background: var(--card-inner); border: 1px solid var(--border-glow); border-radius: 14px; padding: 12px; margin-top: 4px;">
+                    <div style="font-size: 11px; font-weight: 700; color: var(--accent-cyan); margin-bottom: 6px; font-family: var(--font-title);">ตัวอย่างผลลัพธ์ (Preview):</div>
+                    <div id="seq-preview-text" style="font-family: var(--font-mono); font-size: 13px; color: var(--text-main); word-break: break-all;">-</div>
+                </div>
+
+                <div style="display: flex; gap: 8px; margin-top: 4px;">
+                    <button class="conn-btn btn-secondary" onclick="cancelSeqGeneration()" style="flex: 1; justify-content: center; padding: 14px; border-color: rgba(239, 68, 68, 0.4); color: #ef4444;" title="ยกเลิกทั้งหมด / หยุดกระบวนการ">
+                        <i data-lucide="x-circle"></i> ยกเลิกทั้งหมด
+                    </button>
+                    <button class="conn-btn" onclick="generateAndSendSequence()" style="flex: 2; justify-content: center; padding: 14px;">
+                        <i data-lucide="play"></i>SN
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. Full Scan History Sliding Edge Panel (Call-Log Style) -->
     <div id="history-edge-panel" class="edge-panel-overlay">
         <div class="edge-panel-card">
             <div class="edge-panel-header">
-                <h3 class="edge-panel-title"><i data-lucide="history"></i> ประวัติการสแกนทั้งหมด</h3>
-                <button class="edge-panel-close-btn" onclick="closeHistoryEdgePanel()" title="ปิดแผง Edge"><i data-lucide="x"></i></button>
+                <h3 class="edge-panel-title"><i data-lucide="history"></i> ประวัติการสแกน (Call Log)</h3>
+                <button class="edge-panel-close-btn" onclick="closeHistoryEdgePanel()" title="ปิดแผง"><i data-lucide="x"></i></button>
             </div>
             <div class="edge-panel-search-bar">
-                <input type="text" id="modal-search-input" class="conn-input" placeholder="🔍 ค้นหาประวัติ..." oninput="filterFullHistory()">
-                <button class="conn-btn btn-secondary" onclick="clearAllHistory()" style="padding: 8px 14px; font-size: 12px; color: #ef4444; border-color: rgba(239, 68, 68, 0.3);">
-                    <i data-lucide="trash-2"></i> ล้างทั้งหมด
+                <input type="text" id="modal-search-input" class="conn-input" placeholder="🔍 ค้นหารหัสในประวัติ..." oninput="filterFullHistory()">
+                <button class="conn-btn btn-secondary" onclick="clearAllHistory()" style="padding: 10px 14px; font-size: 12px; color: #ef4444; border-color: rgba(239, 68, 68, 0.3);">
+                    <i data-lucide="trash-2"></i> ล้าง
                 </button>
             </div>
             <div id="full-history-list" class="edge-panel-body-list"></div>
@@ -758,12 +1214,30 @@
     <script>
         let cameraStream = null;
         let isProcessing = false;
-        let tesseractWorker = null; 
-        let isWorkerReady = false;
-        let currentScannedType = 'barcode_qr';
+        let currentScannedType = 'บาร์โค้ด / QR';
         let autoScanInterval = null;
         let eventSource = null;
-        let currentHistoryItemId = null;
+        let currentScannedData = null;
+
+        /* SEQUENCE CANCELLATION FLAGS */
+        let isSeqGenerating = false;
+        let cancelSeqFlag = false;
+
+        /* SCAN ENGINE & MODES */
+        let currentScanEngine = 'barcode'; 
+        let isContinuousMode = false;
+        let isNotificationsEnabled = true;
+        let isCameraActive = true;
+        let lastScannedCode = '';
+        let lastScanTime = 0;
+        const SCAN_COOLDOWN_MS = 1500;
+        
+        let emptyFrames = 0;
+        const EMPTY_FRAMES_TO_RESET = 8;
+
+        let globalBarcodeDetector = null;
+        let isDetectingFrame = false;
+        let tesseractWorker = null;
 
         const SUPPORTED_BARCODE_FORMATS = [
             'code_128', 'code_39', 'ean_13', 'upc_a', 'itf', 'qr_code', 'data_matrix', 'ean_8', 'upc_e', 'codabar'
@@ -775,82 +1249,274 @@
             }
         }
 
-        /* Fullscreen Management Logic */
-        function toggleFullScreen() {
-            const docElement = document.documentElement;
-            const iconElem = document.getElementById('fullscreen-icon');
+        function triggerVibration(pattern = [80]) {
+            if ('vibrate' in navigator) navigator.vibrate(pattern);
+        }
 
-            if (!document.fullscreenElement && !document.webkitFullscreenElement) {
-                if (docElement.requestFullscreen) {
-                    docElement.requestFullscreen().catch(err => {
-                        console.warn("Fullscreen request error:", err);
-                    });
-                } else if (docElement.webkitRequestFullscreen) {
-                    docElement.webkitRequestFullscreen();
+        function showScanToast(msg, variant = 'success') {
+            if (!isNotificationsEnabled && variant !== 'force-show') return;
+            if (variant === 'force-show') variant = 'success';
+
+            // ส่งแจ้งเตือนผ่านโทรศัพท์/เบราว์เซอร์ (Native Phone Notification)
+            if ('Notification' in window && Notification.permission === 'granted' && isNotificationsEnabled) {
+                let titleText = 'SCANDER';
+                if (variant === 'success') titleText = 'สำเร็จ';
+                else if (variant === 'warning') titleText = 'แจ้งเตือน';
+                else if (variant === 'error' || variant === 'off') titleText = 'แจ้งเตือนระบบ';
+                try {
+                    new Notification(titleText, { body: msg });
+                } catch (e) {}
+            }
+
+            const container = document.getElementById('toast-container');
+            if (!container) return;
+
+            let iconName = 'check-circle-2';
+            let titleText = 'สำเร็จ';
+            
+            if (variant === 'success') { iconName = 'check-circle-2'; titleText = 'สำเร็จ'; }
+            else if (variant === 'warning') { iconName = 'alert-triangle'; titleText = 'แจ้งเตือน'; }
+            else if (variant === 'info') { iconName = 'info'; titleText = 'ข้อมูลระบบ'; }
+            else if (variant === 'off') { iconName = 'power'; titleText = 'ปิดการทำงาน'; }
+            else if (variant === 'error') { iconName = 'x-octagon'; titleText = 'เกิดข้อผิดพลาด'; }
+
+            const toast = document.createElement('div');
+            toast.className = `cyber-toast ${variant}`;
+            toast.innerHTML = `
+                <div class="toast-icon-wrapper"><i data-lucide="${iconName}"></i></div>
+                <div class="toast-content"><span class="toast-title">${titleText}</span><span class="toast-message">${msg}</span></div>
+                <div class="toast-progress"><div class="toast-progress-bar"></div></div>
+            `;
+            toast.addEventListener('click', () => removeToast(toast));
+            container.prepend(toast); 
+            refreshIcons(); 
+            setTimeout(() => removeToast(toast), 3000);
+        }
+
+        function removeToast(toastElement) {
+            if (!toastElement.classList.contains('closing')) {
+                toastElement.classList.add('closing');
+                setTimeout(() => { if (toastElement.parentNode) toastElement.parentNode.removeChild(toastElement); }, 350); 
+            }
+        }
+
+        function triggerViewportFlash() {
+            const viewport = document.getElementById('viewport-wrapper');
+            viewport.classList.add('success-flash');
+            setTimeout(() => viewport.classList.remove('success-flash'), 400);
+        }
+
+        /* 🌟 POPUP MODAL CONTROLLERS */
+        function openConnConfigModal() {
+            renderConnHistoryList();
+            document.getElementById('conn-config-modal').classList.add('active');
+            refreshIcons();
+        }
+        function closeConnConfigModal() {
+            document.getElementById('conn-config-modal').classList.remove('active');
+        }
+
+        function openManualEntryModal() {
+            document.getElementById('manual-entry-modal').classList.add('active');
+            setTimeout(() => document.getElementById('manual-code-input').focus(), 100);
+            refreshIcons();
+        }
+        function closeManualEntryModal() {
+            document.getElementById('manual-entry-modal').classList.remove('active');
+        }
+
+        function openSeqGeneratorModal() {
+            document.getElementById('seq-generator-modal').classList.add('active');
+            updateSeqPreview();
+            refreshIcons();
+        }
+        function closeSeqGeneratorModal() {
+            document.getElementById('seq-generator-modal').classList.remove('active');
+        }
+
+        function openHistoryEdgePanel() {
+            document.getElementById('history-edge-panel').classList.add('active');
+            renderFullHistory();
+        }
+        function closeHistoryEdgePanel() { 
+            document.getElementById('history-edge-panel').classList.remove('active'); 
+        }
+
+        /* 🌟 SEQUENCE GENERATOR LOGIC + CANCELLATION */
+        function updateSeqPreview() {
+            const prefix = document.getElementById('seq-prefix-input').value.trim();
+            const start = parseInt(document.getElementById('seq-start-input').value) || 1;
+            const end = parseInt(document.getElementById('seq-end-input').value) || 10;
+            const pad = parseInt(document.getElementById('seq-pad-input').value) || 10;
+            const step = parseInt(document.getElementById('seq-step-input').value) || 1;
+
+            if (start > end) {
+                document.getElementById('seq-preview-text').textContent = "⚠️ ค่าเริ่มต้นต้องน้อยกว่าหรือเท่ากับค่าสิ้นสุด";
+                return;
+            }
+            
+            const totalCount = Math.floor((end - start) / step) + 1;
+            if (totalCount > 2000) {
+                document.getElementById('seq-preview-text').textContent = `⚠️ จำนวนมากเกินไป (${totalCount} รายการ) แนะนำไม่เกิน 2,000 ต่อครั้ง`;
+                return;
+            }
+
+            const formatNum = (n) => {
+                let str = n.toString();
+                if (pad > 0 && str.length < pad) {
+                    str = str.padStart(pad, '0');
                 }
-                document.body.classList.add('is-fullscreen-mode');
-                if (iconElem) iconElem.setAttribute('data-lucide', 'minimize');
-            } else {
-                if (document.exitFullscreen) {
-                    document.exitFullscreen();
-                } else if (document.webkitExitFullscreen) {
-                    document.webkitExitFullscreen();
+                return prefix + str;
+            };
+
+            const firstStr = formatNum(start);
+            const lastStr = formatNum(end);
+            document.getElementById('seq-preview-text').textContent = `สร้างตั้งแต่ ${firstStr} ถึง ${lastStr} (รวมทั้งหมด ${totalCount} รายการ)`;
+        }
+
+        function cancelSeqGeneration() {
+            cancelSeqFlag = true;
+            isSeqGenerating = false;
+            closeSeqGeneratorModal();
+            showScanToast("ยกเลิก", "warning");
+        }
+
+        async function generateAndSendSequence() {
+            const prefix = document.getElementById('seq-prefix-input').value.trim();
+            const start = parseInt(document.getElementById('seq-start-input').value) || 1;
+            const end = parseInt(document.getElementById('seq-end-input').value) || 10;
+            const pad = parseInt(document.getElementById('seq-pad-input').value) || 10;
+            const step = parseInt(document.getElementById('seq-step-input').value) || 1;
+
+            if (start > end) {
+                showScanToast("ค่าเริ่มต้นต้องน้อยกว่าหรือเท่ากับค่าสิ้นสุด", "warning");
+                return;
+            }
+
+            const totalCount = Math.floor((end - start) / step) + 1;
+            if (totalCount <= 0) {
+                showScanToast("ช่วงตัวเลขไม่ถูกต้อง", "warning");
+                return;
+            }
+
+            if (totalCount > 500 && !confirm(`คุณกำลังสร้างข้อมูลจำนวน ${totalCount} รายการ ต้องการดำเนินการต่อหรือไม่?`)) {
+                return;
+            }
+
+            closeSeqGeneratorModal();
+            showScanToast(`กำลังสร้างและส่ง ${totalCount} รายการ... (กดปุ่มยกเลิกทั้งหมดเพื่อหยุดได้)`, "info");
+
+            isSeqGenerating = true;
+            cancelSeqFlag = false;
+            let successCount = 0;
+            const targetUrl = getEndpointUrl();
+
+            for (let n = start; n <= end; n += step) {
+                if (cancelSeqFlag) {
+                    break;
                 }
-                document.body.classList.remove('is-fullscreen-mode');
-                if (iconElem) iconElem.setAttribute('data-lucide', 'maximize');
+
+                let strNum = n.toString();
+                if (pad > 0 && strNum.length < pad) {
+                    strNum = strNum.padStart(pad, '0');
+                }
+                const code = prefix + strNum;
+                const type = 'กำหนดSERIAL';
+
+                saveToHistory(code, type, targetUrl ? 'pending' : 'success');
+
+                if (targetUrl) {
+                    try {
+                        const res = await fetch(targetUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ scanned_data: code, type: type, timestamp: new Date().toISOString() })
+                        });
+                        if (res.ok) {
+                            saveToHistory(code, type, 'success');
+                            successCount++;
+                        } else {
+                            saveToHistory(code, type, 'failed');
+                        }
+                    } catch (e) {
+                        saveToHistory(code, type, 'failed');
+                    }
+                } else {
+                    successCount++;
+                }
             }
-            refreshIcons();
+
+            isSeqGenerating = false;
+            if (!cancelSeqFlag) {
+                showScanToast(`สำเร็จ (${successCount}/${totalCount} รายการ)`, "success");
+            }
         }
 
-        document.addEventListener('fullscreenchange', handleFullscreenChange);
-        document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
-
-        function handleFullscreenChange() {
-            const iconElem = document.getElementById('fullscreen-icon');
-            if (!document.fullscreenElement && !document.webkitFullscreenElement) {
-                document.body.classList.remove('is-fullscreen-mode');
-                if (iconElem) iconElem.setAttribute('data-lucide', 'maximize');
-                refreshIcons();
-            }
+        /* PRO MASTER CONNECTION & TESTING LOGIC */
+        function formatInputUrl(url) {
+            let clean = url.trim();
+            if (!clean) return '';
+            if (!clean.startsWith('http://') && !clean.startsWith('https://')) clean = 'http://' + clean;
+            if (clean.endsWith('/')) clean = clean.slice(0, -1);
+            return clean;
         }
 
-        /* Multi-Theme Management Logic */
-        function initTheme() {
-            const savedTheme = localStorage.getItem('app_theme') || 'dark';
-            document.body.setAttribute('data-theme', savedTheme);
-            const themeSelect = document.getElementById('theme-select');
-            if (themeSelect) {
-                themeSelect.value = savedTheme;
+        function testConnection() {
+            let rawUrl = document.getElementById('pc-ip-input').value;
+            let url = formatInputUrl(rawUrl);
+            if (!url) {
+                showScanToast("กรุณากรอก IP หรือ URL ก่อนทดสอบ", "warning");
+                return;
             }
-            refreshIcons();
+
+            showScanToast("กำลังทดสอบการเชื่อมต่อ...", "info");
+            
+            fetch(`${url}/api/health`, { method: 'GET', mode: 'cors', signal: AbortSignal.timeout(4000) })
+                .then(res => {
+                    if (res.ok || res.status < 500) {
+                        showScanToast(`เชื่อมต่อสำเร็จ! พร้อมรับส่งข้อมูล (${url})`, "success");
+                        updateConnectionStatus(true);
+                    } else {
+                        showScanToast("เซิร์ฟเวอร์ตอบสนองแต่มีข้อผิดพลาด", "warning");
+                    }
+                })
+                .catch(() => {
+                    fetch(url, { method: 'HEAD', mode: 'no-cors', signal: AbortSignal.timeout(4000) })
+                        .then(() => {
+                            showScanToast(`ลิงก์ใช้งานได้: ${url}`, "success");
+                            updateConnectionStatus(true);
+                        })
+                        .catch(() => {
+                            showScanToast("ไม่สามารถเชื่อมต่อเครื่องปลายทางได้ (ตรวจสอบ IP / Firewall)", "error");
+                            updateConnectionStatus(false);
+                        });
+                });
         }
 
-        function changeTheme(themeName) {
-            document.body.setAttribute('data-theme', themeName);
-            localStorage.setItem('app_theme', themeName);
-            refreshIcons();
-        }
-
-        function loadConnection() {
-            const savedIP = localStorage.getItem('pc_api_url');
-            if (savedIP) {
-                document.getElementById('pc-ip-input').value = savedIP;
-                updateConnectionStatus(true);
-                initRealtimeStream();
-            }
+        function autoDetectLocalIP() {
+            showScanToast("กำลังสแกนหาเครื่องคอมพิวเตอร์ในเครือข่าย...", "info");
+            setTimeout(() => {
+                const suggested = "http://192.168.1.100:5000";
+                document.getElementById('pc-ip-input').value = suggested;
+                showScanToast(`พบน้องโฮสต์ที่: ${suggested}`, "success");
+            }, 1200);
         }
 
         function saveConnection() {
-            let inputUrl = document.getElementById('pc-ip-input').value.trim();
-            if (!inputUrl) { alert("กรุณาระบุ IP หรือ URL ของ PC"); return; }
-            if (!inputUrl.startsWith('http://') && !inputUrl.startsWith('https://')) inputUrl = 'http://' + inputUrl;
-            if (inputUrl.endsWith('/')) inputUrl = inputUrl.slice(0, -1);
+            let rawUrl = document.getElementById('pc-ip-input').value;
+            let url = formatInputUrl(rawUrl);
+            if (!url) {
+                showScanToast("กรุณากรอก IP หรือ URL ปลายทาง", "warning");
+                return;
+            }
 
-            localStorage.setItem('pc_api_url', inputUrl);
-            document.getElementById('pc-ip-input').value = inputUrl;
+            localStorage.setItem('pc_api_url', url);
+            document.getElementById('pc-ip-input').value = url;
+            saveToConnectionHistory(url);
             updateConnectionStatus(true);
             initRealtimeStream();
-            alert("บันทึกการตั้งค่าเชื่อมต่อเรียบร้อยแล้ว\nURL: " + inputUrl);
+            showScanToast("บันทึกการเชื่อมต่อคอมพิวเตอร์สำเร็จ", "success");
+            closeConnConfigModal();
         }
 
         function updateConnectionStatus(isConnected) {
@@ -869,6 +1535,73 @@
             return baseUrl ? `${baseUrl}/api/scan` : null; 
         }
 
+        function loadConnection() {
+            const savedIP = localStorage.getItem('pc_api_url');
+            if (savedIP) {
+                document.getElementById('pc-ip-input').value = savedIP;
+                updateConnectionStatus(true);
+                initRealtimeStream();
+            }
+        }
+
+        function saveToConnectionHistory(url) {
+            if (!url) return;
+            let list = JSON.parse(localStorage.getItem('connHistory')) || [];
+            list = list.filter(item => (typeof item === 'string' ? item : item.url) !== url);
+            const now = new Date();
+            const dateStr = now.toLocaleDateString('th-TH', { day: 'numeric', month: 'short' });
+            const timeStr = now.toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' });
+            list.unshift({ url: url, date: `${dateStr} ${timeStr}` });
+            if (list.length > 20) list.pop();
+            localStorage.setItem('connHistory', JSON.stringify(list));
+        }
+
+        function renderConnHistoryList() {
+            const container = document.getElementById('conn-history-list');
+            const list = JSON.parse(localStorage.getItem('connHistory')) || [];
+            const currentUrl = localStorage.getItem('pc_api_url') || '';
+
+            if (list.length === 0) {
+                container.innerHTML = '<div style="text-align:center; color:var(--text-sub); font-size:13px; padding:15px 0;">ยังไม่มีประวัติการเชื่อมต่อ</div>';
+                return;
+            }
+
+            container.innerHTML = list.map(item => {
+                const url = typeof item === 'string' ? item : item.url;
+                const date = typeof item === 'object' && item.date ? item.date : '';
+                const isCurrent = url === currentUrl;
+
+                return `
+                    <div class="modal-history-item ${isCurrent ? 'active-conn' : ''}" onclick="selectAndConnectApi('${escapeJsString(url)}')">
+                        <div class="call-log-icon ${isCurrent ? 'success' : 'pending'}"><i data-lucide="globe"></i></div>
+                        <div class="call-log-details">
+                            <div class="call-log-code" style="color:${isCurrent ? 'var(--accent-cyan)' : 'var(--text-main)'};">${escapeHtml(url)}</div>
+                            <div class="call-log-meta">${date ? date : ''} ${isCurrent ? '<strong style="color:var(--accent-cyan);">(ใช้งานอยู่)</strong>' : ''}</div>
+                        </div>
+                        <div class="item-action-btns" onclick="event.stopPropagation();">
+                            <button class="icon-btn danger" onclick="deleteConnHistoryItem('${escapeJsString(url)}')"><i data-lucide="trash-2"></i></button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            refreshIcons();
+        }
+
+        function selectAndConnectApi(url) {
+            document.getElementById('pc-ip-input').value = url;
+            saveConnection();
+            closeConnConfigModal();
+        }
+
+        function deleteConnHistoryItem(urlToDelete) {
+            if (!confirm(`ต้องการลบ "${urlToDelete}" ออกจากประวัติหรือไม่?`)) return;
+            let list = JSON.parse(localStorage.getItem('connHistory')) || [];
+            list = list.filter(item => (typeof item === 'string' ? item : item.url) !== urlToDelete);
+            localStorage.setItem('connHistory', JSON.stringify(list));
+            renderConnHistoryList();
+            showScanToast("ลบประวัติสำเร็จ", "info");
+        }
+
         function initRealtimeStream() {
             const baseUrl = localStorage.getItem('pc_api_url');
             if (!baseUrl) return;
@@ -882,9 +1615,6 @@
                         const payload = JSON.parse(event.data);
                         if (payload.action === 'new_scan' || payload.data) {
                             addOrUpdateHistoryFromStream(payload.data || payload);
-                        } else if (payload.action === 'init_history' && Array.isArray(payload.history)) {
-                            localStorage.setItem('scanHistory', JSON.stringify(payload.history));
-                            renderRecentHistory();
                         }
                     } catch (err) {}
                 };
@@ -892,120 +1622,306 @@
             } catch (e) {}
         }
 
-        function startCamera() {
-            const video = document.getElementById('camera-feed');
-            navigator.mediaDevices.getUserMedia({ 
-                video: { facingMode: "environment", width: { ideal: 1920 }, height: { ideal: 1080 } } 
-            })
-            .then(stream => {
-                cameraStream = stream;
-                video.srcObject = stream;
-                startBackgroundAutoQRScan();
-            })
-            .catch(() => { document.getElementById('scan-status').innerHTML = '<i data-lucide="alert-triangle"></i> ไม่สามารถเชื่อมต่อกล้องได้'; refreshIcons(); });
+        /* MANUAL ENTRY & SAVE AS PENDING */
+        function submitManualEntry() {
+            const inputElem = document.getElementById('manual-code-input');
+            const code = inputElem.value.trim();
+            const type = 'ใส่CODE';
+
+            if (!code) {
+                showScanToast("กรุณากรอกข้อมูลก่อนส่ง", "warning");
+                inputElem.focus();
+                return;
+            }
+
+            handleScannedCode(code, type);
+            inputElem.value = '';
+            closeManualEntryModal();
+        }
+
+        function saveManualAsPending() {
+            const inputElem = document.getElementById('manual-code-input');
+            const code = inputElem.value.trim();
+            const type = 'ใส่CODE';
+
+            if (!code) {
+                showScanToast("กรุณากรอกข้อมูลก่อนบันทึก", "warning");
+                inputElem.focus();
+                return;
+            }
+
+            saveToHistory(code, type, 'pending');
+            showScanToast("บันทึกรายการ (รอส่ง) สำเร็จ", "success");
+            inputElem.value = '';
+            closeManualEntryModal();
         }
 
         async function initTesseractWorker() {
-            try {
-                tesseractWorker = await Tesseract.createWorker('eng');
-                await tesseractWorker.setParameters({
-                    tessedit_pageseg_mode: '7',
-                    tessedit_char_whitelist: '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-/#:'
-                });
-                isWorkerReady = true;
-            } catch(e) {}
-        }
-
-        function preprocessImage(video) {
-            const canvas = document.getElementById('ocr-canvas');
-            const ctx = canvas.getContext('2d');
-            const cropWidth = video.videoWidth * 0.82; 
-            const cropHeight = video.videoHeight * 0.55;
-            const cropX = (video.videoWidth - cropWidth) / 2; 
-            const cropY = (video.videoHeight - cropHeight) / 2;
-
-            canvas.width = cropWidth; canvas.height = cropHeight;
-            ctx.drawImage(video, cropX, cropY, cropWidth, cropHeight, 0, 0, cropWidth, cropHeight);
-
-            const imgData = ctx.getImageData(0, 0, cropWidth, cropHeight);
-            const d = imgData.data; 
-            const factor = (259 * (80 + 255)) / (255 * (259 - 80));
-
-            for (let i = 0; i < d.length; i += 4) {
-                let c = factor * ((d[i] * 0.299 + d[i + 1] * 0.587 + d[i + 2] * 0.114) - 128) + 128;
-                d[i] = d[i + 1] = d[i + 2] = Math.max(0, Math.min(255, c));
-            }
-            ctx.putImageData(imgData, 0, 0);
-            return canvas;
-        }
-
-        function classifySerialType(str) {
-            const clean = str.trim().toUpperCase();
-            if (/^[0-9]+$/.test(clean)) return 'Serial (Numeric)';
-            if (/^[A-Z]+$/.test(clean)) return 'Serial (Alphabetic)';
-            if (/^(0X)?[0-9A-F]+$/i.test(clean) && /[A-F]/i.test(clean) && /[0-9]/.test(clean)) return 'Serial (Hexadecimal)';
-            return 'Serial Number';
-        }
-
-        function startBackgroundAutoQRScan() {
-            if (autoScanInterval) clearInterval(autoScanInterval);
-            autoScanInterval = setInterval(async () => {
-                if (isProcessing || document.getElementById('result-box').style.display === 'block') return;
-                const video = document.getElementById('camera-feed');
-                if (!video || !video.videoWidth) return;
-
-                if ('BarcodeDetector' in window) {
-                    try {
-                        const detector = new BarcodeDetector({ formats: SUPPORTED_BARCODE_FORMATS });
-                        const barcodes = await detector.detect(video);
-                        if (barcodes && barcodes.length > 0) {
-                            showResult(barcodes[0].rawValue, `Barcode (${barcodes[0].format.toUpperCase()})`);
-                        }
-                    } catch (e) {}
+            if (!tesseractWorker) {
+                try {
+                    showScanToast("กำลังโหลดระบบ OCR Serial...", "info");
+                    tesseractWorker = await Tesseract.createWorker('eng');
+                    await tesseractWorker.setParameters({
+                        tessedit_char_whitelist: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-',
+                        tessedit_pageseg_mode: Tesseract.PSM.SINGLE_LINE,
+                    });
+                    showScanToast("ระบบ OCR พร้อมใช้งานแล้ว", "success");
+                } catch (e) {
+                    showScanToast("ไม่สามารถเริ่มระบบ OCR ได้", "error");
                 }
-            }, 500);
+            }
+        }
+
+        async function toggleScanEngineMode() {
+            const btn = document.getElementById('btn-toggle-scan-engine');
+            const label = document.getElementById('scan-engine-label');
+            const hudBadge = document.getElementById('mode-hud-badge');
+            const statusText = document.getElementById('scan-status');
+
+            if (currentScanEngine === 'barcode') {
+                currentScanEngine = 'sn_ocr';
+                btn.classList.add('active');
+                label.textContent = 'โหมด: ซีเรียล SN';
+                hudBadge.textContent = 'ซีเรียลนัมเบอร์ (SN)';
+                hudBadge.classList.add('batch-mode');
+                statusText.innerHTML = '<i data-lucide="text-cursor"></i> นำป้าย Serial Number มาไว้ในกรอบ';
+                await initTesseractWorker();
+            } else {
+                currentScanEngine = 'barcode';
+                btn.classList.remove('active');
+                label.textContent = 'โหมด: บาร์โค้ด';
+                hudBadge.textContent = 'บาร์โค้ด / QR';
+                hudBadge.classList.remove('batch-mode');
+                statusText.innerHTML = '<i data-lucide="scan-line"></i> นำบาร์โค้ดหรือซีเรียลมาไว้ในกรอบเพื่อสแกน';
+                showScanToast("เปลี่ยนเป็นโหมด Barcode / QR แล้ว", 'info');
+            }
+            refreshIcons();
+        }
+
+        function toggleContinuousMode() {
+            isContinuousMode = !isContinuousMode;
+            const btn = document.getElementById('btn-toggle-continuous');
+            const label = document.getElementById('continuous-label');
+
+            if (isContinuousMode) {
+                btn.classList.add('active');
+                label.textContent = 'ต่อเนื่อง: เปิด';
+                resetScanForNext();
+                showScanToast("เปิดใช้งานสแกนต่อเนื่องแล้ว", 'success');
+            } else {
+                btn.classList.remove('active');
+                label.textContent = 'ต่อเนื่อง: ปิด';
+                showScanToast("ปิดโหมดสแกนต่อเนื่องแล้ว", 'off');
+            }
+            refreshIcons();
+        }
+
+        function toggleNotifications() {
+            isNotificationsEnabled = !isNotificationsEnabled;
+            const btn = document.getElementById('btn-toggle-notifications');
+            const icon = document.getElementById('notification-icon');
+            if (isNotificationsEnabled) {
+                btn.classList.add('active');
+                icon.setAttribute('data-lucide', 'bell');
+                showScanToast("เปิดการแจ้งเตือนทั้งหมดแล้ว", 'force-show');
+            } else {
+                btn.classList.remove('active');
+                icon.setAttribute('data-lucide', 'bell-off');
+            }
+            refreshIcons();
+        }
+
+        function toggleCamera() {
+            const video = document.getElementById('camera-feed');
+            const viewport = document.getElementById('viewport-wrapper');
+            const btn = document.getElementById('btn-toggle-camera');
+            const icon = document.getElementById('camera-icon');
+            const statusText = document.getElementById('scan-status');
+            const liveBadge = document.getElementById('hud-live-badge');
+
+            if (isCameraActive) {
+                if (cameraStream) { cameraStream.getTracks().forEach(t => t.stop()); cameraStream = null; }
+                if (autoScanInterval) { clearInterval(autoScanInterval); autoScanInterval = null; }
+                video.srcObject = null;
+                isCameraActive = false;
+                btn.classList.remove('active');
+                icon.setAttribute('data-lucide', 'camera-off');
+                statusText.innerHTML = '<i data-lucide="video-off"></i> กล้องถูกปิดใช้งาน';
+                viewport.classList.add('camera-paused');
+                liveBadge.classList.remove('live');
+                liveBadge.innerHTML = '<span class="hud-dot"></span> พักการทำงาน';
+                showScanToast("ปิดกล้องแล้ว", 'off');
+            } else {
+                startCamera();
+                isCameraActive = true;
+                btn.classList.add('active');
+                icon.setAttribute('data-lucide', 'camera');
+                viewport.classList.remove('camera-paused');
+                liveBadge.classList.add('live');
+                liveBadge.innerHTML = '<span class="hud-dot"></span> กำลังสตรีม';
+                showScanToast("เปิดกล้องแล้ว", 'success');
+            }
+            refreshIcons();
+        }
+
+        function toggleFullScreen() {
+            const docElement = document.documentElement;
+            if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+                if (docElement.requestFullscreen) docElement.requestFullscreen().catch(() => {});
+            } else {
+                if (document.exitFullscreen) document.exitFullscreen();
+            }
+        }
+
+        document.addEventListener('fullscreenchange', handleFullscreenChange);
+        function handleFullscreenChange() {
+            const iconElem = document.getElementById('fullscreen-icon');
+            const isFullscreen = !!document.fullscreenElement;
+            if (isFullscreen) {
+                document.body.classList.add('is-fullscreen-mode');
+                if (iconElem) iconElem.setAttribute('data-lucide', 'minimize');
+            } else {
+                document.body.classList.remove('is-fullscreen-mode');
+                if (iconElem) iconElem.setAttribute('data-lucide', 'maximize');
+            }
+            refreshIcons();
+        }
+
+        function initTheme() {
+            const savedTheme = localStorage.getItem('app_theme') || 'rainbow';
+            document.body.setAttribute('data-theme', savedTheme);
+            const themeSelect = document.getElementById('theme-select');
+            if (themeSelect) themeSelect.value = savedTheme;
+            refreshIcons();
+        }
+
+        function changeTheme(themeName) {
+            document.body.setAttribute('data-theme', themeName);
+            localStorage.setItem('app_theme', themeName);
+            refreshIcons();
+        }
+
+        function startCamera() {
+            const video = document.getElementById('camera-feed');
+            navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment", width: { ideal: 1920 }, height: { ideal: 1080 } } })
+            .then(stream => {
+                cameraStream = stream;
+                video.srcObject = stream;
+                isCameraActive = true;
+                startBackgroundAutoScan();
+            })
+            .catch(() => {
+                document.getElementById('scan-status').innerHTML = '<i data-lucide="alert-triangle"></i> ไม่สามารถเข้าถึงกล้องได้';
+            });
+        }
+
+        function initBarcodeDetector() {
+            if ('BarcodeDetector' in window && !globalBarcodeDetector) {
+                try { globalBarcodeDetector = new BarcodeDetector({ formats: SUPPORTED_BARCODE_FORMATS }); } catch (e) {}
+            }
+        }
+
+        function startBackgroundAutoScan() {
+            initBarcodeDetector();
+            if (autoScanInterval) clearInterval(autoScanInterval);
+
+            autoScanInterval = setInterval(async () => {
+                if (!isCameraActive || isDetectingFrame) return;
+                if (!isContinuousMode && document.getElementById('result-box').style.display === 'block') return;
+                
+                const video = document.getElementById('camera-feed');
+                if (!video || !video.videoWidth || video.readyState < 2) return;
+
+                if (currentScanEngine === 'barcode' && globalBarcodeDetector) {
+                    isDetectingFrame = true;
+                    try {
+                        const barcodes = await globalBarcodeDetector.detect(video);
+                        if (barcodes && barcodes.length > 0) {
+                            emptyFrames = 0;
+                            const scannedValue = barcodes[0].rawValue ? barcodes[0].rawValue.trim() : '';
+                            if (scannedValue) handleScannedCode(scannedValue, `บาร์โค้ด (${barcodes[0].format.toUpperCase()})`);
+                        }
+                    } catch (e) {} finally { isDetectingFrame = false; }
+                } else if (currentScanEngine === 'sn_ocr' && tesseractWorker) {
+                    isDetectingFrame = true;
+                    try {
+                        const canvas = document.getElementById('ocr-canvas');
+                        const ctx = canvas.getContext('2d', { willReadFrequently: true });
+                        const vw = video.videoWidth, vh = video.videoHeight;
+                        const cropW = vw * 0.70, cropH = vh * 0.35;
+                        const cropX = (vw - cropW) / 2, cropY = (vh - cropH) / 2;
+
+                        canvas.width = cropW * 1.5; canvas.height = cropH * 1.5;
+                        ctx.drawImage(video, cropX, cropY, cropW, cropH, 0, 0, canvas.width, canvas.height);
+                        
+                        const result = await tesseractWorker.recognize(canvas);
+                        const text = result.data.text ? result.data.text.trim() : '';
+                        const lines = text.split('\n').map(l => l.replace(/[^A-Z0-9\-]/g, '').trim()).filter(l => l.length >= 6);
+                        
+                        if (lines.length > 0 && lines[0] !== lastScannedCode) {
+                            handleScannedCode(lines[0], 'Serial Number (SN)');
+                        }
+                    } catch (e) {} finally { isDetectingFrame = false; }
+                }
+            }, 300);
+        }
+
+        function handleScannedCode(scannedText, type) {
+            const now = Date.now();
+            if (scannedText === lastScannedCode && (now - lastScanTime < SCAN_COOLDOWN_MS)) return;
+            lastScannedCode = scannedText; lastScanTime = now;
+
+            const targetUrl = getEndpointUrl();
+            const initialStatus = targetUrl ? 'pending' : 'success';
+
+            if (isContinuousMode) {
+                triggerVibration([80]); triggerViewportFlash();
+                saveToHistory(scannedText, type, initialStatus);
+                if (targetUrl) {
+                    sendToPCAPI(scannedText, type, true);
+                } else {
+                    showScanToast(`บันทึกสำเร็จ: ${scannedText}`, 'success');
+                }
+            } else {
+                triggerVibration([80]); triggerViewportFlash();
+                showResult(scannedText, type);
+            }
         }
 
         function showResult(scannedText, type) {
             currentScannedType = type;
+            currentScannedData = scannedText;
             const box = document.getElementById('result-box');
-            const inputField = document.getElementById('result-input');
-            const title = document.getElementById('result-title');
-            
             box.style.display = 'block';
-            title.innerHTML = `<i data-lucide="check-circle-2"></i> อ่านสำเร็จ: ${type}`;
-            inputField.value = scannedText;
-            currentHistoryItemId = saveToHistory(scannedText, type, 'pending');
+            document.getElementById('result-input').value = scannedText;
+            document.getElementById('result-title').innerHTML = `<i data-lucide="check-circle-2"></i> อ่านข้อมูลสำเร็จ (${type})`;
+            
+            const targetUrl = getEndpointUrl();
+            const initialStatus = targetUrl ? 'pending' : 'success';
+            saveToHistory(scannedText, type, initialStatus);
             refreshIcons();
         }
 
         function resetScanForNext() {
             document.getElementById('result-box').style.display = 'none';
             document.getElementById('result-input').value = '';
-            currentHistoryItemId = null;
-            document.getElementById('scan-status').innerHTML = '<i data-lucide="scan-line"></i> ส่อง Barcode, QR Code หรือ Serial ในกรอบ';
+            currentScannedData = null;
             refreshIcons();
         }
 
         function confirmAndSend() {
             const dataText = document.getElementById('result-input').value.trim();
-            if (!dataText) return alert("กรุณาระบุข้อมูลที่ต้องการส่ง");
-            sendToPC(dataText, currentScannedType);
+            if (!dataText) return alert("กรุณากรอกข้อมูล");
+            sendToPCAPI(dataText, currentScannedType, false);
         }
 
-        function sendToPC(dataText, dataType) {
+        function sendToPCAPI(dataText, dataType, isSilent = false) {
             const targetUrl = getEndpointUrl();
-            const sendBtn = document.getElementById('send-data-btn');
-
             if (!targetUrl) {
-                alert("กรุณาตั้งค่า IP ของ PC ก่อนส่งข้อมูล");
-                saveToHistory(dataText, dataType, 'failed', currentHistoryItemId);
+                if (!isSilent) showScanToast("กรุณาตั้งค่าเชื่อมต่อ PC ก่อนส่งข้อมูล", "warning");
+                saveToHistory(dataText, dataType, 'pending');
                 return;
             }
-
-            sendBtn.disabled = true;
-            sendBtn.innerHTML = '<i data-lucide="loader"></i> กำลังส่ง...';
-            refreshIcons();
 
             fetch(targetUrl, {
                 method: 'POST',
@@ -1014,68 +1930,71 @@
             })
             .then(res => {
                 if (res.ok) {
-                    saveToHistory(dataText, dataType, 'success', currentHistoryItemId);
-                    alert("✅ ส่งข้อมูลไปยัง PC สำเร็จ!");
-                    resetScanForNext();
+                    saveToHistory(dataText, dataType, 'success');
+                    if (!isSilent) {
+                        showScanToast("ส่งข้อมูลไปยัง PC สำเร็จ!", "success");
+                        resetScanForNext();
+                    }
                 } else {
-                    saveToHistory(dataText, dataType, 'failed', currentHistoryItemId);
-                    alert("❌ ส่งข้อมูลไม่สำเร็จ");
+                    saveToHistory(dataText, dataType, 'failed');
+                    if (!isSilent) showScanToast("ส่งข้อมูลไม่สำเร็จ", "error");
                 }
             })
             .catch(() => {
-                saveToHistory(dataText, dataType, 'failed', currentHistoryItemId);
-                alert("❌ ไม่สามารถเชื่อมต่อกับ PC ได้");
-            })
-            .finally(() => {
-                sendBtn.disabled = false;
-                sendBtn.innerHTML = '<i data-lucide="send"></i> Send to PC';
-                refreshIcons();
+                saveToHistory(dataText, dataType, 'failed');
+                if (!isSilent) showScanToast("ไม่สามารถเชื่อมต่อเครื่องปลายทางได้", "error");
             });
         }
 
-        function saveToHistory(dataText, dataType, status = 'pending', existingId = null) {
+        /* 🔄 UPSERT LOGIC */
+        function saveToHistory(dataText, dataType, status = 'pending') {
             let history = JSON.parse(localStorage.getItem('scanHistory')) || [];
             const now = new Date();
-            const dateStr = now.toLocaleDateString('th-TH', { day: 'numeric', month: 'short', year: 'numeric' });
             const timeStr = now.toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            const dateStr = now.toLocaleDateString('th-TH', { day: 'numeric', month: 'short', year: 'numeric' });
 
-            if (existingId) {
-                const itemIndex = history.findIndex(h => h.id === existingId);
-                if (itemIndex !== -1) {
-                    history[itemIndex].status = status;
-                    history[itemIndex].data = dataText;
-                    localStorage.setItem('scanHistory', JSON.stringify(history));
-                    renderRecentHistory();
-                    if (document.getElementById('history-edge-panel').classList.contains('active')) {
-                        renderFullHistory(document.getElementById('modal-search-input').value);
-                    }
-                    return existingId;
-                }
+            const existingIndex = history.findIndex(h => h.data === dataText);
+
+            if (existingIndex !== -1) {
+                history[existingIndex].time = timeStr;
+                history[existingIndex].date = dateStr;
+                history[existingIndex].status = status;
+                history[existingIndex].type = dataType;
+
+                const updatedItem = history.splice(existingIndex, 1)[0];
+                history.unshift(updatedItem);
+            } else {
+                const newItem = { id: Date.now() + Math.random(), data: dataText, type: dataType, time: timeStr, date: dateStr, status: status };
+                history.unshift(newItem);
             }
 
-            const newItem = { id: Date.now(), data: dataText, type: dataType, time: timeStr, date: dateStr, status: status };
-            history.unshift(newItem);
             if (history.length > 200) history.pop();
             localStorage.setItem('scanHistory', JSON.stringify(history));
             renderRecentHistory();
             if (document.getElementById('history-edge-panel').classList.contains('active')) {
-                renderFullHistory(document.getElementById('modal-search-input').value);
+                renderFullHistory();
             }
-            return newItem.id;
         }
 
         function addOrUpdateHistoryFromStream(item) {
             let history = JSON.parse(localStorage.getItem('scanHistory')) || [];
-            if (!history.some(h => h.id === item.id)) {
+            const existingIndex = history.findIndex(h => h.data === item.data);
+
+            if (existingIndex !== -1) {
+                history[existingIndex].time = item.time || history[existingIndex].time;
+                history[existingIndex].date = item.date || history[existingIndex].date;
+                history[existingIndex].status = item.status || history[existingIndex].status;
+                const updatedItem = history.splice(existingIndex, 1)[0];
+                history.unshift(updatedItem);
+            } else {
                 history.unshift(item);
-                localStorage.setItem('scanHistory', JSON.stringify(history));
-                renderRecentHistory();
-                if (document.getElementById('history-edge-panel').classList.contains('active')) {
-                    renderFullHistory(document.getElementById('modal-search-input').value);
-                }
             }
+
+            localStorage.setItem('scanHistory', JSON.stringify(history));
+            renderRecentHistory();
         }
 
+        /* 📞 CALL-LOG STYLE RENDERING FUNCTION WITH TOUCH SWIPE-TO-DELETE */
         function renderRecentHistory() {
             const recentContainer = document.getElementById('recent-list');
             const history = JSON.parse(localStorage.getItem('scanHistory')) || [];
@@ -1087,140 +2006,195 @@
             document.getElementById('count-today-pending').innerText = todayItems.filter(i => i.status !== 'success').length;
 
             if (history.length === 0) { 
-                recentContainer.innerHTML = '<div style="text-align:center; color:var(--text-sub); font-size:12px; padding:10px;">ยังไม่มีประวัติการสแกน</div>'; 
+                recentContainer.innerHTML = '<div style="text-align:center; color:var(--text-sub); font-size:12px; padding:10px;">ยังไม่มีประวัติ</div>'; 
                 return; 
             }
 
-            const recentTwo = history.slice(0, 2);
-
-            recentContainer.innerHTML = recentTwo.map(item => {
-                let badgeClass = item.status === 'success' ? 'badge-success' : (item.status === 'failed' ? 'badge-fail' : 'badge-pending');
-                let badgeText = item.status === 'success' ? 'SUCCESS' : (item.status === 'failed' ? 'FAILED' : 'PENDING');
-
-                return `
-                    <div class="history-item ${item.status === 'pending' ? 'pending' : ''}">
-                        <div style="font-weight: 700; color: var(--text-main); font-family: var(--font-mono); word-break: break-all;">${escapeHtml(item.data)}</div>
-                        <div class="item-meta">
-                            <span>${escapeHtml(item.type || 'Barcode')} | <i data-lucide="clock" style="width:12px;height:12px;"></i> ${item.time}</span>
-                            <span class="badge ${badgeClass}">${badgeText}</span>
-                        </div>
-                    </div>
-                `;
-            }).join('');
+            recentContainer.innerHTML = history.slice(0, 1).map(item => generateSwipeItemHTML(item)).join('');
             refreshIcons();
+            attachSwipeListeners();
         }
 
-        /* EDGE PANEL FUNCTIONS */
-        function openHistoryEdgePanel() {
-            document.getElementById('history-edge-panel').classList.add('active');
-            renderFullHistory();
-        }
-
-        function closeHistoryEdgePanel() {
-            document.getElementById('history-edge-panel').classList.remove('active');
-        }
-
-        document.getElementById('history-edge-panel').addEventListener('click', (e) => {
-            if (e.target === document.getElementById('history-edge-panel')) {
-                closeHistoryEdgePanel();
-            }
-        });
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && document.getElementById('history-edge-panel').classList.contains('active')) {
-                closeHistoryEdgePanel();
-            }
-        });
-
-        function renderFullHistory(filterText = '') {
-            const listContainer = document.getElementById('full-history-list');
-            const history = JSON.parse(localStorage.getItem('scanHistory')) || [];
-
-            let filtered = history;
-            if (filterText.trim()) {
-                const query = filterText.toLowerCase();
-                filtered = history.filter(item => 
-                    (item.data && item.data.toLowerCase().includes(query)) ||
-                    (item.type && item.type.toLowerCase().includes(query)) ||
-                    (item.date && item.date.toLowerCase().includes(query))
-                );
-            }
-
+        function renderFullHistory(query = '') {
+            const list = JSON.parse(localStorage.getItem('scanHistory')) || [];
+            const filtered = query ? list.filter(i => i.data.toLowerCase().includes(query.toLowerCase())) : list;
+            
             if (filtered.length === 0) {
-                listContainer.innerHTML = '<div style="text-align:center; color:var(--text-sub); font-size:13px; padding:30px 0;">ไม่พบประวัติการสแกน</div>';
+                document.getElementById('full-history-list').innerHTML = '<div style="text-align:center; color:var(--text-sub); font-size:13px; padding:20px 0;">ไม่พบประวัติการสแกน</div>';
                 return;
             }
 
-            listContainer.innerHTML = filtered.map(item => {
-                let badgeClass = item.status === 'success' ? 'badge-success' : (item.status === 'failed' ? 'badge-fail' : 'badge-pending');
-                let badgeText = item.status === 'success' ? 'SUCCESS' : (item.status === 'failed' ? 'FAILED' : 'PENDING');
-                let itemClass = item.status === 'pending' ? 'pending' : (item.status === 'failed' ? 'failed' : '');
+            document.getElementById('full-history-list').innerHTML = filtered.map(item => generateSwipeItemHTML(item, true)).join('');
+            refreshIcons();
+            attachSwipeListeners();
+        }
 
-                return `
-                    <div class="modal-history-item ${itemClass}">
-                        <div class="item-top">
-                            <div class="item-code">${escapeHtml(item.data)}</div>
-                            <span class="badge ${badgeClass}">${badgeText}</span>
+        function generateSwipeItemHTML(item, isModal = false) {
+            let iconName = 'check';
+            let iconClass = 'success';
+            let badgeText = 'สำเร็จ';
+            let badgeClass = 'badge-success';
+
+            if (item.status === 'pending') {
+                iconName = 'clock';
+                iconClass = 'pending';
+                badgeText = 'รอส่ง';
+                badgeClass = 'badge-pending';
+            } else if (item.status === 'failed') {
+                iconName = 'alert-circle';
+                iconClass = 'failed';
+                badgeText = 'ล้มเหลว';
+                badgeClass = 'badge-fail';
+            }
+
+            const metaText = isModal ? `${escapeHtml(item.type)} • ${item.date} ${item.time}` : `${escapeHtml(item.type)} • ${item.time}`;
+            const clickAction = isModal ? `selectHistoryItemForResend('${escapeJsString(item.data)}'); closeHistoryEdgePanel();` : `selectHistoryItemForResend('${escapeJsString(item.data)}')`;
+
+            return `
+                <div class="swipe-item-wrapper" data-id="${item.data}">
+                    <div class="swipe-delete-background">
+                        <i data-lucide="trash-2"></i> ลบรายการ
+                    </div>
+                    <div class="history-item swipeable-card" onclick="${clickAction}">
+                        <div class="call-log-icon ${iconClass}"><i data-lucide="${iconName}"></i></div>
+                        <div class="call-log-details">
+                            <div class="call-log-code">${escapeHtml(item.data)}</div>
+                            <div class="call-log-meta"><span>${metaText}</span></div>
                         </div>
-                        <div class="item-bottom">
-                            <span><i data-lucide="tag" style="width:12px;height:12px;"></i> ${escapeHtml(item.type || 'Barcode')} | <i data-lucide="calendar" style="width:12px;height:12px;"></i> ${item.date || ''} ${item.time || ''}</span>
-                            <div class="item-action-btns">
-                                <button class="icon-btn" onclick="copyToClipboard('${escapeJsString(item.data)}')" title="คัดลอกข้อความ"><i data-lucide="copy"></i></button>
-                                <button class="icon-btn danger" onclick="deleteHistoryItem(${item.id})" title="ลบรายการนี้"><i data-lucide="trash-2"></i></button>
-                            </div>
+                        <div style="display: flex; align-items: center; gap: 6px;">
+                            <span class="badge ${badgeClass}">${badgeText}</span>
+                            ${item.status !== 'success' ? `<button class="icon-btn primary" onclick="event.stopPropagation(); resendHistoryItem('${escapeJsString(item.data)}')" title="ส่งข้อมูล"><i data-lucide="send"></i></button>` : ''}
                         </div>
                     </div>
-                `;
-            }).join('');
-            refreshIcons();
+                </div>
+            `;
         }
 
-        function filterFullHistory() {
-            const val = document.getElementById('modal-search-input').value;
-            renderFullHistory(val);
-        }
+        /* 📱 SWIPE GESTURE EVENT HANDLERS */
+        function attachSwipeListeners() {
+            const wrappers = document.querySelectorAll('.swipe-item-wrapper');
+            
+            wrappers.forEach(wrapper => {
+                const card = wrapper.querySelector('.swipeable-card');
+                const dataId = wrapper.getAttribute('data-id');
+                
+                let startX = 0;
+                let currentX = 0;
+                let isDragging = false;
+                const threshold = -100; // ระยะปัดซ้ายเพื่อลบ
 
-        function copyToClipboard(text) {
-            navigator.clipboard.writeText(text).then(() => {
-                alert("คัดลอกข้อความแล้ว: " + text);
-            }).catch(() => {
-                alert("ไม่สามารถคัดลอกได้");
+                card.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].clientX;
+                    isDragging = true;
+                    card.style.transition = 'none';
+                }, { passive: true });
+
+                card.addEventListener('touchmove', (e) => {
+                    if (!isDragging) return;
+                    currentX = e.touches[0].clientX - startX;
+                    if (currentX < 0) {
+                        card.style.transform = `translateX(${currentX}px)`;
+                    }
+                }, { passive: true });
+
+                card.addEventListener('touchend', () => {
+                    if (!isDragging) return;
+                    isDragging = false;
+                    card.style.transition = 'transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)';
+                    
+                    if (currentX < threshold) {
+                        // ปัดพ้นเกณฑ์ สไลด์หลุดจอแล้วลบ
+                        card.style.transform = `translateX(-100%)`;
+                        setTimeout(() => deleteHistoryItem(dataId), 250);
+                    } else {
+                        // กลับตำแหน่งเดิม
+                        card.style.transform = `translateX(0)`;
+                    }
+                    currentX = 0;
+                });
+
+                // รองรับเมาส์บน Desktop (ลากซ้ายเพื่อลบ)
+                card.addEventListener('mousedown', (e) => {
+                    startX = e.clientX;
+                    isDragging = true;
+                    card.style.transition = 'none';
+                    
+                    const onMouseMove = (ev) => {
+                        if (!isDragging) return;
+                        currentX = ev.clientX - startX;
+                        if (currentX < 0) {
+                            card.style.transform = `translateX(${currentX}px)`;
+                        }
+                    };
+
+                    const onMouseUp = () => {
+                        if (!isDragging) return;
+                        isDragging = false;
+                        card.style.transition = 'transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)';
+                        
+                        if (currentX < threshold) {
+                            card.style.transform = `translateX(-100%)`;
+                            setTimeout(() => deleteHistoryItem(dataId), 250);
+                        } else {
+                            card.style.transform = `translateX(0)`;
+                        }
+                        currentX = 0;
+                        window.removeEventListener('mousemove', onMouseMove);
+                        window.removeEventListener('mouseup', onMouseUp);
+                    };
+
+                    window.addEventListener('mousemove', onMouseMove);
+                    window.addEventListener('mouseup', onMouseUp);
+                });
             });
         }
 
-        function deleteHistoryItem(id) {
-            if (!confirm("คุณต้องการลบรายการนี้ใช่หรือไม่?")) return;
+        function deleteHistoryItem(dataText) {
             let history = JSON.parse(localStorage.getItem('scanHistory')) || [];
-            history = history.filter(item => item.id !== id);
+            history = history.filter(item => item.data !== dataText);
             localStorage.setItem('scanHistory', JSON.stringify(history));
             renderRecentHistory();
-            renderFullHistory(document.getElementById('modal-search-input').value);
+            if (document.getElementById('history-edge-panel').classList.contains('active')) {
+                renderFullHistory(document.getElementById('modal-search-input').value);
+            }
+            showScanToast("ลบรายการเรียบร้อย", "info");
         }
 
-        function clearAllHistory() {
-            if (!confirm("คุณแน่ใจหรือไม่ว่าต้องการลบประวัติการสแกนทั้งหมด?")) return;
-            localStorage.removeItem('scanHistory');
-            renderRecentHistory();
-            renderFullHistory();
+        function selectHistoryItemForResend(dataText) {
+            let history = JSON.parse(localStorage.getItem('scanHistory')) || [];
+            const item = history.find(h => h.data === dataText);
+            if (!item) return;
+            showResult(item.data, item.type);
         }
 
-        function escapeHtml(str) {
-            if (!str) return '';
-            return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+        function resendHistoryItem(dataText) {
+            let history = JSON.parse(localStorage.getItem('scanHistory')) || [];
+            const item = history.find(h => h.data === dataText);
+            if (!item) return;
+            sendToPCAPI(item.data, item.type, false);
         }
 
-        function escapeJsString(str) {
-            if (!str) return '';
-            return str.replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/"/g, '\\"');
-        }
+        function filterFullHistory() { renderFullHistory(document.getElementById('modal-search-input').value); }
+        function clearAllHistory() { if (confirm("ล้างประวัติทั้งหมด?")) { localStorage.removeItem('scanHistory'); renderRecentHistory(); renderFullHistory(); } }
 
-        window.onload = async () => { 
+        function escapeHtml(str) { return str ? str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;") : ''; }
+        function escapeJsString(str) { return str ? str.replace(/'/g, "\\'") : ''; }
+
+        window.onload = () => {
             initTheme();
             loadConnection();
-            startCamera(); 
-            renderRecentHistory(); 
-            await initTesseractWorker(); 
+            startCamera();
+            renderRecentHistory();
             refreshIcons();
+
+            // ขออนุญาตสิทธิ์การแจ้งเตือน (Notification Permission) เมื่อเปิดเว็บครั้งแรก
+            if ('Notification' in window && Notification.permission === 'default') {
+                Notification.requestPermission().then(permission => {
+                    if (permission === 'granted') {
+                        showScanToast("เปิดใช้งานการแจ้งเตือนผ่านโทรศัพท์เรียบร้อยแล้ว", "success");
+                    }
+                });
+            }
         };
     </script>
 </body>
