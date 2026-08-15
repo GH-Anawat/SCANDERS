@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>SCANDER V.1.0 (เวอร์ชั่นทดลอง)</title>
+    <title>SCANDER V.1.0</title>
     
-    <!-- Google Fonts: Space Grotesk, JetBrains Mono, Plus Jakarta Sans -->
+    <!-- Google Fonts: Prompt, Kanit, JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Kanit:wght@500;600;700&family=Prompt:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Lucide Icons & Scanning Libraries -->
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -17,1050 +17,840 @@
 
     <style>
         /* ========================================================= */
-        /* UPGRADED MULTI-THEME COLOR PALETTES ( CSS VARIABLES ) */
+        /* 🟩 THEMES & MODERN MOBILE COLOR PALETTES                  */
         /* ========================================================= */
         
-        /* 1. Rainbow Vivid (Dynamic Glowing & Running Lights Edition) */
-        :root, body[data-theme="rainbow"] {
-            --bg-main: #060609;
-            --panel-bg: rgba(18, 18, 24, 0.88);
-            --accent-cyan: #ff2a85;
-            --accent-blue: #7928ca;
-            --accent-purple: #00dfd8;
-            --accent-glow: rgba(255, 42, 133, 0.45);
-            --text-main: #ffffff;
-            --text-sub: #b4b4bd;
-            --border-glow: rgba(255, 42, 133, 0.4);
-            --card-inner: rgba(28, 28, 38, 0.85);
-            --input-bg: #0e0e13;
-            --conn-bg: rgba(24, 24, 32, 0.85);
-            --stat-item-bg: rgba(28, 28, 38, 0.92);
-            --history-item-bg: rgba(28, 28, 38, 0.75);
-            --body-gradient: 
-                radial-gradient(circle at 10% 20%, rgba(255, 42, 133, 0.22) 0px, transparent 40%),
-                radial-gradient(circle at 90% 15%, rgba(121, 40, 202, 0.22) 0px, transparent 40%),
-                radial-gradient(circle at 50% 85%, rgba(0, 223, 216, 0.22) 0px, transparent 40%),
-                radial-gradient(circle at 15% 90%, rgba(255, 184, 0, 0.18) 0px, transparent 40%),
-                linear-gradient(180deg, #060609 0%, #020204 100%);
+        /* 1. LINE Classic Green (Default) */
+        :root, body[data-theme="line-green"], body[data-theme="rainbow"] {
+            --bg-main: #f2f4f7;
+            --panel-bg: #ffffff;
+            --header-bg: #06C755;
+            --header-text: #ffffff;
+            --accent-cyan: #06C755;
+            --accent-blue: #00B900;
+            --accent-purple: #05a043;
+            --accent-glow: rgba(6, 199, 85, 0.25);
+            --text-main: #111827;
+            --text-sub: #6b7280;
+            --border-glow: #e5e7eb;
+            --card-inner: #f9fafb;
+            --input-bg: #f3f4f6;
+            --conn-bg: #ffffff;
+            --stat-item-bg: #f9fafb;
+            --history-item-bg: #ffffff;
+            --body-gradient: #f2f4f7;
+            --btn-primary-bg: #06C755;
         }
 
-        /* 2. Matrix Quantum Green */
-        body[data-theme="matrix"] {
-            --bg-main: #010c05;
-            --panel-bg: rgba(4, 20, 10, 0.9);
-            --accent-cyan: #10b981;
-            --accent-blue: #059669;
-            --accent-purple: #047857;
-            --accent-glow: rgba(16, 185, 129, 0.35);
-            --text-main: #ecfdf5;
-            --text-sub: #86efac;
-            --border-glow: rgba(16, 185, 129, 0.3);
-            --card-inner: rgba(8, 32, 18, 0.88);
-            --input-bg: #021208;
-            --conn-bg: rgba(6, 28, 15, 0.8);
-            --stat-item-bg: rgba(10, 38, 22, 0.95);
-            --history-item-bg: rgba(10, 38, 22, 0.8);
-            --body-gradient: 
-                radial-gradient(circle at 10% 10%, rgba(16, 185, 129, 0.18) 0px, transparent 45%),
-                radial-gradient(circle at 90% 90%, rgba(5, 150, 105, 0.2) 0px, transparent 45%),
-                linear-gradient(180deg, #010c05 0%, #000402 100%);
+        /* 2. TrueMoney Wallet Theme */
+        body[data-theme="truemoney"] {
+            --bg-main: #f4f5f8;
+            --panel-bg: #ffffff;
+            --header-bg: linear-gradient(135deg, #ff6c00 0%, #ff3b00 100%);
+            --header-text: #ffffff;
+            --accent-cyan: #ff5500;
+            --accent-blue: #ff7700;
+            --accent-purple: #e64a19;
+            --accent-glow: rgba(255, 85, 0, 0.25);
+            --text-main: #1f2937;
+            --text-sub: #6b7280;
+            --border-glow: #e5e7eb;
+            --card-inner: #fff9f5;
+            --input-bg: #f3f4f6;
+            --conn-bg: #ffffff;
+            --stat-item-bg: #ffffff;
+            --history-item-bg: #ffffff;
+            --body-gradient: #f4f5f8;
+            --btn-primary-bg: linear-gradient(135deg, #ff6c00 0%, #ff3b00 100%);
         }
 
-        /* 3. Synthwave Ultraviolet */
+        /* 3. LINE Dark Mode */
+        body[data-theme="oled"], body[data-theme="matrix"] {
+            --bg-main: #121212;
+            --panel-bg: #1e1e1e;
+            --header-bg: #1f1f1f;
+            --header-text: #ffffff;
+            --accent-cyan: #06C755;
+            --accent-blue: #00B900;
+            --accent-purple: #05a043;
+            --accent-glow: rgba(6, 199, 85, 0.2);
+            --text-main: #f3f4f6;
+            --text-sub: #9ca3af;
+            --border-glow: #2d2d2d;
+            --card-inner: #262626;
+            --input-bg: #181818;
+            --conn-bg: #1e1e1e;
+            --stat-item-bg: #262626;
+            --history-item-bg: #1e1e1e;
+            --body-gradient: #121212;
+            --btn-primary-bg: #06C755;
+        }
+
+        /* 4. Synthwave Soft Pink */
         body[data-theme="synthwave"] {
-            --bg-main: #140320;
-            --panel-bg: rgba(35, 10, 52, 0.9);
+            --bg-main: #180926;
+            --panel-bg: #241038;
+            --header-bg: #32134d;
+            --header-text: #ffffff;
             --accent-cyan: #ec4899;
             --accent-blue: #d946ef;
             --accent-purple: #a855f7;
-            --accent-glow: rgba(236, 72, 153, 0.4);
+            --accent-glow: rgba(236, 72, 153, 0.25);
             --text-main: #fdf2f8;
             --text-sub: #fbcfe8;
-            --border-glow: rgba(236, 72, 153, 0.3);
-            --card-inner: rgba(50, 15, 75, 0.85);
-            --input-bg: #1c052d;
-            --conn-bg: rgba(42, 12, 64, 0.8);
-            --stat-item-bg: rgba(62, 18, 92, 0.95);
-            --history-item-bg: rgba(62, 18, 92, 0.8);
-            --body-gradient: 
-                radial-gradient(circle at 15% 15%, rgba(236, 72, 153, 0.22) 0px, transparent 45%),
-                radial-gradient(circle at 85% 85%, rgba(168, 85, 247, 0.22) 0px, transparent 45%),
-                linear-gradient(180deg, #140320 0%, #07010f 100%);
+            --border-glow: #421866;
+            --card-inner: #32134d;
+            --input-bg: #1a0a2a;
+            --conn-bg: #241038;
+            --stat-item-bg: #32134d;
+            --history-item-bg: #241038;
+            --body-gradient: #180926;
+            --btn-primary-bg: #ec4899;
         }
 
-        /* 4. Solar Cyber Amber */
+        /* 5. Solar Cyber Amber */
         body[data-theme="amber"] {
-            --bg-main: #140a02;
-            --panel-bg: rgba(36, 20, 5, 0.9);
+            --bg-main: #181108;
+            --panel-bg: #261b0f;
+            --header-bg: #362615;
+            --header-text: #ffffff;
             --accent-cyan: #f59e0b;
             --accent-blue: #d97706;
             --accent-purple: #b45309;
-            --accent-glow: rgba(245, 158, 11, 0.35);
+            --accent-glow: rgba(245, 158, 11, 0.25);
             --text-main: #fffbeb;
             --text-sub: #fde68a;
-            --border-glow: rgba(245, 158, 11, 0.3);
-            --card-inner: rgba(54, 30, 8, 0.85);
-            --input-bg: #1d0f02;
-            --conn-bg: rgba(45, 24, 6, 0.8);
-            --stat-item-bg: rgba(68, 38, 10, 0.95);
-            --history-item-bg: rgba(68, 38, 10, 0.8);
-            --body-gradient: 
-                radial-gradient(circle at 10% 10%, rgba(245, 158, 11, 0.2) 0px, transparent 45%),
-                radial-gradient(circle at 90% 90%, rgba(217, 119, 6, 0.2) 0px, transparent 45%),
-                linear-gradient(180deg, #140a02 0%, #080301 100%);
+            --border-glow: #422f1a;
+            --card-inner: #362615;
+            --input-bg: #1d130a;
+            --conn-bg: #261b0f;
+            --stat-item-bg: #362615;
+            --history-item-bg: #261b0f;
+            --body-gradient: #181108;
+            --btn-primary-bg: #f59e0b;
         }
 
-        /* 5. Deep Obsidian OLED */
-        body[data-theme="oled"] {
-            --bg-main: #000000;
-            --panel-bg: rgba(10, 10, 12, 0.95);
-            --accent-cyan: #38bdf8;
-            --accent-blue: #0284c7;
-            --accent-purple: #6366f1;
-            --accent-glow: rgba(56, 189, 248, 0.25);
-            --text-main: #ffffff;
-            --text-sub: #cbd5e1;
-            --border-glow: rgba(56, 189, 248, 0.25);
-            --card-inner: rgba(18, 18, 22, 0.92);
-            --input-bg: #050507;
-            --conn-bg: rgba(15, 15, 18, 0.9);
-            --stat-item-bg: rgba(22, 22, 28, 0.98);
-            --history-item-bg: rgba(22, 22, 28, 0.88);
-            --body-gradient: #000000;
+        /* 6. Facebook Dark Theme */
+        body[data-theme="facebook-dark"] {
+            --bg-main: #18191a;
+            --panel-bg: #242526;
+            --header-bg: #242526;
+            --header-text: #e4e6eb;
+            --accent-cyan: #1877f2;
+            --accent-blue: #2d88ff;
+            --accent-purple: #166fe5;
+            --accent-glow: rgba(24, 119, 242, 0.25);
+            --text-main: #e4e6eb;
+            --text-sub: #b0b3b8;
+            --border-glow: #3e4042;
+            --card-inner: #242526;
+            --input-bg: #3a3b3c;
+            --conn-bg: #242526;
+            --stat-item-bg: #3a3b3c;
+            --history-item-bg: #242526;
+            --body-gradient: #18191a;
+            --btn-primary-bg: #1877f2;
         }
 
         /* ========================================================= */
-        /* 🚀 NEXT-GEN STACKABLE NOTIFICATIONS STYLES                */
+        /* STACKABLE NOTIFICATIONS STYLES                            */
         /* ========================================================= */
         .toast-container {
             position: fixed;
-            top: 20px;
+            top: 65px;
             left: 50%;
             transform: translateX(-50%);
             z-index: 9999;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 12px;
+            gap: 8px;
             pointer-events: none;
             width: 100%;
-            max-width: 420px;
+            max-width: 400px;
             padding: 0 15px;
-        }
-
-        @media (min-width: 900px) {
-            .toast-container {
-                left: auto;
-                right: 20px;
-                transform: none;
-                align-items: flex-end;
-            }
         }
 
         .cyber-toast {
             pointer-events: auto;
             position: relative;
-            background: rgba(10, 15, 30, 0.9);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 16px;
-            padding: 16px 20px;
+            background: #ffffff;
+            border: 1px solid var(--border-glow);
+            border-radius: 14px;
+            padding: 10px 14px;
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 12px;
             width: 100%;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
             overflow: hidden;
             cursor: pointer;
-            animation: toastEnter 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            animation: toastEnter 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
             transition: all 0.3s ease;
         }
 
+        body[data-theme="oled"] .cyber-toast,
+        body[data-theme="matrix"] .cyber-toast,
+        body[data-theme="synthwave"] .cyber-toast,
+        body[data-theme="amber"] .cyber-toast,
+        body[data-theme="facebook-dark"] .cyber-toast {
+            background: var(--panel-bg);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        }
+
         .cyber-toast.closing {
-            animation: toastLeave 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            animation: toastLeave 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
         }
 
-        .cyber-toast:hover {
-            transform: translateY(-2px) scale(1.02);
-        }
-
-        .cyber-toast.success { border-color: rgba(16, 185, 129, 0.5); box-shadow: 0 10px 30px rgba(16, 185, 129, 0.25); }
-        .cyber-toast.warning { border-color: rgba(245, 158, 11, 0.5); box-shadow: 0 10px 30px rgba(245, 158, 11, 0.25); }
-        .cyber-toast.info { border-color: rgba(59, 130, 246, 0.5); box-shadow: 0 10px 30px rgba(59, 130, 246, 0.25); }
-        .cyber-toast.off { border-color: rgba(239, 68, 68, 0.5); box-shadow: 0 10px 30px rgba(239, 68, 68, 0.25); }
-        .cyber-toast.error { border-color: rgba(239, 68, 68, 0.5); box-shadow: 0 10px 30px rgba(239, 68, 68, 0.25); }
+        .cyber-toast.success { border-left: 4px solid var(--accent-cyan); }
+        .cyber-toast.warning { border-left: 4px solid #f59e0b; }
+        .cyber-toast.info { border-left: 4px solid #3b82f6; }
+        .cyber-toast.off { border-left: 4px solid #ef4444; }
+        .cyber-toast.error { border-left: 4px solid #ef4444; }
 
         .toast-icon-wrapper {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 42px;
-            height: 42px;
-            border-radius: 12px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
             flex-shrink: 0;
+            background: var(--input-bg);
         }
 
-        .cyber-toast.success .toast-icon-wrapper { background: rgba(16, 185, 129, 0.2); color: #10b981; }
-        .cyber-toast.warning .toast-icon-wrapper { background: rgba(245, 158, 11, 0.2); color: #f59e0b; }
-        .cyber-toast.info .toast-icon-wrapper { background: rgba(59, 130, 246, 0.2); color: #3b82f6; }
-        .cyber-toast.off .toast-icon-wrapper { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
-        .cyber-toast.error .toast-icon-wrapper { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
+        .cyber-toast.success .toast-icon-wrapper { color: var(--accent-cyan); background: var(--accent-glow); }
+        .cyber-toast.warning .toast-icon-wrapper { color: #f59e0b; background: rgba(245, 158, 11, 0.12); }
+        .cyber-toast.info .toast-icon-wrapper { color: #3b82f6; background: rgba(59, 130, 246, 0.12); }
+        .cyber-toast.off .toast-icon-wrapper { color: #ef4444; background: rgba(239, 68, 68, 0.12); }
+        .cyber-toast.error .toast-icon-wrapper { color: #ef4444; background: rgba(239, 68, 68, 0.12); }
 
-        .toast-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
+        .toast-content { flex: 1; display: flex; flex-direction: column; gap: 2px; }
 
         .toast-title {
             font-family: var(--font-title);
             font-size: 12px;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.8px;
+            letter-spacing: 0.3px;
             color: var(--text-sub);
         }
 
-        .cyber-toast.success .toast-title { color: #34d399; }
-        .cyber-toast.warning .toast-title { color: #fbbf24; }
-        .cyber-toast.info .toast-title { color: #60a5fa; }
-        .cyber-toast.off .toast-title { color: #f87171; }
-        .cyber-toast.error .toast-title { color: #f87171; }
-
         .toast-message {
             font-family: var(--font-mono);
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
             color: var(--text-main);
             word-break: break-all;
         }
 
         .toast-progress {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            height: 3px;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.1);
+            position: absolute; bottom: 0; left: 0; height: 3px; width: 100%; background: rgba(0, 0, 0, 0.05);
         }
-
-        .toast-progress-bar {
-            height: 100%;
-            width: 100%;
-            transform-origin: left;
-            animation: progressShrink 0s linear forwards;
-        }
-
-        .cyber-toast.success .toast-progress-bar { background: #10b981; }
+        .toast-progress-bar { height: 100%; width: 100%; transform-origin: left; animation: progressShrink 0s linear forwards; }
+        .cyber-toast.success .toast-progress-bar { background: var(--accent-cyan); }
         .cyber-toast.warning .toast-progress-bar { background: #f59e0b; }
         .cyber-toast.info .toast-progress-bar { background: #3b82f6; }
         .cyber-toast.off .toast-progress-bar { background: #ef4444; }
         .cyber-toast.error .toast-progress-bar { background: #ef4444; }
 
-        @keyframes toastEnter {
-            0% { opacity: 0; transform: translateY(-20px) scale(0.9); }
-            100% { opacity: 1; transform: translateY(0) scale(1); }
-        }
-        @keyframes toastLeave {
-            0% { opacity: 1; transform: translateY(0) scale(1); max-height: 100px; margin-bottom: 12px; }
-            100% { opacity: 0; transform: translateY(-10px) scale(0.9); max-height: 0; margin-bottom: 0; padding-top: 0; padding-bottom: 0; border-width: 0; }
-        }
-        @keyframes progressShrink {
-            0% { transform: scaleX(1); }
-            100% { transform: scaleX(0); }
-        }
+        @keyframes toastEnter { 0% { opacity: 0; transform: translateY(-15px); } 100% { opacity: 1; transform: translateY(0); } }
+        @keyframes toastLeave { 0% { opacity: 1; max-height: 80px; } 100% { opacity: 0; max-height: 0; padding: 0; margin: 0; } }
+        @keyframes progressShrink { 0% { transform: scaleX(1); } 100% { transform: scaleX(0); } }
 
-        * { box-sizing: border-box; scroll-behavior: smooth; }
+        * { box-sizing: border-box; scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
 
         body { 
             font-family: var(--font-body), sans-serif;
-            --font-title: 'Space Grotesk', sans-serif;
-            --font-body: 'Plus Jakarta Sans', sans-serif;
+            --font-title: 'Kanit', sans-serif;
+            --font-body: 'Prompt', sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
 
             margin: 0; 
-            padding: clamp(12px, 2vw, 24px);
+            padding: 0;
             background-color: var(--bg-main); 
-            background-image: var(--body-gradient);
-            background-attachment: fixed;
             color: var(--text-main); 
             min-height: 100vh;
             min-height: 100dvh;
             display: flex;
-            align-items: center;
             justify-content: center;
-            transition: background 0.3s ease, color 0.3s ease;
+            align-items: flex-start;
+            font-size: 14px;
+            line-height: 1.4;
         }
 
-        .lucide {
-            width: 20px;
-            height: 20px;
-            stroke-width: 2.2px;
-            vertical-align: middle;
-            display: inline-block;
-        }
+        .lucide { width: 18px; height: 18px; stroke-width: 2.2px; vertical-align: middle; display: inline-block; }
 
+        /* Mobile App Frame Container */
         .container { 
             width: 100%;
-            max-width: 500px; 
+            max-width: 480px; 
             background: var(--panel-bg); 
-            backdrop-filter: blur(32px);
-            -webkit-backdrop-filter: blur(32px);
-            padding: 24px 20px; 
-            border-radius: 28px; 
-            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.45), 0 0 50px var(--accent-glow), inset 0 1px 1px rgba(255, 255, 255, 0.18); 
-            border: 1px solid var(--border-glow);
+            min-height: 100vh;
+            min-height: 100dvh;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.08); 
             position: relative;
+            display: flex;
+            flex-direction: column;
             overflow: hidden;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: background 0.3s ease;
         }
 
-        /* Rainbow Mode Running Animated Border Line */
-        body[data-theme="rainbow"] .container::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
-            background: linear-gradient(90deg, #ff2a85, #7928ca, #00dfd8, #ffb800, #ff2a85);
-            background-size: 300% 100%;
-            box-shadow: 0 0 18px #ff2a85, 0 0 30px #00dfd8;
-            animation: rainbowBorderRunning 3s linear infinite;
-        }
-
-        body:not([data-theme="rainbow"]) .container::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3.5px;
-            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-blue), var(--accent-purple));
-            box-shadow: 0 0 12px var(--accent-cyan);
-        }
-
-        @keyframes rainbowBorderRunning {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 300% 50%; }
-        }
-
-        /* Fullscreen Custom Modifier Mode for Container */
-        body.is-fullscreen-mode {
-            padding: 0 !important;
-            overflow: hidden;
-        }
-        body.is-fullscreen-mode .container {
-            max-width: 100% !important;
-            width: 100% !important;
-            height: 100vh !important;
-            height: 100dvh !important;
-            border-radius: 0 !important;
-            border: none !important;
-            padding: 16px 20px !important;
-            display: flex !important;
-            flex-direction: column !important;
-            overflow-y: auto !important;
-        }
-        body.is-fullscreen-mode .dashboard-column {
-            display: none !important;
-        }
-        body.is-fullscreen-mode .viewport-wrapper {
-            flex: 1;
-            max-height: none !important;
-            aspect-ratio: auto !important;
-            min-height: 52vh;
-        }
-
-        /* ========================================================= */
-        /* RESPONSIVE DESKTOP (PC) LAYOUT SYSTEM */
-        /* ========================================================= */
         @media (min-width: 900px) {
+            body { padding: 20px 0; }
             .container {
-                max-width: 1120px;
+                max-width: 1000px;
+                min-height: calc(100vh - 40px);
+                border-radius: 24px;
+                border: 1px solid var(--border-glow);
                 display: grid;
-                grid-template-columns: 1.25fr 0.75fr;
-                gap: 28px;
-                align-content: start;
-                padding: 32px 36px;
+                grid-template-rows: auto 1fr;
             }
-            .app-header-area { 
-                grid-column: span 2; 
-                margin-bottom: 6px !important; 
-            }
-            .scanner-column { 
-                display: flex; 
-                flex-direction: column; 
-            }
-            .dashboard-column { 
-                display: flex; 
-                flex-direction: column; 
-                justify-content: flex-start; 
-                gap: 16px;
+            .desktop-grid {
+                display: grid;
+                grid-template-columns: 1.2fr 0.8fr;
+                gap: 20px;
+                padding: 20px;
+                overflow-y: auto;
             }
         }
 
-        .app-header-area { margin-bottom: 14px; }
-
-        .top-bar {
+        /* App Header Bar */
+        .app-header-area {
+            background: var(--header-bg);
+            color: var(--header-text);
+            padding: 12px 16px;
             display: flex;
+            align-items: center;
             justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-            gap: 12px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
         }
 
-        .top-controls-group {
+        .app-title {
+            font-family: var(--font-title);
+            font-size: 18px;
+            font-weight: 700;
+            margin: 0;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
+            color: var(--header-text);
+            letter-spacing: 0.2px;
         }
+
+        .app-title .lucide { width: 22px; height: 22px; }
+
+        .top-controls-group { display: flex; align-items: center; gap: 8px; }
 
         /* Theme Selector Dropdown */
         .theme-selector-wrapper {
             position: relative;
             display: flex;
             align-items: center;
-            background: var(--conn-bg);
-            border: 1px solid var(--border-glow);
-            border-radius: 14px;
-            padding: 0 12px;
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
-            height: 42px;
+            background: rgba(255, 255, 255, 0.22);
+            border-radius: 20px;
+            padding: 0 10px;
+            height: 32px;
+            backdrop-filter: blur(4px);
         }
-        .theme-selector-wrapper:hover {
-            border-color: var(--accent-cyan);
-            box-shadow: 0 0 18px var(--accent-glow);
-        }
-        .theme-select-icon {
-            color: var(--accent-cyan);
-            margin-right: 6px;
-            width: 16px; height: 16px;
-        }
+
+        .theme-select-icon { color: var(--header-text); margin-right: 4px; width: 14px; height: 14px; }
+
         .theme-select {
             background: transparent;
             border: none;
-            color: var(--text-main);
+            color: var(--header-text);
             font-family: var(--font-title);
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 600;
-            padding: 4px 4px;
             outline: none;
             cursor: pointer;
             appearance: none;
             -webkit-appearance: none;
-            padding-right: 20px;
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ff2a85' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            padding-right: 14px;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
             background-repeat: no-repeat;
             background-position: right center;
-            background-size: 13px;
-        }
-        .theme-select option {
-            background: #09090b;
-            color: #fafafa;
-            padding: 10px;
+            background-size: 10px;
         }
 
-        /* Fullscreen Toggle Button */
+        .theme-select option { background: #ffffff; color: #111827; font-family: var(--font-body); }
+
         .fullscreen-btn {
-            background: var(--conn-bg);
-            border: 1px solid var(--border-glow);
-            color: var(--text-main);
-            width: 42px;
-            height: 42px;
-            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.22);
+            border: none;
+            color: var(--header-text);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: all 0.25s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
         }
-        .fullscreen-btn:hover {
-            border-color: var(--accent-cyan);
-            color: var(--accent-cyan);
-            box-shadow: 0 0 18px var(--accent-glow);
-            transform: translateY(-1px);
-        }
-        .fullscreen-btn .lucide { width: 18px; height: 18px; }
 
-        .app-title {
-            font-family: var(--font-title);
-            font-size: clamp(22px, 4vw, 28px); font-weight: 700; margin: 0;
-            background: linear-gradient(135deg, var(--text-main) 25%, var(--accent-cyan) 100%);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.5px;
-            display: flex; align-items: center; gap: 10px;
-        }
-        .app-title .lucide { width: 26px; height: 26px; stroke: var(--accent-cyan); }
-
-        .ai-badge {
-            display: inline-flex; align-items: center; gap: 6px;
-            font-family: var(--font-title); font-size: 11px; font-weight: 600;
-            letter-spacing: 0.8px; text-transform: uppercase; padding: 5px 14px;
-            border-radius: 20px; background: var(--accent-glow); color: var(--accent-cyan);
-            border: 1px solid var(--border-glow); margin-bottom: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        .ai-badge .lucide { width: 14px; height: 14px; }
-
-        /* ========================================================= */
-        /* 💎 UNIFIED QUICK ACCESS TOOLBAR (ALL 3 BUTTONS IN ONE ROW)  */
-        /* ========================================================= */
-        .dashboard-quick-actions {
+        /* Content Scroll Container */
+        .app-content-body {
+            padding: 16px;
+            flex: 1;
             display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 14px;
-            width: 100%;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        /* Quick Action Grid */
+        .dashboard-quick-actions {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
         }
 
         .quick-action-card {
-            flex: 1;
-            min-width: 0;
-            background: var(--conn-bg);
+            background: var(--card-inner);
             border: 1px solid var(--border-glow);
             border-radius: 16px;
-            padding: 12px 10px;
+            padding: 10px 6px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
+        }
+
+        .quick-action-card:active { transform: scale(0.96); background: var(--border-glow); }
+
+        .quick-action-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: var(--accent-glow);
+            color: var(--accent-cyan);
             display: flex;
             align-items: center;
-            gap: 10px;
-            cursor: pointer;
-            transition: all 0.25s ease;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            justify-content: center;
+            margin-bottom: 2px;
         }
-        .quick-action-card:hover {
-            border-color: var(--accent-cyan);
-            transform: translateY(-2px);
-            box-shadow: 0 0 22px var(--accent-glow);
-            background: var(--card-inner);
-        }
-        .quick-action-icon {
-            width: 38px; height: 38px; border-radius: 12px;
-            background: var(--accent-glow); color: var(--accent-cyan);
-            display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-            border: 1px solid var(--border-glow);
-        }
-        .quick-action-icon .lucide { width: 20px; height: 20px; }
-        
-        .quick-action-info {
-            display: flex; flex-direction: column; gap: 3px; overflow: hidden; width: 100%;
-        }
+
+        .quick-action-icon .lucide { width: 18px; height: 18px; }
+
         .quick-action-label {
-            font-family: var(--font-title); font-size: 10px; font-weight: 700; color: var(--text-sub); text-transform: uppercase; letter-spacing: 0.5px;
+            font-family: var(--font-title);
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-sub);
         }
+
         .quick-action-value {
-            font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: var(--text-main);
-            white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: flex; align-items: center;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-main);
         }
 
         .conn-status-badge {
-            font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 10px; 
-            background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3);
-            display: inline-flex; align-items: center; gap: 5px; font-family: var(--font-title);
+            font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 10px; 
+            background: rgba(239, 68, 68, 0.12); color: #ef4444;
+            display: inline-flex; align-items: center; gap: 4px; font-family: var(--font-title);
         }
         .conn-status-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
-        .conn-status-badge.connected {
-            background: rgba(16, 185, 129, 0.15); color: #10b981; border-color: rgba(16, 185, 129, 0.3);
-            box-shadow: 0 0 10px rgba(16, 185, 129, 0.25);
-        }
-
-        .conn-form-container {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .ip-input-wrapper {
-            position: relative;
-            display: flex;
-            align-items: center;
-            background: var(--input-bg);
-            border: 1px solid var(--border-glow);
-            border-radius: 14px;
-            transition: all 0.25s ease;
-            overflow: hidden;
-        }
-        .ip-input-wrapper:focus-within {
-            border-color: var(--accent-cyan);
-            box-shadow: 0 0 18px var(--accent-glow);
-        }
-        .ip-prefix-icon {
-            padding-left: 14px;
-            color: var(--accent-cyan);
-            display: flex;
-            align-items: center;
-        }
-        .conn-input {
-            width: 100%; 
-            background: transparent; 
-            border: none; 
-            color: var(--text-main);
-            padding: 14px 16px; 
-            font-family: var(--font-mono); 
-            font-size: 14px;
-            outline: none;
-        }
-
-        .conn-actions-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 10px;
-        }
-        @media (max-width: 400px) {
-            .conn-actions-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Buttons Styling */
-        body[data-theme="rainbow"] .conn-btn:not(.btn-secondary) {
-            background: linear-gradient(135deg, #ff2a85, #7928ca, #00dfd8);
-            background-size: 200% 200%;
-            animation: rainbowButtonGradient 5s ease infinite;
-            box-shadow: 0 6px 22px rgba(255, 42, 133, 0.45);
-        }
-
-        @keyframes rainbowButtonGradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .conn-btn {
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
-            border: none; color: #fff; padding: 12px 18px; border-radius: 14px; 
-            font-family: var(--font-title); font-size: 13px; font-weight: 600; cursor: pointer; 
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 18px rgba(79, 172, 254, 0.35);
-            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-            text-decoration: none; position: relative; overflow: hidden;
-            min-height: 46px;
-        }
-        .conn-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 22px rgba(255, 42, 133, 0.65); }
-        .conn-btn:active { transform: translateY(0) scale(0.98); }
-
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border-glow);
-            color: var(--text-main);
-            box-shadow: none;
-        }
-        .btn-secondary:hover {
-            border-color: var(--accent-cyan);
-            background: var(--card-inner);
-            color: var(--accent-cyan);
-            box-shadow: 0 0 18px var(--accent-glow);
-        }
-
-        .btn-test {
-            background: rgba(16, 185, 129, 0.12);
-            border: 1px solid rgba(16, 185, 129, 0.4);
-            color: #34d399;
-        }
-        .btn-test:hover {
-            background: rgba(16, 185, 129, 0.25);
-            box-shadow: 0 0 18px rgba(16, 185, 129, 0.3);
-            color: #ffffff;
-        }
+        .conn-status-badge.connected { background: var(--accent-glow); color: var(--accent-cyan); }
 
         /* VIEWPORT & CAMERA OPTIMIZATION */
         .viewport-wrapper { 
             position: relative; 
-            border-radius: 22px; 
+            border-radius: 20px; 
             overflow: hidden; 
             border: 1px solid var(--border-glow); 
-            background: #010306; 
-            box-shadow: 0 22px 45px rgba(0, 0, 0, 0.65), 0 0 25px var(--accent-glow); 
+            background: #000000; 
             aspect-ratio: 4/3;
-            max-height: 48vh;
+            max-height: 40vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
-        }
-        @media (min-width: 900px) {
-            .viewport-wrapper {
-                aspect-ratio: 16/10;
-                max-height: none;
-            }
         }
 
         .viewport-wrapper.success-flash {
-            border-color: #10b981 !important;
-            box-shadow: 0 0 35px rgba(16, 185, 129, 0.7), inset 0 0 25px rgba(16, 185, 129, 0.4) !important;
+            border-color: var(--accent-cyan) !important;
+            box-shadow: 0 0 25px var(--accent-glow) !important;
         }
 
-        .viewport-wrapper.camera-paused .scan-line {
-            animation-play-state: paused !important;
-            opacity: 0 !important;
-        }
-        .viewport-wrapper.camera-paused .corner-bracket { opacity: 0.25; filter: none; }
-        .viewport-wrapper.camera-paused .crosshair { opacity: 0.15; }
-        .viewport-wrapper.camera-paused .scan-target-box { box-shadow: inset 0 0 70px rgba(2, 6, 16, 0.92); }
+        .viewport-wrapper.camera-paused .scan-line { opacity: 0 !important; animation-play-state: paused; }
+        .viewport-wrapper.camera-paused .corner-bracket { opacity: 0.3; }
 
         video { width: 100%; height: 100%; display: block; object-fit: cover; }
 
         .hud-overlay { 
             position: absolute; inset: 0; pointer-events: none; 
-            box-shadow: inset 0 0 70px rgba(0, 0, 0, 0.88); 
-            display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 14px;
+            display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 12px;
         }
 
         .hud-top-bar { width: 100%; display: flex; justify-content: space-between; align-items: center; z-index: 2; }
 
         .hud-badge {
-            font-family: var(--font-title); font-size: 11px; font-weight: 700; letter-spacing: 1px;
-            padding: 6px 14px; border-radius: 20px; background: rgba(3, 7, 18, 0.85);
-            backdrop-filter: blur(10px); border: 1px solid var(--border-glow); color: var(--text-main);
-            display: flex; align-items: center; gap: 6px; text-transform: uppercase;
+            font-family: var(--font-title); font-size: 11px; font-weight: 600; letter-spacing: 0.2px;
+            padding: 4px 10px; border-radius: 12px; background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.15); color: #ffffff;
+            display: flex; align-items: center; gap: 6px;
         }
 
-        .hud-dot { width: 7px; height: 7px; border-radius: 50%; background: #ef4444; box-shadow: 0 0 10px #ef4444; animation: pulseDot 1.5s infinite ease-in-out; }
-        .viewport-wrapper.camera-paused .hud-dot { background: #64748b; box-shadow: none; animation: none; }
-        .hud-badge.live .hud-dot { background: #10b981; box-shadow: 0 0 10px #10b981; }
+        .hud-dot { width: 6px; height: 6px; border-radius: 50%; background: #ef4444; }
+        .hud-badge.live .hud-dot { background: var(--accent-cyan); box-shadow: 0 0 8px var(--accent-cyan); }
+        .hud-badge.batch-mode { background: var(--accent-cyan); color: #ffffff; }
 
-        .hud-badge.batch-mode { background: rgba(6, 182, 212, 0.22); border-color: var(--accent-cyan); color: var(--accent-cyan); box-shadow: 0 0 12px var(--accent-glow); }
-
-        @keyframes pulseDot { 0%, 100% { opacity: 0.3; transform: scale(0.8); } 50% { opacity: 1; transform: scale(1.25); } }
-
-        /* 🌟 EXTERNAL SCANNER CONTROLS BAR (MOVED OUT OF VIEWPORT) */
+        /* EXTERNAL SCANNER CONTROLS BAR */
         .external-controls-bar {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 6px;
             margin-top: 10px;
-            background: var(--conn-bg);
-            padding: 10px;
-            border-radius: 16px;
-            border: 1px solid var(--border-glow);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-            flex-wrap: wrap;
         }
 
         .ext-ctrl-btn {
-            background: rgba(255, 255, 255, 0.05);
+            background: var(--card-inner);
             border: 1px solid var(--border-glow);
             color: var(--text-sub);
-            padding: 8px 12px;
+            padding: 8px 4px;
             border-radius: 12px;
             font-family: var(--font-title);
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 600;
             cursor: pointer;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 6px;
+            gap: 4px;
             transition: all 0.2s ease;
-            flex: 1;
-            min-width: 120px;
-            justify-content: center;
+            text-align: center;
         }
-        .ext-ctrl-btn:hover { color: var(--text-main); border-color: var(--accent-cyan); background: var(--card-inner); }
-        .ext-ctrl-btn.active { color: #030712; background: var(--accent-cyan); border-color: var(--accent-cyan); box-shadow: 0 0 15px var(--accent-glow); }
+        .ext-ctrl-btn.active { color: #ffffff; background: var(--btn-primary-bg); border-color: transparent; }
         .ext-ctrl-btn .lucide { width: 16px; height: 16px; }
 
         .scan-target-box { 
-            width: 82%; height: 55%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            border-radius: 18px; box-shadow: 0 0 0 9999px rgba(2, 6, 16, 0.68); transition: border-color 0.3s;
+            width: 80%; height: 55%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            border-radius: 16px; box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.55);
         }
 
         .corner-bracket {
-            position: absolute; width: 22px; height: 22px; border-color: var(--accent-cyan); border-style: solid;
-            filter: drop-shadow(0 0 8px var(--accent-cyan));
-            transition: opacity 0.3s ease;
+            position: absolute; width: 20px; height: 20px; border-color: var(--accent-cyan); border-style: solid;
         }
-        .corner-bracket.top-left { top: -2px; left: -2px; border-width: 3.5px 0 0 3.5px; border-top-left-radius: 14px; }
-        .corner-bracket.top-right { top: -2px; right: -2px; border-width: 3.5px 3.5px 0 0; border-top-right-radius: 14px; }
-        .corner-bracket.bottom-left { bottom: -2px; left: -2px; border-width: 0 0 3.5px 3.5px; border-bottom-left-radius: 14px; }
-        .corner-bracket.bottom-right { bottom: -2px; right: -2px; border-width: 0 3.5px 3.5px 0; border-bottom-right-radius: 14px; }
-
-        .crosshair { position: absolute; top: 50%; left: 50%; width: 16px; height: 16px; transform: translate(-50%, -50%); opacity: 0.45; }
-        .crosshair::before, .crosshair::after { content: ''; position: absolute; background: var(--accent-cyan); }
-        .crosshair::before { top: 7px; left: 0; right: 0; height: 2px; }
-        .crosshair::after { left: 7px; top: 0; bottom: 0; width: 2px; }
+        .corner-bracket.top-left { top: -2px; left: -2px; border-width: 3px 0 0 3px; border-top-left-radius: 12px; }
+        .corner-bracket.top-right { top: -2px; right: -2px; border-width: 3px 3px 0 0; border-top-right-radius: 12px; }
+        .corner-bracket.bottom-left { bottom: -2px; left: -2px; border-width: 0 0 3px 3px; border-bottom-left-radius: 12px; }
+        .corner-bracket.bottom-right { bottom: -2px; right: -2px; border-width: 0 3px 3px 0; border-bottom-right-radius: 12px; }
 
         .scan-line { 
-            position: absolute; top: 0; left: 0; right: 0; height: 3px; 
+            position: absolute; top: 0; left: 0; right: 0; height: 2.5px; 
             background: linear-gradient(90deg, transparent 0%, var(--accent-cyan) 50%, transparent 100%); 
-            box-shadow: 0 0 20px var(--accent-cyan); animation: scanAnim 2.2s infinite ease-in-out; 
+            box-shadow: 0 0 15px var(--accent-cyan); animation: scanAnim 2s infinite ease-in-out; 
         }
 
-        @keyframes scanAnim { 0% { top: 6%; opacity: 0.2; } 50% { top: 90%; opacity: 1; } 100% { top: 6%; opacity: 0.2; } }
+        @keyframes scanAnim { 0% { top: 6%; opacity: 0.3; } 50% { top: 90%; opacity: 1; } 100% { top: 6%; opacity: 0.3; } }
 
-        .status-text { margin-top: 10px; font-size: 13px; font-weight: 500; color: var(--text-sub); text-align: center; display: flex; align-items: center; justify-content: center; gap: 6px; }
+        .status-text { margin-top: 8px; font-size: 12px; font-weight: 500; color: var(--text-sub); text-align: center; display: flex; align-items: center; justify-content: center; gap: 6px; font-family: var(--font-body); }
 
-        #result-box { margin-top: 14px; padding: 18px; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.35); border-radius: 20px; display: none; text-align: left; animation: fadeIn 0.3s ease; }
-        .result-header { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #10b981; margin-bottom: 10px; font-weight: 700; font-family: var(--font-title); display: flex; align-items: center; justify-content: space-between; gap: 6px; }
+        /* Result Card */
+        #result-box { margin-top: 12px; padding: 14px; background: var(--accent-glow); border: 1px solid var(--accent-cyan); border-radius: 16px; display: none; text-align: left; }
+        .result-header { font-size: 12px; color: var(--accent-cyan); margin-bottom: 8px; font-weight: 700; font-family: var(--font-title); display: flex; align-items: center; justify-content: space-between; }
 
         .result-input-field {
-            width: 100%; background: var(--input-bg); border: 1px solid var(--border-glow); color: var(--accent-cyan);
-            padding: 14px 16px; border-radius: 14px; font-family: var(--font-mono); font-size: 15px; font-weight: 700;
-            margin-bottom: 14px;
+            width: 100%; background: var(--input-bg); border: 1px solid var(--border-glow); color: var(--text-main);
+            padding: 10px 12px; border-radius: 12px; font-family: var(--font-mono); font-size: 14px; font-weight: 700; margin-bottom: 10px; outline: none;
         }
 
-        .result-actions { display: flex; gap: 10px; }
+        .result-actions { display: flex; gap: 8px; }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+        /* Buttons Styling */
+        .conn-btn {
+            background: var(--btn-primary-bg);
+            border: none; color: #ffffff; padding: 10px 16px; border-radius: 12px; 
+            font-family: var(--font-title); font-size: 13px; font-weight: 600; cursor: pointer; 
+            transition: all 0.2s ease;
+            display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+            text-decoration: none; min-height: 42px;
+        }
+        .conn-btn:active { transform: scale(0.97); }
 
-        #history-section { text-align: left; }
-        
+        .btn-secondary {
+            background: var(--input-bg);
+            border: 1px solid var(--border-glow);
+            color: var(--text-main);
+        }
+
+        .btn-test { background: var(--accent-glow); border: 1px solid var(--accent-cyan); color: var(--accent-cyan); }
+
+        /* Summary Dashboard Widget */
         .today-summary-card { 
-            background: var(--card-inner); border: 1px solid var(--border-glow); border-radius: 20px; padding: 18px; margin-bottom: 14px;
-            cursor: pointer; transition: all 0.25s ease;
+            background: var(--card-inner); border: 1px solid var(--border-glow); border-radius: 16px; padding: 14px;
+            cursor: pointer; transition: all 0.2s ease;
         }
-        .today-summary-card:hover { border-color: var(--accent-cyan); transform: translateY(-2px); box-shadow: 0 8px 25px var(--accent-glow); }
-        .today-summary-title { font-size: 12px; font-weight: 700; color: var(--accent-cyan); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; font-family: var(--font-title); display: flex; align-items: center; justify-content: space-between; gap: 6px; }
-        .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; text-align: center; }
-        .stat-item { background: var(--stat-item-bg); padding: 12px 8px; border-radius: 14px; border: 1px solid var(--border-glow); }
-        .stat-value { font-family: var(--font-mono); font-size: 20px; font-weight: 700; color: var(--text-main); }
-        .stat-label { font-size: 11px; color: var(--text-sub); margin-top: 4px; font-weight: 500; }
+        .today-summary-title { font-size: 12px; font-weight: 700; color: var(--accent-cyan); letter-spacing: 0.3px; margin-bottom: 10px; font-family: var(--font-title); display: flex; align-items: center; justify-content: space-between; }
+        .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; text-align: center; }
+        .stat-item { background: var(--panel-bg); padding: 10px 6px; border-radius: 12px; border: 1px solid var(--border-glow); }
+        .stat-value { font-family: var(--font-mono); font-size: 18px; font-weight: 700; color: var(--text-main); }
+        .stat-label { font-size: 11px; color: var(--text-sub); margin-top: 2px; font-weight: 500; font-family: var(--font-body); }
         
-        .recent-list { display: flex; flex-direction: column; gap: 10px; }
+        .recent-list { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
         
-        /* 📞 CALL-LOG STYLE HISTORY ITEM */
+        /* CHAT-LOG / LIST STYLE HISTORY ITEM */
         .history-item { 
             background: var(--history-item-bg); border: 1px solid var(--border-glow); 
-            padding: 12px 14px; border-radius: 16px; font-size: 13px; transition: all 0.25s ease;
+            padding: 12px 14px; border-radius: 14px; font-size: 13px; transition: all 0.2s ease;
             cursor: pointer; display: flex; align-items: center; gap: 12px; position: relative;
+            width: 100%;
         }
-        .history-item:hover { border-color: var(--accent-cyan); transform: translateX(3px); box-shadow: 0 6px 18px var(--accent-glow); }
         
         .call-log-icon {
-            width: 38px; height: 38px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-            border: 1px solid rgba(255,255,255,0.08);
+            width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
         }
-        .call-log-icon.success { background: rgba(16, 185, 129, 0.15); color: #10b981; border-color: rgba(16, 185, 129, 0.3); }
-        .call-log-icon.pending { background: rgba(245, 158, 11, 0.15); color: #f59e0b; border-color: rgba(245, 158, 11, 0.3); }
-        .call-log-icon.failed { background: rgba(239, 68, 68, 0.15); color: #ef4444; border-color: rgba(239, 68, 68, 0.3); }
+        .call-log-icon.success { background: var(--accent-glow); color: var(--accent-cyan); }
+        .call-log-icon.pending { background: rgba(245, 158, 11, 0.12); color: #f59e0b; }
+        .call-log-icon.failed { background: rgba(239, 68, 68, 0.12); color: #ef4444; }
 
-        .call-log-details { flex: 1; display: flex; flex-direction: column; gap: 3px; min-width: 0; }
-        .call-log-code { font-family: var(--font-mono); font-size: 14px; font-weight: 700; color: var(--text-main); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .call-log-meta { font-family: var(--font-mono); font-size: 11px; color: var(--text-sub); display: flex; align-items: center; gap: 8px; }
+        .call-log-details { flex: 1; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+        .call-log-code { font-family: var(--font-mono); font-size: 13px; font-weight: 700; color: var(--text-main); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .call-log-meta { font-family: var(--font-body); font-size: 11px; color: var(--text-sub); display: flex; align-items: center; gap: 6px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-        .badge { font-size: 10px; padding: 3px 8px; border-radius: 6px; font-weight: 700; font-family: var(--font-title); letter-spacing: 0.5px; }
-        .badge-success { background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3); }
-        .badge-fail { background: rgba(239, 68, 68, 0.15); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.3); }
-        .badge-pending { background: rgba(245, 158, 11, 0.15); color: #f59e0b; border: 1px solid rgba(245, 158, 11, 0.3); }
+        .badge { font-size: 10px; padding: 2px 6px; border-radius: 6px; font-weight: 600; font-family: var(--font-title); flex-shrink: 0; }
+        .badge-success { background: var(--accent-glow); color: var(--accent-cyan); }
+        .badge-fail { background: rgba(239, 68, 68, 0.12); color: #ef4444; }
+        .badge-pending { background: rgba(245, 158, 11, 0.12); color: #f59e0b; }
 
-        /* ========================================================= */
-        /* 📱 SWIPE-TO-DELETE STYLES FOR HISTORY LIST                */
-        /* ========================================================= */
-        .swipe-item-wrapper {
-            position: relative;
-            overflow: hidden;
-            border-radius: 16px;
-            margin-bottom: 2px;
-        }
-
+        /* SWIPE-TO-DELETE STYLES (UPDATED FOR RIGHT SWIPE) */
+        .swipe-item-wrapper { position: relative; overflow: hidden; border-radius: 14px; flex-shrink: 0; width: 100%; }
         .swipe-delete-background {
-            position: absolute;
-            inset: 0;
-            background: #ef4444;
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            padding-right: 24px;
-            color: #ffffff;
-            font-family: var(--font-title);
-            font-size: 13px;
-            font-weight: 700;
-            gap: 8px;
-            border-radius: 16px;
-            z-index: 1;
+            position: absolute; inset: 0; background: #ef4444; display: flex; align-items: center;
+            justify-content: flex-start; padding-left: 20px; color: #ffffff; font-family: var(--font-title);
+            font-size: 12px; font-weight: 600; gap: 6px; border-radius: 14px; z-index: 1;
         }
+        .swipeable-card { position: relative; z-index: 2; transition: transform 0.2s ease; touch-action: pan-y; }
 
-        .swipeable-card {
-            position: relative;
-            z-index: 2;
-            background: var(--history-item-bg);
-            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-            touch-action: pan-y;
-            user-select: none;
-        }
-
-        /* EDGE PANEL & MODALS */
+        /* MODALS & EDGE PANELS */
         .edge-panel-overlay {
-            position: fixed; inset: 0; background: rgba(2, 4, 8, 0.75);
-            backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
-            z-index: 1000; opacity: 0; visibility: hidden;
-            transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s ease;
+            position: fixed; inset: 0; background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px); z-index: 1000; opacity: 0; visibility: hidden;
+            transition: opacity 0.25s ease, visibility 0.25s ease;
             display: flex; align-items: center; justify-content: center;
         }
         .edge-panel-overlay.active { opacity: 1; visibility: visible; }
 
+        .conn-modal-card {
+            position: relative; width: 90%; max-width: 400px; max-height: 85vh; background: var(--panel-bg);
+            border: 1px solid var(--border-glow); border-radius: 20px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            display: flex; flex-direction: column; overflow: hidden; transform: translateY(15px); transition: transform 0.25s ease; margin: auto;
+        }
+        .edge-panel-overlay.active .conn-modal-card { transform: translateY(0); }
+
+        .edge-panel-header {
+            padding: 14px 16px; border-bottom: 1px solid var(--border-glow);
+            display: flex; justify-content: space-between; align-items: center; background: var(--card-inner);
+            flex-shrink: 0;
+        }
+        .edge-panel-title { font-family: var(--font-title); font-size: 15px; font-weight: 700; color: var(--text-main); margin: 0; display: flex; align-items: center; gap: 8px; }
+        .edge-panel-close-btn {
+            background: transparent; border: none; color: var(--text-sub);
+            width: 32px; height: 32px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center;
+        }
+
+        .conn-modal-body { padding: 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
+
+        .ip-input-wrapper {
+            display: flex; align-items: center; background: var(--input-bg);
+            border: 1px solid var(--border-glow); border-radius: 12px; overflow: hidden;
+        }
+        .ip-prefix-icon { padding-left: 12px; color: var(--text-sub); display: flex; align-items: center; }
+        .conn-input {
+            width: 100%; background: transparent; border: none; color: var(--text-main);
+            padding: 12px; font-family: var(--font-mono); font-size: 13px; outline: none;
+        }
+
+        .conn-actions-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+
+        /* FULL HISTORY EDGE PANEL */
         .edge-panel-card {
             position: fixed; top: 0; right: 0; bottom: 0;
-            width: 100%; max-width: 420px; height: 100vh; height: 100dvh;
-            background: var(--panel-bg); border-left: 1px solid var(--border-glow);
-            box-shadow: -20px 0 50px rgba(0, 0, 0, 0.75), 0 0 35px var(--accent-glow);
-            display: flex; flex-direction: column; overflow: hidden;
-            transform: translateX(100%); transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1);
-            z-index: 1001;
+            width: 100%; max-width: 440px; height: 100vh; height: 100dvh;
+            background: var(--panel-bg); display: flex; flex-direction: column; overflow: hidden;
+            transform: translateX(100%); transition: transform 0.3s ease; z-index: 1001;
+            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
         }
         .edge-panel-overlay.active .edge-panel-card { transform: translateX(0); }
 
-        .edge-panel-header {
-            padding: 20px; border-bottom: 1px solid var(--border-glow);
-            display: flex; justify-content: space-between; align-items: center; background: rgba(0, 0, 0, 0.25);
+        .edge-panel-search-bar { 
+            padding: 10px 16px; border-bottom: 1px solid var(--border-glow); 
+            display: flex; gap: 8px; flex-shrink: 0; background: var(--panel-bg);
         }
-        .edge-panel-title { font-family: var(--font-title); font-size: 16px; font-weight: 700; color: var(--text-main); margin: 0; display: flex; align-items: center; gap: 8px; }
-        .edge-panel-close-btn {
-            background: var(--conn-bg); border: 1px solid var(--border-glow); color: var(--text-sub);
-            width: 38px; height: 38px; border-radius: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s;
+
+        /* FILTER TABS IN FULL HISTORY MODAL */
+        .history-filter-tabs {
+            display: flex; gap: 6px; padding: 8px 16px; 
+            border-bottom: 1px solid var(--border-glow); background: var(--card-inner);
+            overflow-x: auto; flex-shrink: 0; scrollbar-width: none;
         }
-        .edge-panel-close-btn:hover { color: var(--text-main); border-color: var(--accent-cyan); background: var(--accent-glow); }
-        .edge-panel-search-bar { padding: 14px 20px; border-bottom: 1px solid var(--border-glow); display: flex; gap: 10px; background: rgba(0, 0, 0, 0.18); }
-        .edge-panel-body-list { padding: 16px 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+        .history-filter-tabs::-webkit-scrollbar { display: none; }
+
+        .filter-tab-btn {
+            background: var(--input-bg); border: 1px solid var(--border-glow);
+            color: var(--text-sub); padding: 4px 10px; border-radius: 12px;
+            font-family: var(--font-title); font-size: 11px; font-weight: 600;
+            cursor: pointer; white-space: nowrap; transition: all 0.2s ease;
+        }
+        .filter-tab-btn.active {
+            background: var(--btn-primary-bg); color: #ffffff; border-color: transparent;
+        }
+
+        .edge-panel-toolbar {
+            padding: 8px 16px; border-bottom: 1px solid var(--border-glow);
+            display: flex; align-items: center; justify-content: space-between;
+            background: var(--card-inner); flex-shrink: 0; font-size: 11px; color: var(--text-sub);
+        }
+
+        .edge-panel-body-list { 
+            padding: 12px 16px; overflow-y: auto; display: flex; 
+            flex-direction: column; gap: 8px; flex: 1; -webkit-overflow-scrolling: touch;
+        }
 
         .modal-history-item {
-            background: var(--history-item-bg); border: 1px solid var(--border-glow); 
-            padding: 12px 14px; border-radius: 16px; font-size: 13px; display: flex; align-items: center; gap: 12px; transition: all 0.2s; cursor: pointer;
+            background: var(--card-inner); border: 1px solid var(--border-glow); 
+            padding: 10px 12px; border-radius: 12px; font-size: 12px; display: flex; align-items: center; gap: 10px; cursor: pointer;
         }
-        .modal-history-item:hover { border-color: var(--accent-cyan); background: var(--card-inner); }
-        .modal-history-item.active-conn { border-color: var(--accent-cyan) !important; background: var(--card-inner); }
+        .modal-history-item.active-conn { border-color: var(--accent-cyan); background: var(--accent-glow); }
 
         .icon-btn {
-            background: var(--conn-bg); border: 1px solid var(--border-glow); color: var(--text-sub); cursor: pointer;
-            padding: 6px; border-radius: 10px; transition: all 0.2s; display: flex; align-items: center; justify-content: center;
-            min-width: 34px; min-height: 34px;
+            background: var(--input-bg); border: 1px solid var(--border-glow); color: var(--text-sub); cursor: pointer;
+            padding: 4px; border-radius: 8px; display: flex; align-items: center; justify-content: center;
+            min-width: 30px; min-height: 30px; flex-shrink: 0;
         }
-        .icon-btn:hover { color: var(--accent-cyan); border-color: var(--accent-cyan); background: var(--accent-glow); }
-        .icon-btn.primary { color: var(--accent-cyan); border-color: rgba(6, 182, 212, 0.4); }
-        .icon-btn.danger:hover { color: #ef4444; border-color: rgba(239, 68, 68, 0.5); background: rgba(239, 68, 68, 0.12); }
-
-        .conn-modal-card {
-            position: relative; width: 90%; max-width: 440px; max-height: 85vh; background: var(--panel-bg);
-            border: 1px solid var(--border-glow); border-radius: 24px; box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 35px var(--accent-glow);
-            display: flex; flex-direction: column; overflow: hidden; transform: translateY(20px) scale(0.95);
-            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s; margin: auto; backdrop-filter: blur(24px); z-index: 1002;
-        }
-        .edge-panel-overlay.active .conn-modal-card { transform: translateY(0) scale(1); }
-        .conn-modal-body { padding: 22px; overflow-y: auto; display: flex; flex-direction: column; gap: 16px; }
+        .icon-btn.primary { color: var(--accent-cyan); }
+        .icon-btn.danger { color: #ef4444; }
     </style>
 </head>
-<body data-theme="rainbow">
+<body data-theme="line-green">
 
     <!-- Notification Container -->
     <div id="toast-container" class="toast-container"></div>
 
     <div class="container" id="app-container">
-        <!-- Header Section -->
+        
+        <!-- Header Bar -->
         <div class="app-header-area">
-            <div class="top-bar">
-                <h2 class="app-title"><i data-lucide="scan"></i>SCANDER</h2>
-                
-                <div class="top-controls-group">
-                    <div class="theme-selector-wrapper" title="เปลี่ยนธีมสี">
-                        <i data-lucide="palette" class="theme-select-icon"></i>
-                        <select id="theme-select" class="theme-select" onchange="changeTheme(this.value)">
-                            <option value="rainbow">Rainbow Vivid</option>
-                            <option value="matrix">Matrix Green</option>
-                            <option value="synthwave">Synthwave Pink</option>
-                            <option value="amber">Cyber Amber</option>
-                            <option value="oled">OLED Black</option>
-                        </select>
-                    </div>
-
-                    <button id="fullscreen-toggle-btn" class="fullscreen-btn" onclick="toggleFullScreen()" title="สลับโหมดเต็มหน้าจอ">
-                        <i data-lucide="maximize" id="fullscreen-icon"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="ai-badge"><i data-lucide="zap"></i>SCANDER V.1.0 (เวอร์ชั่นทดลอง)</div>
-        </div>
-
-        <!-- Left Column: Unified Camera & Scanner Viewport -->
-        <div class="scanner-column">
-            <div id="viewport-wrapper" class="viewport-wrapper">
-                <video id="camera-feed" autoplay playsinline></video>
-
-                <div class="hud-overlay">
-                    <div class="hud-top-bar">
-                        <div id="hud-live-badge" class="hud-badge live"><span class="hud-dot"></span> กำลังสตรีม</div>
-                        <div id="mode-hud-badge" class="hud-badge">บาร์โค้ด / QR</div>
-                    </div>
-
-                    <div class="scan-target-box">
-                        <div class="corner-bracket top-left"></div>
-                        <div class="corner-bracket top-right"></div>
-                        <div class="corner-bracket bottom-left"></div>
-                        <div class="corner-bracket bottom-right"></div>
-                        <div class="crosshair"></div>
-                        <div class="scan-line"></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 🌟 EXTERNAL CONTROLS BAR (MOVED OUT OF VIEWPORT) -->
-            <div class="external-controls-bar">
-                <button id="btn-toggle-scan-engine" class="ext-ctrl-btn" onclick="toggleScanEngineMode()" title="สลับโหมดสแกน">
-                    <i data-lucide="cpu" id="scan-engine-icon"></i>
-                    <span id="scan-engine-label">โหมด: บาร์โค้ด</span>
-                </button>
-                <button id="btn-toggle-continuous" class="ext-ctrl-btn" onclick="toggleContinuousMode()" title="โหมดสแกนต่อเนื่อง">
-                    <i data-lucide="repeat"></i>
-                    <span id="continuous-label">ต่อเนื่อง: ปิด</span>
-                </button>
-                <button id="btn-toggle-notifications" class="ext-ctrl-btn active" onclick="toggleNotifications()" title="เปิด/ปิด การแจ้งเตือนทั้งหมด">
-                    <i data-lucide="bell" id="notification-icon"></i>
-                    <span>แจ้งเตือน</span>
-                </button>
-                <button id="btn-toggle-camera" class="ext-ctrl-btn active" onclick="toggleCamera()" title="เปิด/ปิด กล้อง">
-                    <i data-lucide="camera" id="camera-icon"></i>
-                    <span>กล้อง</span>
-                </button>
-            </div>
-
-            <canvas id="ocr-canvas" style="display: none;"></canvas>
-            <div class="status-text" id="scan-status"><i data-lucide="scan-line"></i> นำบาร์โค้ดหรือซีเรียลมาไว้ในกรอบเพื่อสแกน</div>
-
-            <div id="result-box">
-                <div class="result-header">
-                    <span id="result-title"><i data-lucide="check-circle-2"></i> อ่านข้อมูลสำเร็จ</span>
-                </div>
-                <input type="text" id="result-input" class="result-input-field" placeholder="ซีเรียลที่สแกน...">
-                
-                <div class="result-actions">
-                    <button id="send-data-btn" class="conn-btn" style="flex: 2;" onclick="confirmAndSend()">
-                        <i data-lucide="send"></i> ส่งไปยัง PC
-                    </button>
-                    <button class="conn-btn btn-secondary" style="flex: 1;" onclick="resetScanForNext()">
-                        <i data-lucide="refresh-cw"></i> สแกนใหม่
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Right Column: Compact Dashboard & Quick Action Popups -->
-        <div class="dashboard-column">
+            <h1 class="app-title"><i data-lucide="scan"></i> SCANDER</h1>
             
-            <!-- 🌟 UNIFIED QUICK ACCESS TOOLBAR (ALL 3 BUTTONS IN ONE ROW) -->
+            <div class="top-controls-group">
+                <div class="theme-selector-wrapper" title="เปลี่ยนธีมสี">
+                    <i data-lucide="palette" class="theme-select-icon"></i>
+                    <select id="theme-select" class="theme-select" onchange="changeTheme(this.value)">
+                        <option value="line-green">LINE Green</option>
+                        <option value="truemoney">TrueMoney Wallet</option>
+                        <option value="oled">LINE Dark</option>
+                        <option value="synthwave">Synthwave Pink</option>
+                        <option value="amber">Cyber Amber</option>
+                        <option value="facebook-dark">Facebook Dark</option>
+                    </select>
+                </div>
+
+                <button id="fullscreen-toggle-btn" class="fullscreen-btn" onclick="toggleFullScreen()" title="สลับโหมดเต็มหน้าจอ">
+                    <i data-lucide="maximize" id="fullscreen-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Body Scroll Wrapper -->
+        <div class="app-content-body">
+            
+            <!-- Quick Action Toolbar Grid -->
             <div class="dashboard-quick-actions">
                 <div class="quick-action-card" onclick="openConnConfigModal()" title="ตั้งค่าเชื่อมต่อ PC Host">
                     <div class="quick-action-icon"><i data-lucide="network"></i></div>
-                    <div class="quick-action-info">
-                        <span class="quick-action-label">เชื่อมต่อ PC</span>
-                        <span class="quick-action-value"><span id="conn-status-badge" class="conn-status-badge">ออฟไลน์</span></span>
-                    </div>
+                    <span class="quick-action-label">เชื่อมต่อ PC</span>
+                    <span class="quick-action-value"><span id="conn-status-badge" class="conn-status-badge">ออฟไลน์</span></span>
                 </div>
 
                 <div class="quick-action-card" onclick="openManualEntryModal()" title="พิมพ์รหัสด้วยตนเอง">
                     <div class="quick-action-icon"><i data-lucide="keyboard"></i></div>
-                    <div class="quick-action-info">
-                        <span class="quick-action-label">กรอกSN</span>
-                        <span class="quick-action-value">Manual</span>
-                    </div>
+                    <span class="quick-action-label">กรอก SN</span>
+                    <span class="quick-action-value">Manual</span>
                 </div>
 
                 <div class="quick-action-card" onclick="openSeqGeneratorModal()" title="สร้างรหัสเรียงลำดับต่อเนื่องอัตโนมัติ">
                     <div class="quick-action-icon"><i data-lucide="list-ordered"></i></div>
-                    <div class="quick-action-info">
-                        <span class="quick-action-label">RUN</span>
-                        <span class="quick-action-value">SN</span>
+                    <span class="quick-action-label">RUN SN</span>
+                    <span class="quick-action-value">Auto</span>
+                </div>
+            </div>
+
+            <!-- Scanner Column / Viewport -->
+            <div class="scanner-column">
+                <div id="viewport-wrapper" class="viewport-wrapper">
+                    <video id="camera-feed" autoplay playsinline></video>
+
+                    <div class="hud-overlay">
+                        <div class="hud-top-bar">
+                            <div id="hud-live-badge" class="hud-badge live"><span class="hud-dot"></span> กำลังสตรีม</div>
+                            <div id="mode-hud-badge" class="hud-badge">บาร์โค้ด / QR</div>
+                        </div>
+
+                        <div class="scan-target-box">
+                            <div class="corner-bracket top-left"></div>
+                            <div class="corner-bracket top-right"></div>
+                            <div class="corner-bracket bottom-left"></div>
+                            <div class="corner-bracket bottom-right"></div>
+                            <div class="scan-line"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- External Controls Grid -->
+                <div class="external-controls-bar">
+                    <button id="btn-toggle-scan-engine" class="ext-ctrl-btn" onclick="toggleScanEngineMode()">
+                        <i data-lucide="cpu" id="scan-engine-icon"></i>
+                        <span id="scan-engine-label">บาร์โค้ด</span>
+                    </button>
+                    <button id="btn-toggle-continuous" class="ext-ctrl-btn" onclick="toggleContinuousMode()">
+                        <i data-lucide="repeat"></i>
+                        <span id="continuous-label">สแกนเดี่ยว</span>
+                    </button>
+                    <button id="btn-toggle-notifications" class="ext-ctrl-btn active" onclick="toggleNotifications()">
+                        <i data-lucide="bell" id="notification-icon"></i>
+                        <span>แจ้งเตือน</span>
+                    </button>
+                    <button id="btn-toggle-camera" class="ext-ctrl-btn active" onclick="toggleCamera()">
+                        <i data-lucide="camera" id="camera-icon"></i>
+                        <span>กล้อง</span>
+                    </button>
+                </div>
+
+                <canvas id="ocr-canvas" style="display: none;"></canvas>
+                <div class="status-text" id="scan-status"><i data-lucide="scan-line"></i> นำบาร์โค้ดหรือซีเรียลมาไว้ในกรอบ</div>
+
+                <div id="result-box">
+                    <div class="result-header">
+                        <span id="result-title"><i data-lucide="check-circle-2"></i> อ่านข้อมูลสำเร็จ</span>
+                    </div>
+                    <input type="text" id="result-input" class="result-input-field" placeholder="ซีเรียลที่สแกน...">
+                    
+                    <div class="result-actions">
+                        <button id="send-data-btn" class="conn-btn" style="flex: 2;" onclick="confirmAndSend()">
+                            <i data-lucide="send"></i> ส่งไปยัง PC
+                        </button>
+                        <button class="conn-btn btn-secondary" style="flex: 1;" onclick="resetScanForNext()">
+                            <i data-lucide="refresh-cw"></i> สแกนใหม่
+                        </button>
                     </div>
                 </div>
             </div>
 
-            <!-- TODAY STATS & RECENT HISTORY WIDGET -->
+            <!-- Summary & History Widget -->
             <div id="history-section">
-                <div class="today-summary-card" onclick="openHistoryEdgePanel()" title="แตะเพื่อดูประวัติการสแกนทั้งหมด">
+                <div class="today-summary-card" onclick="openHistoryEdgePanel()">
                     <div class="today-summary-title">
-                        <span><i data-lucide="bar-chart-2"></i> จำนวนที่สแกน</span>
-                        <span style="font-size: 12px; color: var(--accent-cyan); display: flex; align-items: center; gap: 4px;">ดูทั้งหมด <i data-lucide="chevron-right" style="width: 15px; height: 15px;"></i></span>
+                        <span><i data-lucide="bar-chart-2"></i> สรุปจำนวนที่สแกน</span>
+                        <span style="font-size: 11px; color: var(--accent-cyan); display: flex; align-items: center; gap: 2px;">ดูทั้งหมด <i data-lucide="chevron-right"></i></span>
                     </div>
                     <div class="stat-grid">
                         <div class="stat-item">
@@ -1068,7 +858,7 @@
                             <div class="stat-label">ทั้งหมด</div>
                         </div>
                         <div class="stat-item">
-                            <div class="stat-value" style="color: #10b981;" id="count-today-success">0</div>
+                            <div class="stat-value" style="color: var(--accent-cyan);" id="count-today-success">0</div>
                             <div class="stat-label">สำเร็จ</div>
                         </div>
                         <div class="stat-item">
@@ -1080,65 +870,55 @@
 
                 <div id="recent-list" class="recent-list"></div>
             </div>
+
         </div>
     </div>
 
-    <!-- ========================================================= -->
-    <!-- 🪟 POPUP MODALS & EDGE PANELS                              -->
-    <!-- ========================================================= -->
+    <!-- POPUP MODALS & EDGE PANELS -->
 
-    <!-- 1. Connection Config Modal (Popup) -->
+    <!-- 1. Connection Config Modal -->
     <div id="conn-config-modal" class="edge-panel-overlay">
         <div class="conn-modal-card">
             <div class="edge-panel-header">
                 <h3 class="edge-panel-title"><i data-lucide="network"></i> ตั้งค่าการเชื่อมต่อ PC Host</h3>
-                <button class="edge-panel-close-btn" onclick="closeConnConfigModal()" title="ปิดหน้าต่าง"><i data-lucide="x"></i></button>
+                <button class="edge-panel-close-btn" onclick="closeConnConfigModal()"><i data-lucide="arrow-left"></i></button>
             </div>
             <div class="conn-modal-body">
-                <div style="font-size: 13px; color: var(--text-sub);">ระบุ IP Address หรือ URL</div>
+                <div style="font-size: 12px; color: var(--text-sub); font-family: var(--font-body);">ระบุ IP Address หรือ URL ปลายทาง</div>
                 <div class="ip-input-wrapper">
                     <div class="ip-prefix-icon"><i data-lucide="globe"></i></div>
                     <input type="text" id="pc-ip-input" class="conn-input" placeholder="http://192.168.1.50:5000">
                 </div>
 
                 <div class="conn-actions-grid">
-                    <button class="conn-btn btn-test" onclick="testConnection()" title="ทดสอบลิงก์เชื่อมต่อ">
-                        <i data-lucide="activity"></i> ทดสอบ
-                    </button>
-                    <button class="conn-btn btn-secondary" onclick="autoDetectLocalIP()" title="ค้นหาอัตโนมัติ">
-                        <i data-lucide="wifi"></i> ค้นหา
-                    </button>
-                    <button class="conn-btn" onclick="saveConnection()" title="บันทึก">
-                        <i data-lucide="shield-check"></i> บันทึก
-                    </button>
+                    <button class="conn-btn btn-test" onclick="testConnection()"><i data-lucide="activity"></i> ทดสอบ</button>
+                    <button class="conn-btn" onclick="saveConnection()"><i data-lucide="shield-check"></i> บันทึก</button>
                 </div>
 
-                <div style="border-top: 1px solid var(--border-glow); padding-top: 14px; margin-top: 4px;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                        <span style="font-family: var(--font-title); font-size: 13px; font-weight: 700; color: var(--text-sub);">ประวัติการเชื่อมต่อ</span>
-                    </div>
-                    <div id="conn-history-list" style="display: flex; flex-direction: column; gap: 8px; max-height: 200px; overflow-y: auto;"></div>
+                <div style="border-top: 1px solid var(--border-glow); padding-top: 12px; margin-top: 4px;">
+                    <span style="font-family: var(--font-title); font-size: 12px; font-weight: 700; color: var(--text-sub); display: block; margin-bottom: 8px;">ประวัติการเชื่อมต่อ</span>
+                    <div id="conn-history-list" style="display: flex; flex-direction: column; gap: 6px; max-height: 180px; overflow-y: auto;"></div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- 2. Manual Entry Modal (Popup) -->
+    <!-- 2. Manual Entry Modal -->
     <div id="manual-entry-modal" class="edge-panel-overlay">
-        <div class="conn-modal-card" style="max-width: 400px;">
+        <div class="conn-modal-card">
             <div class="edge-panel-header">
-                <h3 class="edge-panel-title"><i data-lucide="keyboard"></i>SN</h3>
-                <button class="edge-panel-close-btn" onclick="closeManualEntryModal()" title="ปิดหน้าต่าง"><i data-lucide="x"></i></button>
+                <h3 class="edge-panel-title"><i data-lucide="keyboard"></i> กรอกซีเรียลนัมเบอร์</h3>
+                <button class="edge-panel-close-btn" onclick="closeManualEntryModal()"><i data-lucide="arrow-left"></i></button>
             </div>
             <div class="conn-modal-body">
-                <div style="font-size: 13px; color: var(--text-sub);">กรอกบาร์โค้ด ซีเรียลนัมเบอร์</div>
-                <input type="text" id="manual-code-input" class="conn-input" placeholder="กรอกบาร์โค้ดหรือซีเรียล..." style="background: var(--input-bg); border: 1px solid var(--border-glow); border-radius: 14px; padding: 14px 16px; font-size: 15px;">
+                <div style="font-size: 12px; color: var(--text-sub); font-family: var(--font-body);">พิมพ์รหัสบาร์โค้ดหรือซีเรียล</div>
+                <input type="text" id="manual-code-input" class="conn-input" placeholder="กรอกรหัส..." style="background: var(--input-bg); border: 1px solid var(--border-glow); border-radius: 12px; padding: 12px;">
                 
-                <div style="display: flex; gap: 8px; margin-top: 4px;">
-                    <button class="conn-btn btn-secondary" onclick="saveManualAsPending()" style="flex: 1; justify-content: center; padding: 14px; border-color: rgba(245, 158, 11, 0.4); color: #f59e0b;" title="บันทึกเก็บไว้ในรายการ (รอส่ง)">
+                <div style="display: flex; gap: 8px;">
+                    <button class="conn-btn btn-secondary" onclick="saveManualAsPending()" style="flex: 1; color: #f59e0b;">
                         <i data-lucide="save"></i> บันทึก (รอส่ง)
                     </button>
-                    <button class="conn-btn" onclick="submitManualEntry()" style="flex: 1; justify-content: center; padding: 14px;" title="ส่งไปยัง PC ทันที">
+                    <button class="conn-btn" onclick="submitManualEntry()" style="flex: 1;">
                         <i data-lucide="send"></i> ส่งไปยัง PC
                     </button>
                 </div>
@@ -1146,30 +926,30 @@
         </div>
     </div>
 
-    <!-- 3. Sequence Generator Modal (New Feature + Cancel All Button) -->
+    <!-- 3. Sequence Generator Modal -->
     <div id="seq-generator-modal" class="edge-panel-overlay">
-        <div class="conn-modal-card" style="max-width: 440px;">
+        <div class="conn-modal-card">
             <div class="edge-panel-header">
-                <h3 class="edge-panel-title"><i data-lucide="list-ordered"></i>RUN SN</h3>
-                <button class="edge-panel-close-btn" onclick="closeSeqGeneratorModal()" title="ปิดหน้าต่าง"><i data-lucide="x"></i></button>
+                <h3 class="edge-panel-title"><i data-lucide="list-ordered"></i> RUN SN อัตโนมัติ</h3>
+                <button class="edge-panel-close-btn" onclick="closeSeqGeneratorModal()"><i data-lucide="arrow-left"></i></button>
             </div>
             <div class="conn-modal-body">
-                <div style="font-size: 13px; color: var(--text-sub);">กำหนดค่าเริ่มต้นและค่าสิ้นสุดเพื่อให้ระบบสร้างซีเรียลหรือบาร์โค้ดต่อเนื่องกัน</div>
+                <div style="font-size: 12px; color: var(--text-sub); font-family: var(--font-body);">กำหนดช่วงตัวเลขเพื่อสร้างซีเรียลแบบต่อเนื่อง</div>
                 
-                <div style="display: flex; flex-direction: column; gap: 12px;">
+                <div style="display: flex; flex-direction: column; gap: 10px;">
                     <div>
-                        <label style="font-size: 12px; font-weight: 700; color: var(--text-sub); display: block; margin-bottom: 6px;">คำนำหน้า</label>
-                        <input type="text" id="seq-prefix-input" class="conn-input" placeholder="เช่น SN-, LOT2026-" oninput="updateSeqPreview()" style="background: var(--input-bg); border: 1px solid var(--border-glow); border-radius: 12px; padding: 12px 14px; font-size: 14px;">
+                        <label style="font-size: 11px; font-weight: 700; color: var(--text-sub); display: block; margin-bottom: 4px; font-family: var(--font-title);">คำนำหน้า</label>
+                        <input type="text" id="seq-prefix-input" class="conn-input" placeholder="เช่น SN-, LOT2026-" oninput="updateSeqPreview()" style="background: var(--input-bg); border: 1px solid var(--border-glow); border-radius: 10px; padding: 10px;">
                     </div>
                     
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
                         <div>
-                            <label style="font-size: 12px; font-weight: 700; color: var(--text-sub); display: block; margin-bottom: 6px;">START</label>
-                            <input type="number" id="seq-start-input" class="conn-input" value="1" placeholder="1" oninput="updateSeqPreview()" style="background: var(--input-bg); border: 1px solid var(--border-glow); border-radius: 12px; padding: 12px 14px; font-size: 14px;">
+                            <label style="font-size: 11px; font-weight: 700; color: var(--text-sub); display: block; margin-bottom: 4px; font-family: var(--font-title);">START</label>
+                            <input type="number" id="seq-start-input" class="conn-input" value="1" oninput="updateSeqPreview()" style="background: var(--input-bg); border: 1px solid var(--border-glow); border-radius: 10px; padding: 10px;">
                         </div>
                         <div>
-                            <label style="font-size: 12px; font-weight: 700; color: var(--text-sub); display: block; margin-bottom: 6px;">END</label>
-                            <input type="number" id="seq-end-input" class="conn-input" value="10" placeholder="10" oninput="updateSeqPreview()" style="background: var(--input-bg); border: 1px solid var(--border-glow); border-radius: 12px; padding: 12px 14px; font-size: 14px;">
+                            <label style="font-size: 11px; font-weight: 700; color: var(--text-sub); display: block; margin-bottom: 4px; font-family: var(--font-title);">END</label>
+                            <input type="number" id="seq-end-input" class="conn-input" value="10" oninput="updateSeqPreview()" style="background: var(--input-bg); border: 1px solid var(--border-glow); border-radius: 10px; padding: 10px;">
                         </div>
                     </div>
 
@@ -1177,36 +957,62 @@
                     <input type="hidden" id="seq-step-input" value="1">
                 </div>
 
-                <div style="background: var(--card-inner); border: 1px solid var(--border-glow); border-radius: 14px; padding: 12px; margin-top: 4px;">
-                    <div style="font-size: 11px; font-weight: 700; color: var(--accent-cyan); margin-bottom: 6px; font-family: var(--font-title);">ตัวอย่างผลลัพธ์ (Preview):</div>
-                    <div id="seq-preview-text" style="font-family: var(--font-mono); font-size: 13px; color: var(--text-main); word-break: break-all;">-</div>
+                <div style="background: var(--card-inner); border: 1px solid var(--border-glow); border-radius: 12px; padding: 10px;">
+                    <div style="font-size: 11px; font-weight: 700; color: var(--accent-cyan); margin-bottom: 4px; font-family: var(--font-title);">ตัวอย่างผลลัพธ์:</div>
+                    <div id="seq-preview-text" style="font-family: var(--font-mono); font-size: 12px; color: var(--text-main); word-break: break-all;">-</div>
                 </div>
 
-                <div style="display: flex; gap: 8px; margin-top: 4px;">
-                    <button class="conn-btn btn-secondary" onclick="cancelSeqGeneration()" style="flex: 1; justify-content: center; padding: 14px; border-color: rgba(239, 68, 68, 0.4); color: #ef4444;" title="ยกเลิกทั้งหมด / หยุดกระบวนการ">
-                        <i data-lucide="x-circle"></i> ยกเลิกทั้งหมด
+                <div style="display: flex; gap: 8px;">
+                    <button class="conn-btn btn-secondary" onclick="cancelSeqGeneration()" style="flex: 1; color: #ef4444;">
+                        <i data-lucide="x-circle"></i> ยกเลิก
                     </button>
-                    <button class="conn-btn" onclick="generateAndSendSequence()" style="flex: 2; justify-content: center; padding: 14px;">
-                        <i data-lucide="play"></i>SN
+                    <button id="btn-generate-seq" class="conn-btn" onclick="generateAndSendSequence()" style="flex: 2;">
+                        <i data-lucide="play" id="btn-generate-seq-icon"></i> <span id="btn-generate-seq-text">สร้าง SN</span>
                     </button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- 4. Full Scan History Sliding Edge Panel (Call-Log Style) -->
+    <!-- 4. Full Scan History Edge Panel -->
     <div id="history-edge-panel" class="edge-panel-overlay">
         <div class="edge-panel-card">
+            <!-- Header -->
             <div class="edge-panel-header">
-                <h3 class="edge-panel-title"><i data-lucide="history"></i> ประวัติการสแกน (Call Log)</h3>
-                <button class="edge-panel-close-btn" onclick="closeHistoryEdgePanel()" title="ปิดแผง"><i data-lucide="x"></i></button>
+                <h3 class="edge-panel-title"><i data-lucide="history"></i> ประวัติการสแกนทั้งหมด</h3>
+                <button class="edge-panel-close-btn" onclick="closeHistoryEdgePanel()"><i data-lucide="arrow-left"></i></button>
             </div>
+
+            <!-- Search Bar -->
             <div class="edge-panel-search-bar">
-                <input type="text" id="modal-search-input" class="conn-input" placeholder="🔍 ค้นหารหัสในประวัติ..." oninput="filterFullHistory()">
-                <button class="conn-btn btn-secondary" onclick="clearAllHistory()" style="padding: 10px 14px; font-size: 12px; color: #ef4444; border-color: rgba(239, 68, 68, 0.3);">
-                    <i data-lucide="trash-2"></i> ล้าง
+                <input type="text" id="modal-search-input" class="conn-input" placeholder="🔍 ค้นหารหัส หรือ ชนิดข้อมูล..." oninput="filterFullHistory()" style="background: var(--input-bg); border: 1px solid var(--border-glow); border-radius: 10px; padding: 8px 12px;">
+                <button class="icon-btn danger" onclick="clearAllHistory()" title="ล้างประวัติทั้งหมด" style="height: 38px; width: 38px;">
+                    <i data-lucide="trash-2"></i>
                 </button>
             </div>
+
+            <!-- Filter Tabs -->
+            <div class="history-filter-tabs">
+                <button class="filter-tab-btn active" data-status="all" onclick="setHistoryFilter('all')">ทั้งหมด</button>
+                <button class="filter-tab-btn" data-status="success" onclick="setHistoryFilter('success')">สำเร็จ</button>
+                <button class="filter-tab-btn" data-status="pending" onclick="setHistoryFilter('pending')">รอส่ง</button>
+                <button class="filter-tab-btn" data-status="failed" onclick="setHistoryFilter('failed')">ล้มเหลว</button>
+            </div>
+
+            <!-- Toolbar Counter & Actions -->
+            <div class="edge-panel-toolbar">
+                <span id="full-history-count">0 รายการ</span>
+                <div style="display: flex; gap: 8px;">
+                    <button class="conn-btn btn-secondary" onclick="copyAllHistoryToClipboard()" style="min-height: 28px; padding: 4px 8px; font-size: 11px;">
+                        <i data-lucide="copy" style="width: 14px; height: 14px;"></i> คัดลอก
+                    </button>
+                    <button class="conn-btn btn-secondary" onclick="exportHistoryCSV()" style="min-height: 28px; padding: 4px 8px; font-size: 11px; color: var(--accent-cyan);">
+                        <i data-lucide="download" style="width: 14px; height: 14px;"></i> CSV
+                    </button>
+                </div>
+            </div>
+
+            <!-- Scrollable Body List -->
             <div id="full-history-list" class="edge-panel-body-list"></div>
         </div>
     </div>
@@ -1238,6 +1044,7 @@
         let globalBarcodeDetector = null;
         let isDetectingFrame = false;
         let tesseractWorker = null;
+        let currentFilterStatus = 'all';
 
         const SUPPORTED_BARCODE_FORMATS = [
             'code_128', 'code_39', 'ean_13', 'upc_a', 'itf', 'qr_code', 'data_matrix', 'ean_8', 'upc_e', 'codabar'
@@ -1256,17 +1063,6 @@
         function showScanToast(msg, variant = 'success') {
             if (!isNotificationsEnabled && variant !== 'force-show') return;
             if (variant === 'force-show') variant = 'success';
-
-            // ส่งแจ้งเตือนผ่านโทรศัพท์/เบราว์เซอร์ (Native Phone Notification)
-            if ('Notification' in window && Notification.permission === 'granted' && isNotificationsEnabled) {
-                let titleText = 'SCANDER';
-                if (variant === 'success') titleText = 'สำเร็จ';
-                else if (variant === 'warning') titleText = 'แจ้งเตือน';
-                else if (variant === 'error' || variant === 'off') titleText = 'แจ้งเตือนระบบ';
-                try {
-                    new Notification(titleText, { body: msg });
-                } catch (e) {}
-            }
 
             const container = document.getElementById('toast-container');
             if (!container) return;
@@ -1296,7 +1092,7 @@
         function removeToast(toastElement) {
             if (!toastElement.classList.contains('closing')) {
                 toastElement.classList.add('closing');
-                setTimeout(() => { if (toastElement.parentNode) toastElement.parentNode.removeChild(toastElement); }, 350); 
+                setTimeout(() => { if (toastElement.parentNode) toastElement.parentNode.removeChild(toastElement); }, 300); 
             }
         }
 
@@ -1306,7 +1102,7 @@
             setTimeout(() => viewport.classList.remove('success-flash'), 400);
         }
 
-        /* 🌟 POPUP MODAL CONTROLLERS */
+        /* POPUP MODAL CONTROLLERS */
         function openConnConfigModal() {
             renderConnHistoryList();
             document.getElementById('conn-config-modal').classList.add('active');
@@ -1331,18 +1127,28 @@
             refreshIcons();
         }
         function closeSeqGeneratorModal() {
+            if (isSeqGenerating) {
+                showScanToast("กำลังสร้าง SN อยู่ กรุณารอให้เสร็จสิ้นหรือกดปุ่มยกเลิก", "warning");
+                return;
+            }
             document.getElementById('seq-generator-modal').classList.remove('active');
         }
 
         function openHistoryEdgePanel() {
             document.getElementById('history-edge-panel').classList.add('active');
-            renderFullHistory();
+            filterFullHistory();
         }
         function closeHistoryEdgePanel() { 
             document.getElementById('history-edge-panel').classList.remove('active'); 
         }
 
-        /* 🌟 SEQUENCE GENERATOR LOGIC + CANCELLATION */
+        /* 🔍 ฟังก์ชันตรวจสอบข้อมูลซ้ำในระบบ */
+        function isDuplicateData(codeText) {
+            const history = JSON.parse(localStorage.getItem('scanHistory')) || [];
+            return history.some(item => item.data === codeText);
+        }
+
+        /* SEQUENCE GENERATOR LOGIC (OPTIMIZED FOR SPEED & NO HISTORY STORAGE) */
         function updateSeqPreview() {
             const prefix = document.getElementById('seq-prefix-input').value.trim();
             const start = parseInt(document.getElementById('seq-start-input').value) || 1;
@@ -1356,8 +1162,8 @@
             }
             
             const totalCount = Math.floor((end - start) / step) + 1;
-            if (totalCount > 2000) {
-                document.getElementById('seq-preview-text').textContent = `⚠️ จำนวนมากเกินไป (${totalCount} รายการ) แนะนำไม่เกิน 2,000 ต่อครั้ง`;
+            if (totalCount > 5000) {
+                document.getElementById('seq-preview-text').textContent = `⚠️ จำนวนมากเกินไป (${totalCount} รายการ) แนะนำไม่เกิน 5,000 ต่อครั้ง`;
                 return;
             }
 
@@ -1371,17 +1177,42 @@
 
             const firstStr = formatNum(start);
             const lastStr = formatNum(end);
-            document.getElementById('seq-preview-text').textContent = `สร้างตั้งแต่ ${firstStr} ถึง ${lastStr} (รวมทั้งหมด ${totalCount} รายการ)`;
+            document.getElementById('seq-preview-text').textContent = `สร้างตั้งแต่ ${firstStr} ถึง ${lastStr} (รวม ${totalCount} รายการ)`;
+        }
+
+        function updateSeqButtonState(generating) {
+            const btn = document.getElementById('btn-generate-seq');
+            const icon = document.getElementById('btn-generate-seq-icon');
+            const text = document.getElementById('btn-generate-seq-text');
+            if (!btn) return;
+
+            if (generating) {
+                btn.disabled = true;
+                btn.style.opacity = '0.7';
+                btn.style.cursor = 'not-allowed';
+                if (icon) icon.setAttribute('data-lucide', 'loader-2');
+                if (text) text.textContent = 'กำลังRUN...';
+            } else {
+                btn.disabled = false;
+                btn.style.opacity = '1';
+                btn.style.cursor = 'pointer';
+                if (icon) icon.setAttribute('data-lucide', 'play');
+                if (text) text.textContent = 'สร้าง SN';
+            }
+            refreshIcons();
         }
 
         function cancelSeqGeneration() {
             cancelSeqFlag = true;
             isSeqGenerating = false;
-            closeSeqGeneratorModal();
+            updateSeqButtonState(false);
+            document.getElementById('seq-generator-modal').classList.remove('active');
             showScanToast("ยกเลิก", "warning");
         }
 
         async function generateAndSendSequence() {
+            if (isSeqGenerating) return;
+
             const prefix = document.getElementById('seq-prefix-input').value.trim();
             const start = parseInt(document.getElementById('seq-start-input').value) || 1;
             const end = parseInt(document.getElementById('seq-end-input').value) || 10;
@@ -1399,60 +1230,65 @@
                 return;
             }
 
-            if (totalCount > 500 && !confirm(`คุณกำลังสร้างข้อมูลจำนวน ${totalCount} รายการ ต้องการดำเนินการต่อหรือไม่?`)) {
+            if (totalCount > 1000 && !confirm(`คุณกำลังสร้างข้อมูลจำนวน ${totalCount} รายการ ต้องการดำเนินการต่อหรือไม่?`)) {
                 return;
             }
 
-            closeSeqGeneratorModal();
-            showScanToast(`กำลังสร้างและส่ง ${totalCount} รายการ... (กดปุ่มยกเลิกทั้งหมดเพื่อหยุดได้)`, "info");
+            showScanToast(`กำลังสร้างและส่ง ${totalCount} รายการ...`, "info");
 
             isSeqGenerating = true;
             cancelSeqFlag = false;
-            let successCount = 0;
+            updateSeqButtonState(true);
+
             const targetUrl = getEndpointUrl();
+            const codes = [];
 
             for (let n = start; n <= end; n += step) {
-                if (cancelSeqFlag) {
-                    break;
-                }
-
                 let strNum = n.toString();
                 if (pad > 0 && strNum.length < pad) {
                     strNum = strNum.padStart(pad, '0');
                 }
-                const code = prefix + strNum;
-                const type = 'กำหนดSERIAL';
+                codes.push(prefix + strNum);
+            }
 
-                saveToHistory(code, type, targetUrl ? 'pending' : 'success');
+            let successCount = 0;
+            const batchSize = 30; // ใช้การส่งแบบขนาน (Concurrent Batches) เพื่อความเร็วสูงสุด
+
+            for (let i = 0; i < codes.length; i += batchSize) {
+                if (cancelSeqFlag) break;
+                const batch = codes.slice(i, i + batchSize);
 
                 if (targetUrl) {
-                    try {
-                        const res = await fetch(targetUrl, {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({ scanned_data: code, type: type, timestamp: new Date().toISOString() })
-                        });
-                        if (res.ok) {
-                            saveToHistory(code, type, 'success');
-                            successCount++;
-                        } else {
-                            saveToHistory(code, type, 'failed');
+                    const promises = batch.map(async (code) => {
+                        try {
+                            const res = await fetch(targetUrl, {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({ scanned_data: code, type: 'RUN-SN', timestamp: new Date().toISOString() })
+                            });
+                            return res.ok;
+                        } catch (e) {
+                            return false;
                         }
-                    } catch (e) {
-                        saveToHistory(code, type, 'failed');
-                    }
+                    });
+
+                    const results = await Promise.all(promises);
+                    successCount += results.filter(Boolean).length;
                 } else {
-                    successCount++;
+                    successCount += batch.length;
                 }
             }
 
             isSeqGenerating = false;
+            updateSeqButtonState(false);
+
             if (!cancelSeqFlag) {
-                showScanToast(`สำเร็จ (${successCount}/${totalCount} รายการ)`, "success");
+                document.getElementById('seq-generator-modal').classList.remove('active');
+                showScanToast(`สร้างและส่งสำเร็จทั้งหมด (${successCount} รายการ)`, "success");
             }
         }
 
-        /* PRO MASTER CONNECTION & TESTING LOGIC */
+        /* CONNECTION & TESTING LOGIC */
         function formatInputUrl(url) {
             let clean = url.trim();
             if (!clean) return '';
@@ -1474,7 +1310,7 @@
             fetch(`${url}/api/health`, { method: 'GET', mode: 'cors', signal: AbortSignal.timeout(4000) })
                 .then(res => {
                     if (res.ok || res.status < 500) {
-                        showScanToast(`เชื่อมต่อสำเร็จ! พร้อมรับส่งข้อมูล (${url})`, "success");
+                        showScanToast(`เชื่อมต่อสำเร็จ! (${url})`, "success");
                         updateConnectionStatus(true);
                     } else {
                         showScanToast("เซิร์ฟเวอร์ตอบสนองแต่มีข้อผิดพลาด", "warning");
@@ -1487,19 +1323,10 @@
                             updateConnectionStatus(true);
                         })
                         .catch(() => {
-                            showScanToast("ไม่สามารถเชื่อมต่อเครื่องปลายทางได้ (ตรวจสอบ IP / Firewall)", "error");
+                            showScanToast("ไม่สามารถเชื่อมต่อเครื่องปลายทางได้", "error");
                             updateConnectionStatus(false);
                         });
                 });
-        }
-
-        function autoDetectLocalIP() {
-            showScanToast("กำลังสแกนหาเครื่องคอมพิวเตอร์ในเครือข่าย...", "info");
-            setTimeout(() => {
-                const suggested = "http://192.168.1.100:5000";
-                document.getElementById('pc-ip-input').value = suggested;
-                showScanToast(`พบน้องโฮสต์ที่: ${suggested}`, "success");
-            }, 1200);
         }
 
         function saveConnection() {
@@ -1515,7 +1342,7 @@
             saveToConnectionHistory(url);
             updateConnectionStatus(true);
             initRealtimeStream();
-            showScanToast("บันทึกการเชื่อมต่อคอมพิวเตอร์สำเร็จ", "success");
+            showScanToast("บันทึกการเชื่อมต่อเรียบร้อย", "success");
             closeConnConfigModal();
         }
 
@@ -1562,7 +1389,7 @@
             const currentUrl = localStorage.getItem('pc_api_url') || '';
 
             if (list.length === 0) {
-                container.innerHTML = '<div style="text-align:center; color:var(--text-sub); font-size:13px; padding:15px 0;">ยังไม่มีประวัติการเชื่อมต่อ</div>';
+                container.innerHTML = '<div style="text-align:center; color:var(--text-sub); font-size:12px; padding:10px 0;">ยังไม่มีประวัติการเชื่อมต่อ</div>';
                 return;
             }
 
@@ -1578,9 +1405,7 @@
                             <div class="call-log-code" style="color:${isCurrent ? 'var(--accent-cyan)' : 'var(--text-main)'};">${escapeHtml(url)}</div>
                             <div class="call-log-meta">${date ? date : ''} ${isCurrent ? '<strong style="color:var(--accent-cyan);">(ใช้งานอยู่)</strong>' : ''}</div>
                         </div>
-                        <div class="item-action-btns" onclick="event.stopPropagation();">
-                            <button class="icon-btn danger" onclick="deleteConnHistoryItem('${escapeJsString(url)}')"><i data-lucide="trash-2"></i></button>
-                        </div>
+                        <button class="icon-btn danger" onclick="event.stopPropagation(); deleteConnHistoryItem('${escapeJsString(url)}')"><i data-lucide="trash-2"></i></button>
                     </div>
                 `;
             }).join('');
@@ -1594,12 +1419,12 @@
         }
 
         function deleteConnHistoryItem(urlToDelete) {
-            if (!confirm(`ต้องการลบ "${urlToDelete}" ออกจากประวัติหรือไม่?`)) return;
+            if (!confirm(`ต้องการลบ "${urlToDelete}" หรือไม่?`)) return;
             let list = JSON.parse(localStorage.getItem('connHistory')) || [];
             list = list.filter(item => (typeof item === 'string' ? item : item.url) !== urlToDelete);
             localStorage.setItem('connHistory', JSON.stringify(list));
             renderConnHistoryList();
-            showScanToast("ลบประวัติสำเร็จ", "info");
+            showScanToast("ลบประวัติแล้ว", "info");
         }
 
         function initRealtimeStream() {
@@ -1622,7 +1447,7 @@
             } catch (e) {}
         }
 
-        /* MANUAL ENTRY & SAVE AS PENDING */
+        /* MANUAL ENTRY WITH DUPLICATE CHECK */
         function submitManualEntry() {
             const inputElem = document.getElementById('manual-code-input');
             const code = inputElem.value.trim();
@@ -1630,6 +1455,13 @@
 
             if (!code) {
                 showScanToast("กรุณากรอกข้อมูลก่อนส่ง", "warning");
+                inputElem.focus();
+                return;
+            }
+
+            if (isDuplicateData(code)) {
+                triggerVibration([150, 50, 150]);
+                showScanToast(`ข้อมูลซ้ำ: "${code}" มีอยู่ในระบบแล้ว!`, "error");
                 inputElem.focus();
                 return;
             }
@@ -1646,6 +1478,13 @@
 
             if (!code) {
                 showScanToast("กรุณากรอกข้อมูลก่อนบันทึก", "warning");
+                inputElem.focus();
+                return;
+            }
+
+            if (isDuplicateData(code)) {
+                triggerVibration([150, 50, 150]);
+                showScanToast(`ข้อมูลซ้ำ: "${code}" มีอยู่ในระบบแล้ว!`, "error");
                 inputElem.focus();
                 return;
             }
@@ -1681,7 +1520,7 @@
             if (currentScanEngine === 'barcode') {
                 currentScanEngine = 'sn_ocr';
                 btn.classList.add('active');
-                label.textContent = 'โหมด: ซีเรียล SN';
+                label.textContent = 'ซีเรียล SN';
                 hudBadge.textContent = 'ซีเรียลนัมเบอร์ (SN)';
                 hudBadge.classList.add('batch-mode');
                 statusText.innerHTML = '<i data-lucide="text-cursor"></i> นำป้าย Serial Number มาไว้ในกรอบ';
@@ -1689,7 +1528,7 @@
             } else {
                 currentScanEngine = 'barcode';
                 btn.classList.remove('active');
-                label.textContent = 'โหมด: บาร์โค้ด';
+                label.textContent = 'บาร์โค้ด';
                 hudBadge.textContent = 'บาร์โค้ด / QR';
                 hudBadge.classList.remove('batch-mode');
                 statusText.innerHTML = '<i data-lucide="scan-line"></i> นำบาร์โค้ดหรือซีเรียลมาไว้ในกรอบเพื่อสแกน';
@@ -1705,12 +1544,12 @@
 
             if (isContinuousMode) {
                 btn.classList.add('active');
-                label.textContent = 'ต่อเนื่อง: เปิด';
+                label.textContent = 'สแกนต่อเนื่อง';
                 resetScanForNext();
                 showScanToast("เปิดใช้งานสแกนต่อเนื่องแล้ว", 'success');
             } else {
                 btn.classList.remove('active');
-                label.textContent = 'ต่อเนื่อง: ปิด';
+                label.textContent = 'สแกนเดี่ยว';
                 showScanToast("ปิดโหมดสแกนต่อเนื่องแล้ว", 'off');
             }
             refreshIcons();
@@ -1723,7 +1562,7 @@
             if (isNotificationsEnabled) {
                 btn.classList.add('active');
                 icon.setAttribute('data-lucide', 'bell');
-                showScanToast("เปิดการแจ้งเตือนทั้งหมดแล้ว", 'force-show');
+                showScanToast("เปิดการแจ้งเตือนแล้ว", 'force-show');
             } else {
                 btn.classList.remove('active');
                 icon.setAttribute('data-lucide', 'bell-off');
@@ -1778,17 +1617,15 @@
             const iconElem = document.getElementById('fullscreen-icon');
             const isFullscreen = !!document.fullscreenElement;
             if (isFullscreen) {
-                document.body.classList.add('is-fullscreen-mode');
                 if (iconElem) iconElem.setAttribute('data-lucide', 'minimize');
             } else {
-                document.body.classList.remove('is-fullscreen-mode');
                 if (iconElem) iconElem.setAttribute('data-lucide', 'maximize');
             }
             refreshIcons();
         }
 
         function initTheme() {
-            const savedTheme = localStorage.getItem('app_theme') || 'rainbow';
+            const savedTheme = localStorage.getItem('app_theme') || 'line-green';
             document.body.setAttribute('data-theme', savedTheme);
             const themeSelect = document.getElementById('theme-select');
             if (themeSelect) themeSelect.value = savedTheme;
@@ -1871,6 +1708,12 @@
             if (scannedText === lastScannedCode && (now - lastScanTime < SCAN_COOLDOWN_MS)) return;
             lastScannedCode = scannedText; lastScanTime = now;
 
+            if (isDuplicateData(scannedText)) {
+                triggerVibration([150, 50, 150]);
+                showScanToast(`ข้อมูลซ้ำ: "${scannedText}" มีอยู่ในระบบแล้ว!`, "error");
+                return;
+            }
+
             const targetUrl = getEndpointUrl();
             const initialStatus = targetUrl ? 'pending' : 'success';
 
@@ -1912,6 +1755,17 @@
         function confirmAndSend() {
             const dataText = document.getElementById('result-input').value.trim();
             if (!dataText) return alert("กรุณากรอกข้อมูล");
+            
+            if (isDuplicateData(dataText) && dataText !== currentScannedData) {
+                triggerVibration([150, 50, 150]);
+                showScanToast(`ข้อมูลซ้ำ: "${dataText}" มีอยู่ในระบบแล้ว!`, "error");
+                return;
+            }
+
+            if (currentScannedData && dataText !== currentScannedData) {
+                removeHistoryItemByData(currentScannedData);
+            }
+
             sendToPCAPI(dataText, currentScannedType, false);
         }
 
@@ -1946,7 +1800,7 @@
             });
         }
 
-        /* 🔄 UPSERT LOGIC */
+        /* UPSERT & REMOVE LOGIC */
         function saveToHistory(dataText, dataType, status = 'pending') {
             let history = JSON.parse(localStorage.getItem('scanHistory')) || [];
             const now = new Date();
@@ -1972,7 +1826,17 @@
             localStorage.setItem('scanHistory', JSON.stringify(history));
             renderRecentHistory();
             if (document.getElementById('history-edge-panel').classList.contains('active')) {
-                renderFullHistory();
+                filterFullHistory();
+            }
+        }
+
+        function removeHistoryItemByData(dataText) {
+            let history = JSON.parse(localStorage.getItem('scanHistory')) || [];
+            history = history.filter(item => item.data !== dataText);
+            localStorage.setItem('scanHistory', JSON.stringify(history));
+            renderRecentHistory();
+            if (document.getElementById('history-edge-panel').classList.contains('active')) {
+                filterFullHistory();
             }
         }
 
@@ -1992,9 +1856,12 @@
 
             localStorage.setItem('scanHistory', JSON.stringify(history));
             renderRecentHistory();
+            if (document.getElementById('history-edge-panel').classList.contains('active')) {
+                filterFullHistory();
+            }
         }
 
-        /* 📞 CALL-LOG STYLE RENDERING FUNCTION WITH TOUCH SWIPE-TO-DELETE */
+        /* REFACTORED HISTORY RENDERING & FILTERING */
         function renderRecentHistory() {
             const recentContainer = document.getElementById('recent-list');
             const history = JSON.parse(localStorage.getItem('scanHistory')) || [];
@@ -2010,23 +1877,43 @@
                 return; 
             }
 
-            recentContainer.innerHTML = history.slice(0, 1).map(item => generateSwipeItemHTML(item)).join('');
+            recentContainer.innerHTML = history.slice(0, 1).map(item => generateSwipeItemHTML(item, false)).join('');
             refreshIcons();
-            attachSwipeListeners();
+            attachSwipeListeners('recent-list');
         }
 
-        function renderFullHistory(query = '') {
+        function setHistoryFilter(status) {
+            currentFilterStatus = status;
+            document.querySelectorAll('.filter-tab-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-status') === status);
+            });
+            filterFullHistory();
+        }
+
+        function filterFullHistory() {
+            const query = (document.getElementById('modal-search-input').value || '').trim().toLowerCase();
             const list = JSON.parse(localStorage.getItem('scanHistory')) || [];
-            const filtered = query ? list.filter(i => i.data.toLowerCase().includes(query.toLowerCase())) : list;
             
+            let filtered = list;
+            if (currentFilterStatus !== 'all') {
+                filtered = filtered.filter(i => i.status === currentFilterStatus);
+            }
+            if (query) {
+                filtered = filtered.filter(i => i.data.toLowerCase().includes(query) || (i.type && i.type.toLowerCase().includes(query)));
+            }
+            
+            const countElem = document.getElementById('full-history-count');
+            if (countElem) countElem.textContent = `${filtered.length} รายการ`;
+            
+            const container = document.getElementById('full-history-list');
             if (filtered.length === 0) {
-                document.getElementById('full-history-list').innerHTML = '<div style="text-align:center; color:var(--text-sub); font-size:13px; padding:20px 0;">ไม่พบประวัติการสแกน</div>';
+                container.innerHTML = '<div style="text-align:center; color:var(--text-sub); font-size:13px; padding:30px 0;">ไม่พบประวัติการสแกน</div>';
                 return;
             }
 
-            document.getElementById('full-history-list').innerHTML = filtered.map(item => generateSwipeItemHTML(item, true)).join('');
+            container.innerHTML = filtered.map(item => generateSwipeItemHTML(item, true)).join('');
             refreshIcons();
-            attachSwipeListeners();
+            attachSwipeListeners('full-history-list');
         }
 
         function generateSwipeItemHTML(item, isModal = false) {
@@ -2051,9 +1938,9 @@
             const clickAction = isModal ? `selectHistoryItemForResend('${escapeJsString(item.data)}'); closeHistoryEdgePanel();` : `selectHistoryItemForResend('${escapeJsString(item.data)}')`;
 
             return `
-                <div class="swipe-item-wrapper" data-id="${item.data}">
+                <div class="swipe-item-wrapper" data-id="${escapeHtml(item.data)}">
                     <div class="swipe-delete-background">
-                        <i data-lucide="trash-2"></i> ลบรายการ
+                        <i data-lucide="trash-2"></i> ลบ
                     </div>
                     <div class="history-item swipeable-card" onclick="${clickAction}">
                         <div class="call-log-icon ${iconClass}"><i data-lucide="${iconName}"></i></div>
@@ -2061,18 +1948,19 @@
                             <div class="call-log-code">${escapeHtml(item.data)}</div>
                             <div class="call-log-meta"><span>${metaText}</span></div>
                         </div>
-                        <div style="display: flex; align-items: center; gap: 6px;">
+                        <div style="display: flex; align-items: center; gap: 4px; flex-shrink: 0;">
                             <span class="badge ${badgeClass}">${badgeText}</span>
-                            ${item.status !== 'success' ? `<button class="icon-btn primary" onclick="event.stopPropagation(); resendHistoryItem('${escapeJsString(item.data)}')" title="ส่งข้อมูล"><i data-lucide="send"></i></button>` : ''}
                         </div>
                     </div>
                 </div>
             `;
         }
 
-        /* 📱 SWIPE GESTURE EVENT HANDLERS */
-        function attachSwipeListeners() {
-            const wrappers = document.querySelectorAll('.swipe-item-wrapper');
+        /* SCOPED SWIPE GESTURE EVENT HANDLERS (UPDATED FOR RIGHT SWIPE) */
+        function attachSwipeListeners(containerId) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            const wrappers = container.querySelectorAll('.swipe-item-wrapper');
             
             wrappers.forEach(wrapper => {
                 const card = wrapper.querySelector('.swipeable-card');
@@ -2081,7 +1969,7 @@
                 let startX = 0;
                 let currentX = 0;
                 let isDragging = false;
-                const threshold = -100; // ระยะปัดซ้ายเพื่อลบ
+                const threshold = 80;
 
                 card.addEventListener('touchstart', (e) => {
                     startX = e.touches[0].clientX;
@@ -2092,7 +1980,7 @@
                 card.addEventListener('touchmove', (e) => {
                     if (!isDragging) return;
                     currentX = e.touches[0].clientX - startX;
-                    if (currentX < 0) {
+                    if (currentX > 0) {
                         card.style.transform = `translateX(${currentX}px)`;
                     }
                 }, { passive: true });
@@ -2100,51 +1988,15 @@
                 card.addEventListener('touchend', () => {
                     if (!isDragging) return;
                     isDragging = false;
-                    card.style.transition = 'transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)';
+                    card.style.transition = 'transform 0.2s ease';
                     
-                    if (currentX < threshold) {
-                        // ปัดพ้นเกณฑ์ สไลด์หลุดจอแล้วลบ
-                        card.style.transform = `translateX(-100%)`;
-                        setTimeout(() => deleteHistoryItem(dataId), 250);
+                    if (currentX > threshold) {
+                        card.style.transform = `translateX(100%)`;
+                        setTimeout(() => deleteHistoryItem(dataId), 200);
                     } else {
-                        // กลับตำแหน่งเดิม
                         card.style.transform = `translateX(0)`;
                     }
                     currentX = 0;
-                });
-
-                // รองรับเมาส์บน Desktop (ลากซ้ายเพื่อลบ)
-                card.addEventListener('mousedown', (e) => {
-                    startX = e.clientX;
-                    isDragging = true;
-                    card.style.transition = 'none';
-                    
-                    const onMouseMove = (ev) => {
-                        if (!isDragging) return;
-                        currentX = ev.clientX - startX;
-                        if (currentX < 0) {
-                            card.style.transform = `translateX(${currentX}px)`;
-                        }
-                    };
-
-                    const onMouseUp = () => {
-                        if (!isDragging) return;
-                        isDragging = false;
-                        card.style.transition = 'transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)';
-                        
-                        if (currentX < threshold) {
-                            card.style.transform = `translateX(-100%)`;
-                            setTimeout(() => deleteHistoryItem(dataId), 250);
-                        } else {
-                            card.style.transform = `translateX(0)`;
-                        }
-                        currentX = 0;
-                        window.removeEventListener('mousemove', onMouseMove);
-                        window.removeEventListener('mouseup', onMouseUp);
-                    };
-
-                    window.addEventListener('mousemove', onMouseMove);
-                    window.addEventListener('mouseup', onMouseUp);
                 });
             });
         }
@@ -2155,7 +2007,7 @@
             localStorage.setItem('scanHistory', JSON.stringify(history));
             renderRecentHistory();
             if (document.getElementById('history-edge-panel').classList.contains('active')) {
-                renderFullHistory(document.getElementById('modal-search-input').value);
+                filterFullHistory();
             }
             showScanToast("ลบรายการเรียบร้อย", "info");
         }
@@ -2167,18 +2019,52 @@
             showResult(item.data, item.type);
         }
 
-        function resendHistoryItem(dataText) {
-            let history = JSON.parse(localStorage.getItem('scanHistory')) || [];
-            const item = history.find(h => h.data === dataText);
-            if (!item) return;
-            sendToPCAPI(item.data, item.type, false);
+        function clearAllHistory() { 
+            if (confirm("คุณต้องการล้างประวัติการสแกนทั้งหมดหรือไม่?")) { 
+                localStorage.removeItem('scanHistory'); 
+                renderRecentHistory(); 
+                filterFullHistory(); 
+                showScanToast("ล้างประวัติทั้งหมดเรียบร้อย", "info");
+            } 
         }
 
-        function filterFullHistory() { renderFullHistory(document.getElementById('modal-search-input').value); }
-        function clearAllHistory() { if (confirm("ล้างประวัติทั้งหมด?")) { localStorage.removeItem('scanHistory'); renderRecentHistory(); renderFullHistory(); } }
+        /* EXPORT & COPY UTILITIES */
+        function exportHistoryCSV() {
+            const list = JSON.parse(localStorage.getItem('scanHistory')) || [];
+            if (list.length === 0) {
+                showScanToast("ไม่มีข้อมูลสำหรับส่งออก", "warning");
+                return;
+            }
+            let csvContent = "\uFEFFData,Type,Status,Date,Time\n";
+            list.forEach(item => {
+                csvContent += `"${(item.data || '').replace(/"/g, '""')}","${item.type || ''}","${item.status || ''}","${item.date || ''}","${item.time || ''}"\n`;
+            });
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `scan_history_${new Date().toISOString().slice(0, 10)}.csv`;
+            a.click();
+            URL.revokeObjectURL(url);
+            showScanToast("ส่งออกไฟล์ CSV สำเร็จ", "success");
+        }
 
-        function escapeHtml(str) { return str ? str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;") : ''; }
-        function escapeJsString(str) { return str ? str.replace(/'/g, "\\'") : ''; }
+        function copyAllHistoryToClipboard() {
+            const list = JSON.parse(localStorage.getItem('scanHistory')) || [];
+            if (list.length === 0) {
+                showScanToast("ไม่มีข้อมูลสำหรับคัดลอก", "warning");
+                return;
+            }
+            const text = list.map(item => item.data).join('\n');
+            navigator.clipboard.writeText(text).then(() => {
+                showScanToast(`คัดลอก ${list.length} รายการแล้ว`, "success");
+            }).catch(() => {
+                showScanToast("ไม่สามารถคัดลอกได้", "error");
+            });
+        }
+
+        function escapeHtml(str) { return str ? String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;") : ''; }
+        function escapeJsString(str) { return str ? String(str).replace(/'/g, "\\'").replace(/"/g, '\\"') : ''; }
 
         window.onload = () => {
             initTheme();
@@ -2186,15 +2072,6 @@
             startCamera();
             renderRecentHistory();
             refreshIcons();
-
-            // ขออนุญาตสิทธิ์การแจ้งเตือน (Notification Permission) เมื่อเปิดเว็บครั้งแรก
-            if ('Notification' in window && Notification.permission === 'default') {
-                Notification.requestPermission().then(permission => {
-                    if (permission === 'granted') {
-                        showScanToast("เปิดใช้งานการแจ้งเตือนผ่านโทรศัพท์เรียบร้อยแล้ว", "success");
-                    }
-                });
-            }
         };
     </script>
 </body>
