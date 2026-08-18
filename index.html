@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>SCANDER V.1.0</title>
+    <title>SCANDER V.1.0 (BETA)</title>
     
     <!-- Google Fonts: Prompt, Kanit, JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -153,8 +153,28 @@
         }
 
         /* ========================================================= */
-        /* STACKABLE NOTIFICATIONS STYLES                            */
+        /* RAINBOW & ANIMATED TITLE STYLES                           */
         /* ========================================================= */
+        @keyframes rainbowGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes floatAnim {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-2px); }
+        }
+
+        .animated-rainbow-title {
+            background: linear-gradient(270deg, #ff2a2a, #ff7f00, #ffff00, #00e676, #00b0ff, #7c4dff, #ff4081);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: rainbowGradient 4s ease infinite;
+        }
+
+        /* STACKABLE NOTIFICATIONS STYLES */
         .toast-container {
             position: fixed;
             top: 65px;
@@ -258,6 +278,102 @@
         @keyframes toastLeave { 0% { opacity: 1; max-height: 80px; } 100% { opacity: 0; max-height: 0; padding: 0; margin: 0; } }
         @keyframes progressShrink { 0% { transform: scaleX(1); } 100% { transform: scaleX(0); } }
 
+        /* SUCCESS ANIMATION ICON STYLES */
+        @keyframes successPop {
+            0% { transform: scale(0.5); opacity: 0; }
+            70% { transform: scale(1.15); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .success-checkmark-anim {
+            animation: successPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        @keyframes spinAnim {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .lucide-spin {
+            animation: spinAnim 1s linear infinite;
+        }
+
+        @keyframes titleSpin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .title-spin-icon {
+            animation: titleSpin 2.5s linear infinite;
+        }
+
+        /* 😴 SLEEPING EMOJI ANIMATION FOR CAMERA OFF */
+        @keyframes sleepBounce {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-8px) scale(1.08); }
+        }
+        @keyframes zzzFloat {
+            0% { opacity: 0; transform: translate(0, 0) scale(0.7); }
+            50% { opacity: 1; }
+            100% { opacity: 0; transform: translate(16px, -24px) scale(1.25); }
+        }
+
+        .camera-off-indicator {
+            position: absolute;
+            inset: 0;
+            background: rgba(10, 10, 15, 0.88);
+            backdrop-filter: blur(8px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            z-index: 5;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .viewport-wrapper.camera-paused .camera-off-indicator {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .sleep-emoji-wrapper {
+            position: relative;
+            font-size: 50px;
+            animation: sleepBounce 2.2s ease-in-out infinite;
+        }
+
+        .sleep-zzz-1, .sleep-zzz-2 {
+            position: absolute;
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 14px;
+            color: #93c5fd;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .sleep-zzz-1 {
+            top: -5px;
+            right: -14px;
+            animation: zzzFloat 2s ease-in-out infinite;
+        }
+        .sleep-zzz-2 {
+            top: -16px;
+            right: -24px;
+            animation: zzzFloat 2s ease-in-out infinite 1s;
+        }
+
+        .sleep-label {
+            font-family: var(--font-title);
+            font-size: 13px;
+            font-weight: 600;
+            color: #d1d5db;
+            letter-spacing: 0.5px;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 4px 12px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
         * { box-sizing: border-box; scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
 
         body { 
@@ -281,7 +397,6 @@
 
         .lucide { width: 18px; height: 18px; stroke-width: 2.2px; vertical-align: middle; display: inline-block; }
 
-        /* Mobile App Frame Container */
         .container { 
             width: 100%;
             max-width: 480px; 
@@ -315,7 +430,6 @@
             }
         }
 
-        /* App Header Bar */
         .app-header-area {
             background: var(--header-bg);
             color: var(--header-text);
@@ -327,25 +441,32 @@
             top: 0;
             z-index: 100;
             box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            transition: background 0.3s ease;
         }
 
         .app-title {
             font-family: var(--font-title);
-            font-size: 18px;
+            font-size: 15px;
             font-weight: 700;
             margin: 0;
             display: flex;
             align-items: center;
-            gap: 8px;
-            color: var(--header-text);
-            letter-spacing: 0.2px;
+            gap: 6px;
+            letter-spacing: 0.3px;
+            background: rgba(0, 0, 0, 0.28);
+            color: #ffffff;
+            padding: 5px 12px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(6px);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            animation: floatAnim 2.5s ease-in-out infinite;
         }
 
-        .app-title .lucide { width: 22px; height: 22px; }
+        .app-title .lucide { width: 18px; height: 18px; color: #ffffff; }
 
         .top-controls-group { display: flex; align-items: center; gap: 8px; }
 
-        /* Theme Selector Dropdown */
         .theme-selector-wrapper {
             position: relative;
             display: flex;
@@ -392,7 +513,6 @@
             cursor: pointer;
         }
 
-        /* Content Scroll Container */
         .app-content-body {
             padding: 16px;
             flex: 1;
@@ -401,7 +521,6 @@
             gap: 16px;
         }
 
-        /* Quick Action Grid */
         .dashboard-quick-actions {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -461,7 +580,6 @@
         .conn-status-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
         .conn-status-badge.connected { background: var(--accent-glow); color: var(--accent-cyan); }
 
-        /* VIEWPORT & CAMERA OPTIMIZATION */
         .viewport-wrapper { 
             position: relative; 
             border-radius: 20px; 
@@ -488,6 +606,7 @@
         .hud-overlay { 
             position: absolute; inset: 0; pointer-events: none; 
             display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 12px;
+            z-index: 6;
         }
 
         .hud-top-bar { width: 100%; display: flex; justify-content: space-between; align-items: center; z-index: 2; }
@@ -503,7 +622,6 @@
         .hud-badge.live .hud-dot { background: var(--accent-cyan); box-shadow: 0 0 8px var(--accent-cyan); }
         .hud-badge.batch-mode { background: var(--accent-cyan); color: #ffffff; }
 
-        /* EXTERNAL SCANNER CONTROLS BAR */
         .external-controls-bar {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -554,7 +672,6 @@
 
         .status-text { margin-top: 8px; font-size: 12px; font-weight: 500; color: var(--text-sub); text-align: center; display: flex; align-items: center; justify-content: center; gap: 6px; font-family: var(--font-body); }
 
-        /* Result Card */
         #result-box { margin-top: 12px; padding: 14px; background: var(--accent-glow); border: 1px solid var(--accent-cyan); border-radius: 16px; display: none; text-align: left; }
         .result-header { font-size: 12px; color: var(--accent-cyan); margin-bottom: 8px; font-weight: 700; font-family: var(--font-title); display: flex; align-items: center; justify-content: space-between; }
 
@@ -565,7 +682,6 @@
 
         .result-actions { display: flex; gap: 8px; }
 
-        /* Buttons Styling */
         .conn-btn {
             background: var(--btn-primary-bg);
             border: none; color: #ffffff; padding: 10px 16px; border-radius: 12px; 
@@ -584,7 +700,6 @@
 
         .btn-test { background: var(--accent-glow); border: 1px solid var(--accent-cyan); color: var(--accent-cyan); }
 
-        /* Summary Dashboard Widget */
         .today-summary-card { 
             background: var(--card-inner); border: 1px solid var(--border-glow); border-radius: 16px; padding: 14px;
             cursor: pointer; transition: all 0.2s ease;
@@ -597,7 +712,6 @@
         
         .recent-list { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
         
-        /* CHAT-LOG / LIST STYLE HISTORY ITEM */
         .history-item { 
             background: var(--history-item-bg); border: 1px solid var(--border-glow); 
             padding: 12px 14px; border-radius: 14px; font-size: 13px; transition: all 0.2s ease;
@@ -621,7 +735,6 @@
         .badge-fail { background: rgba(239, 68, 68, 0.12); color: #ef4444; }
         .badge-pending { background: rgba(245, 158, 11, 0.12); color: #f59e0b; }
 
-        /* SWIPE-TO-DELETE STYLES (UPDATED FOR RIGHT SWIPE) */
         .swipe-item-wrapper { position: relative; overflow: hidden; border-radius: 14px; flex-shrink: 0; width: 100%; }
         .swipe-delete-background {
             position: absolute; inset: 0; background: #ef4444; display: flex; align-items: center;
@@ -630,7 +743,6 @@
         }
         .swipeable-card { position: relative; z-index: 2; transition: transform 0.2s ease; touch-action: pan-y; }
 
-        /* MODALS & EDGE PANELS */
         .edge-panel-overlay {
             position: fixed; inset: 0; background: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(4px); z-index: 1000; opacity: 0; visibility: hidden;
@@ -671,7 +783,6 @@
 
         .conn-actions-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 
-        /* FULL HISTORY EDGE PANEL */
         .edge-panel-card {
             position: fixed; top: 0; right: 0; bottom: 0;
             width: 100%; max-width: 440px; height: 100vh; height: 100dvh;
@@ -686,7 +797,6 @@
             display: flex; gap: 8px; flex-shrink: 0; background: var(--panel-bg);
         }
 
-        /* FILTER TABS IN FULL HISTORY MODAL */
         .history-filter-tabs {
             display: flex; gap: 6px; padding: 8px 16px; 
             border-bottom: 1px solid var(--border-glow); background: var(--card-inner);
@@ -739,18 +849,18 @@
         
         <!-- Header Bar -->
         <div class="app-header-area">
-            <h1 class="app-title"><i data-lucide="scan"></i> SCANDER</h1>
+            <h1 class="app-title"><i data-lucide="scan" class="title-spin-icon"></i> <span class="animated-rainbow-title">SCANDER (BETA)</span></h1>
             
             <div class="top-controls-group">
                 <div class="theme-selector-wrapper" title="เปลี่ยนธีมสี">
                     <i data-lucide="palette" class="theme-select-icon"></i>
                     <select id="theme-select" class="theme-select" onchange="changeTheme(this.value)">
-                        <option value="line-green">LINE Green</option>
-                        <option value="truemoney">TrueMoney Wallet</option>
-                        <option value="oled">LINE Dark</option>
+                        <option value="line-green">White Green</option>
+                        <option value="truemoney">White Orange</option>
+                        <option value="oled">Green Dark</option>
                         <option value="synthwave">Synthwave Pink</option>
                         <option value="amber">Cyber Amber</option>
-                        <option value="facebook-dark">Facebook Dark</option>
+                        <option value="facebook-dark">Blue Dark</option>
                     </select>
                 </div>
 
@@ -789,9 +899,19 @@
                 <div id="viewport-wrapper" class="viewport-wrapper">
                     <video id="camera-feed" autoplay playsinline></video>
 
+                    <!-- 😴 CAMERA OFF SLEEPING ANIMATION OVERLAY -->
+                    <div class="camera-off-indicator">
+                        <div class="sleep-emoji-wrapper">
+                            😴
+                            <span class="sleep-zzz-1">z</span>
+                            <span class="sleep-zzz-2">Z</span>
+                        </div>
+                        <div class="sleep-label">กล้องพักการทำงาน / ปิดอยู่</div>
+                    </div>
+
                     <div class="hud-overlay">
                         <div class="hud-top-bar">
-                            <div id="hud-live-badge" class="hud-badge live"><span class="hud-dot"></span> กำลังสตรีม</div>
+                            <div id="hud-live-badge" class="hud-badge live"><span class="hud-dot"></span> ON</div>
                             <div id="mode-hud-badge" class="hud-badge">บาร์โค้ด / QR</div>
                         </div>
 
@@ -813,7 +933,7 @@
                     </button>
                     <button id="btn-toggle-continuous" class="ext-ctrl-btn" onclick="toggleContinuousMode()">
                         <i data-lucide="repeat"></i>
-                        <span id="continuous-label">สแกนเดี่ยว</span>
+                        <span id="continuous-label">สแกน(SINGLE)</span>
                     </button>
                     <button id="btn-toggle-notifications" class="ext-ctrl-btn active" onclick="toggleNotifications()">
                         <i data-lucide="bell" id="notification-icon"></i>
@@ -826,7 +946,7 @@
                 </div>
 
                 <canvas id="ocr-canvas" style="display: none;"></canvas>
-                <div class="status-text" id="scan-status"><i data-lucide="scan-line"></i> นำบาร์โค้ดหรือซีเรียลมาไว้ในกรอบ</div>
+                <div class="status-text" id="scan-status"><i data-lucide="scan-line"></i> นำบาร์โค้ดหรือQRไว้ในกรอบ</div>
 
                 <div id="result-box">
                     <div class="result-header">
@@ -849,7 +969,7 @@
             <div id="history-section">
                 <div class="today-summary-card" onclick="openHistoryEdgePanel()">
                     <div class="today-summary-title">
-                        <span><i data-lucide="bar-chart-2"></i> สรุปจำนวนที่สแกน</span>
+                        <span><i data-lucide="bar-chart-2"></i> จำนวนที่สแกน</span>
                         <span style="font-size: 11px; color: var(--accent-cyan); display: flex; align-items: center; gap: 2px;">ดูทั้งหมด <i data-lucide="chevron-right"></i></span>
                     </div>
                     <div class="stat-grid">
@@ -880,7 +1000,7 @@
     <div id="conn-config-modal" class="edge-panel-overlay">
         <div class="conn-modal-card">
             <div class="edge-panel-header">
-                <h3 class="edge-panel-title"><i data-lucide="network"></i> ตั้งค่าการเชื่อมต่อ PC Host</h3>
+                <h3 class="edge-panel-title"><i data-lucide="network"></i> ตั้งค่าการเชื่อมต่อ PC </h3>
                 <button class="edge-panel-close-btn" onclick="closeConnConfigModal()"><i data-lucide="arrow-left"></i></button>
             </div>
             <div class="conn-modal-body">
@@ -903,6 +1023,62 @@
         </div>
     </div>
 
+    <!-- General Status Popup Modal -->
+    <div id="status-popup-modal" class="edge-panel-overlay" style="z-index: 1100;">
+        <div class="conn-modal-card" style="max-width: 300px; text-align: center; padding: 24px 20px;">
+            <div id="status-popup-icon-bg" style="width: 64px; height: 64px; border-radius: 50%; background: var(--accent-glow); color: var(--accent-cyan); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;">
+                <i id="status-popup-icon" data-lucide="smile" style="width: 36px; height: 36px;" class="success-checkmark-anim"></i>
+            </div>
+            <h3 id="status-popup-title" style="font-family: var(--font-title); font-size: 16px; font-weight: 700; margin: 0 0 6px; color: var(--text-main);">บันทึกสำเร็จ!</h3>
+            <p id="status-popup-text" style="font-size: 13px; color: var(--text-sub); margin: 0; word-break: break-all;">เชื่อมต่อ PC Host เรียบร้อยแล้ว</p>
+        </div>
+    </div>
+
+    <!-- Confirmation Dialog Modal for Deleting Connection History -->
+    <div id="confirm-delete-modal" class="edge-panel-overlay" style="z-index: 1050;">
+        <div class="conn-modal-card" style="max-width: 320px; text-align: center; padding: 20px;">
+            <div style="width: 50px; height: 50px; border-radius: 50%; background: rgba(239, 68, 68, 0.12); color: #ef4444; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px;">
+                <i data-lucide="alert-triangle" style="width: 24px; height: 24px;"></i>
+            </div>
+            <h3 style="font-family: var(--font-title); font-size: 16px; font-weight: 700; margin: 0 0 6px; color: var(--text-main);">ยืนยันการลบ</h3>
+            <p id="confirm-delete-text" style="font-size: 12px; color: var(--text-sub); margin: 0 0 16px; word-break: break-all;">คุณต้องการลบประวัติการเชื่อมต่อนี้ใช่หรือไม่?</p>
+            <div style="display: flex; gap: 8px;">
+                <button class="conn-btn btn-secondary" onclick="closeConfirmDeleteModal()" style="flex: 1;">ยกเลิก</button>
+                <button class="conn-btn" id="confirm-delete-btn" style="flex: 1; background: #ef4444;">ลบ</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Dialog Modal for Deleting Scan History Item -->
+    <div id="confirm-delete-history-modal" class="edge-panel-overlay" style="z-index: 1050;">
+        <div class="conn-modal-card" style="max-width: 320px; text-align: center; padding: 20px;">
+            <div style="width: 50px; height: 50px; border-radius: 50%; background: rgba(239, 68, 68, 0.12); color: #ef4444; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px;">
+                <i data-lucide="trash-2" style="width: 24px; height: 24px;"></i>
+            </div>
+            <h3 style="font-family: var(--font-title); font-size: 16px; font-weight: 700; margin: 0 0 6px; color: var(--text-main);">ยืนยันการลบประวัติ</h3>
+            <p id="confirm-delete-history-text" style="font-size: 12px; color: var(--text-sub); margin: 0 0 16px; word-break: break-all;">คุณต้องการลบรายการนี้ออกจากประวัติการสแกนใช่หรือไม่?</p>
+            <div style="display: flex; gap: 8px;">
+                <button class="conn-btn btn-secondary" onclick="closeConfirmDeleteHistoryModal()" style="flex: 1;">ยกเลิก</button>
+                <button class="conn-btn" id="confirm-delete-history-btn" style="flex: 1; background: #ef4444;">ลบ</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Dialog Modal for Clearing All Scan History -->
+    <div id="confirm-clear-all-history-modal" class="edge-panel-overlay" style="z-index: 1050;">
+        <div class="conn-modal-card" style="max-width: 320px; text-align: center; padding: 20px;">
+            <div style="width: 50px; height: 50px; border-radius: 50%; background: rgba(239, 68, 68, 0.12); color: #ef4444; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px;">
+                <i data-lucide="trash-2" style="width: 24px; height: 24px;"></i>
+            </div>
+            <h3 style="font-family: var(--font-title); font-size: 16px; font-weight: 700; margin: 0 0 6px; color: var(--text-main);">ยืนยันล้างประวัติทั้งหมด</h3>
+            <p style="font-size: 12px; color: var(--text-sub); margin: 0 0 16px; word-break: break-all;">คุณต้องการลบประวัติการสแกนทั้งหมดใช่หรือไม่? การกระทำนี้ไม่สามารถย้อนกลับได้</p>
+            <div style="display: flex; gap: 8px;">
+                <button class="conn-btn btn-secondary" onclick="closeConfirmClearAllModal()" style="flex: 1;">ยกเลิก</button>
+                <button class="conn-btn" onclick="executeClearAllHistory()" style="flex: 1; background: #ef4444;">ล้างทั้งหมด</button>
+            </div>
+        </div>
+    </div>
+
     <!-- 2. Manual Entry Modal -->
     <div id="manual-entry-modal" class="edge-panel-overlay">
         <div class="conn-modal-card">
@@ -919,7 +1095,7 @@
                         <i data-lucide="save"></i> บันทึก (รอส่ง)
                     </button>
                     <button class="conn-btn" onclick="submitManualEntry()" style="flex: 1;">
-                        <i data-lucide="send"></i> ส่งไปยัง PC
+                        <i data-lucide="send"></i> ส่ง
                     </button>
                 </div>
             </div>
@@ -986,7 +1162,7 @@
             <!-- Search Bar -->
             <div class="edge-panel-search-bar">
                 <input type="text" id="modal-search-input" class="conn-input" placeholder="🔍 ค้นหารหัส หรือ ชนิดข้อมูล..." oninput="filterFullHistory()" style="background: var(--input-bg); border: 1px solid var(--border-glow); border-radius: 10px; padding: 8px 12px;">
-                <button class="icon-btn danger" onclick="clearAllHistory()" title="ล้างประวัติทั้งหมด" style="height: 38px; width: 38px;">
+                <button class="icon-btn danger" onclick="promptClearAllHistory()" title="ล้างประวัติทั้งหมด" style="height: 38px; width: 38px;">
                     <i data-lucide="trash-2"></i>
                 </button>
             </div>
@@ -1112,6 +1288,50 @@
             document.getElementById('conn-config-modal').classList.remove('active');
         }
 
+        function showStatusPopup(title, message, iconName = 'smile', mode = 'success') {
+            const modal = document.getElementById('status-popup-modal');
+            const titleElem = document.getElementById('status-popup-title');
+            const textElem = document.getElementById('status-popup-text');
+            const iconElem = document.getElementById('status-popup-icon');
+            const iconBg = document.getElementById('status-popup-icon-bg');
+
+            if (titleElem) titleElem.textContent = title;
+            if (textElem) textElem.textContent = message;
+            if (iconElem) {
+                iconElem.setAttribute('data-lucide', iconName);
+                
+                if (iconName === 'loader-2' || mode === 'pending') {
+                    iconElem.classList.add('lucide-spin');
+                } else {
+                    iconElem.classList.remove('lucide-spin');
+                }
+            }
+
+            if (mode === 'pending') {
+                if (iconBg) {
+                    iconBg.style.background = 'rgba(245, 158, 11, 0.12)';
+                    iconBg.style.color = '#f59e0b';
+                }
+            } else if (mode === 'error') {
+                if (iconBg) {
+                    iconBg.style.background = 'rgba(239, 68, 68, 0.12)';
+                    iconBg.style.color = '#ef4444';
+                }
+            } else {
+                if (iconBg) {
+                    iconBg.style.background = 'var(--accent-glow)';
+                    iconBg.style.color = 'var(--accent-cyan)';
+                }
+            }
+
+            modal.classList.add('active');
+            refreshIcons();
+
+            setTimeout(() => {
+                modal.classList.remove('active');
+            }, 1800);
+        }
+
         function openManualEntryModal() {
             document.getElementById('manual-entry-modal').classList.add('active');
             setTimeout(() => document.getElementById('manual-code-input').focus(), 100);
@@ -1128,7 +1348,7 @@
         }
         function closeSeqGeneratorModal() {
             if (isSeqGenerating) {
-                showScanToast("กำลังสร้าง SN อยู่ กรุณารอให้เสร็จสิ้นหรือกดปุ่มยกเลิก", "warning");
+                showStatusPopup("แจ้งเตือน", "กำลังสร้าง SN อยู่ กรุณารอให้เสร็จสิ้นหรือกดปุ่มยกเลิก", "alert-triangle", "error");
                 return;
             }
             document.getElementById('seq-generator-modal').classList.remove('active');
@@ -1142,13 +1362,12 @@
             document.getElementById('history-edge-panel').classList.remove('active'); 
         }
 
-        /* 🔍 ฟังก์ชันตรวจสอบข้อมูลซ้ำในระบบ */
         function isDuplicateData(codeText) {
             const history = JSON.parse(localStorage.getItem('scanHistory')) || [];
             return history.some(item => item.data === codeText);
         }
 
-        /* SEQUENCE GENERATOR LOGIC (OPTIMIZED FOR SPEED & NO HISTORY STORAGE) */
+        /* SEQUENCE GENERATOR LOGIC */
         function updateSeqPreview() {
             const prefix = document.getElementById('seq-prefix-input').value.trim();
             const start = parseInt(document.getElementById('seq-start-input').value) || 1;
@@ -1190,13 +1409,19 @@
                 btn.disabled = true;
                 btn.style.opacity = '0.7';
                 btn.style.cursor = 'not-allowed';
-                if (icon) icon.setAttribute('data-lucide', 'loader-2');
-                if (text) text.textContent = 'กำลังRUN...';
+                if (icon) {
+                    icon.setAttribute('data-lucide', 'loader-2');
+                    icon.classList.add('lucide-spin');
+                }
+                if (text) text.textContent = 'กำลัง RUN...';
             } else {
                 btn.disabled = false;
                 btn.style.opacity = '1';
                 btn.style.cursor = 'pointer';
-                if (icon) icon.setAttribute('data-lucide', 'play');
+                if (icon) {
+                    icon.setAttribute('data-lucide', 'play');
+                    icon.classList.remove('lucide-spin');
+                }
                 if (text) text.textContent = 'สร้าง SN';
             }
             refreshIcons();
@@ -1207,7 +1432,7 @@
             isSeqGenerating = false;
             updateSeqButtonState(false);
             document.getElementById('seq-generator-modal').classList.remove('active');
-            showScanToast("ยกเลิก", "warning");
+            showStatusPopup("ยกเลิก", "ยกเลิกการสร้าง SN แล้ว", "x-circle", "error");
         }
 
         async function generateAndSendSequence() {
@@ -1220,13 +1445,13 @@
             const step = parseInt(document.getElementById('seq-step-input').value) || 1;
 
             if (start > end) {
-                showScanToast("ค่าเริ่มต้นต้องน้อยกว่าหรือเท่ากับค่าสิ้นสุด", "warning");
+                showStatusPopup("แจ้งเตือน", "ค่าเริ่มต้นต้องน้อยกว่าหรือเท่ากับค่าสิ้นสุด", "alert-triangle", "error");
                 return;
             }
 
             const totalCount = Math.floor((end - start) / step) + 1;
             if (totalCount <= 0) {
-                showScanToast("ช่วงตัวเลขไม่ถูกต้อง", "warning");
+                showStatusPopup("แจ้งเตือน", "ช่วงตัวเลขไม่ถูกต้อง", "alert-triangle", "error");
                 return;
             }
 
@@ -1234,7 +1459,7 @@
                 return;
             }
 
-            showScanToast(`กำลังสร้างและส่ง ${totalCount} รายการ...`, "info");
+            showStatusPopup("กำลังดำเนินการ", `กำลังสร้างและส่ง ${totalCount} รายการ...`, "loader-2", "pending");
 
             isSeqGenerating = true;
             cancelSeqFlag = false;
@@ -1252,31 +1477,26 @@
             }
 
             let successCount = 0;
-            const batchSize = 30; // ใช้การส่งแบบขนาน (Concurrent Batches) เพื่อความเร็วสูงสุด
 
-            for (let i = 0; i < codes.length; i += batchSize) {
+            for (const code of codes) {
                 if (cancelSeqFlag) break;
-                const batch = codes.slice(i, i + batchSize);
 
                 if (targetUrl) {
-                    const promises = batch.map(async (code) => {
-                        try {
-                            const res = await fetch(targetUrl, {
-                                method: 'POST',
-                                headers: { 'Content-Type': 'application/json' },
-                                body: JSON.stringify({ scanned_data: code, type: 'RUN-SN', timestamp: new Date().toISOString() })
-                            });
-                            return res.ok;
-                        } catch (e) {
-                            return false;
+                    try {
+                        const res = await fetch(targetUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ scanned_data: code, type: 'RUN-SN', timestamp: new Date().toISOString() })
+                        });
+                        if (res.ok) {
+                            successCount++;
                         }
-                    });
-
-                    const results = await Promise.all(promises);
-                    successCount += results.filter(Boolean).length;
+                    } catch (e) {}
                 } else {
-                    successCount += batch.length;
+                    successCount++;
                 }
+
+                await new Promise(resolve => setTimeout(resolve, 20));
             }
 
             isSeqGenerating = false;
@@ -1284,7 +1504,7 @@
 
             if (!cancelSeqFlag) {
                 document.getElementById('seq-generator-modal').classList.remove('active');
-                showScanToast(`สร้างและส่งสำเร็จทั้งหมด (${successCount} รายการ)`, "success");
+                showStatusPopup("สำเร็จ", `สร้างและส่งสำเร็จทั้งหมด (${successCount} รายการ)`, "check-circle-2", "success");
             }
         }
 
@@ -1305,26 +1525,27 @@
                 return;
             }
 
-            showScanToast("กำลังทดสอบการเชื่อมต่อ...", "info");
+            showStatusPopup("กำลังทดสอบ", "กำลังเชื่อมต่อกับ PC Host...", "loader-2", "pending");
             
             fetch(`${url}/api/health`, { method: 'GET', mode: 'cors', signal: AbortSignal.timeout(4000) })
                 .then(res => {
                     if (res.ok || res.status < 500) {
-                        showScanToast(`เชื่อมต่อสำเร็จ! (${url})`, "success");
                         updateConnectionStatus(true);
+                        showStatusPopup("ทดสอบสำเร็จ", `เชื่อมต่อกับ ${url} สำเร็จ`, "smile", "success");
                     } else {
-                        showScanToast("เซิร์ฟเวอร์ตอบสนองแต่มีข้อผิดพลาด", "warning");
+                        updateConnectionStatus(false);
+                        showStatusPopup("ผิดพลาด", "เซิร์ฟเวอร์ตอบสนองแต่มีข้อผิดพลาด", "alert-triangle", "error");
                     }
                 })
                 .catch(() => {
                     fetch(url, { method: 'HEAD', mode: 'no-cors', signal: AbortSignal.timeout(4000) })
                         .then(() => {
-                            showScanToast(`ลิงก์ใช้งานได้: ${url}`, "success");
                             updateConnectionStatus(true);
+                            showStatusPopup("ทดสอบสำเร็จ", `ลิงก์ใช้งานได้: ${url}`, "smile", "success");
                         })
                         .catch(() => {
-                            showScanToast("ไม่สามารถเชื่อมต่อเครื่องปลายทางได้", "error");
                             updateConnectionStatus(false);
+                            showStatusPopup("เชื่อมต่อล้มเหลว", "ไม่สามารถเชื่อมต่อเครื่องปลายทางได้", "wifi-off", "error");
                         });
                 });
         }
@@ -1337,13 +1558,35 @@
                 return;
             }
 
+            showStatusPopup("กำลังบันทึก", "กำลังตรวจสอบการเชื่อมต่อ PC Host...", "loader-2", "pending");
+
+            fetch(`${url}/api/health`, { method: 'GET', mode: 'cors', signal: AbortSignal.timeout(3500) })
+                .then(res => {
+                    finalizeConnectionSave(url, res.ok || res.status < 500);
+                })
+                .catch(() => {
+                    fetch(url, { method: 'HEAD', mode: 'no-cors', signal: AbortSignal.timeout(3500) })
+                        .then(() => finalizeConnectionSave(url, true))
+                        .catch(() => finalizeConnectionSave(url, false));
+                });
+        }
+
+        function finalizeConnectionSave(url, isOnline) {
             localStorage.setItem('pc_api_url', url);
             document.getElementById('pc-ip-input').value = url;
             saveToConnectionHistory(url);
-            updateConnectionStatus(true);
-            initRealtimeStream();
-            showScanToast("บันทึกการเชื่อมต่อเรียบร้อย", "success");
+            updateConnectionStatus(isOnline);
+            if (isOnline) {
+                initRealtimeStream();
+            }
+            
             closeConnConfigModal();
+
+            if (isOnline) {
+                showStatusPopup("เชื่อมต่อสำเร็จ", "บันทึกและเชื่อมต่อ PC Host เรียบร้อยแล้ว", "smile", "success");
+            } else {
+                showStatusPopup("บันทึกแล้ว (ออฟไลน์)", "บันทึก URL แล้ว แต่ยังไม่สามารถเชื่อมต่อเซิร์ฟเวอร์ได้", "wifi-off", "error");
+            }
         }
 
         function updateConnectionStatus(isConnected) {
@@ -1405,26 +1648,54 @@
                             <div class="call-log-code" style="color:${isCurrent ? 'var(--accent-cyan)' : 'var(--text-main)'};">${escapeHtml(url)}</div>
                             <div class="call-log-meta">${date ? date : ''} ${isCurrent ? '<strong style="color:var(--accent-cyan);">(ใช้งานอยู่)</strong>' : ''}</div>
                         </div>
-                        <button class="icon-btn danger" onclick="event.stopPropagation(); deleteConnHistoryItem('${escapeJsString(url)}')"><i data-lucide="trash-2"></i></button>
+                        <button class="icon-btn danger delete-conn-trigger-btn" data-url="${escapeHtml(url)}" onclick="event.stopPropagation(); promptDeleteConnHistory('${escapeJsString(url)}')"><i data-lucide="trash-2"></i></button>
                     </div>
                 `;
             }).join('');
             refreshIcons();
         }
 
+        function promptDeleteConnHistory(urlToDelete) {
+            document.getElementById('confirm-delete-text').textContent = `คุณต้องการลบ "${urlToDelete}" จากประวัติการเชื่อมต่อใช่หรือไม่?`;
+            const confirmBtn = document.getElementById('confirm-delete-btn');
+            
+            const newBtn = confirmBtn.cloneNode(true);
+            confirmBtn.parentNode.replaceChild(newBtn, confirmBtn);
+
+            newBtn.onclick = () => {
+                executeDeleteConnHistory(urlToDelete);
+            };
+
+            document.getElementById('confirm-delete-modal').classList.add('active');
+            refreshIcons();
+        }
+
+        function closeConfirmDeleteModal() {
+            document.getElementById('confirm-delete-modal').classList.remove('active');
+        }
+
+        function executeDeleteConnHistory(urlToDelete) {
+            closeConfirmDeleteModal();
+
+            const btnEl = document.querySelector(`.delete-conn-trigger-btn[data-url="${CSS.escape(urlToDelete)}"]`);
+            if (btnEl) {
+                btnEl.className = 'icon-btn success-checkmark-anim';
+                btnEl.innerHTML = '<i data-lucide="check" style="width:14px; height:14px;"></i>';
+                refreshIcons();
+            }
+
+            setTimeout(() => {
+                let list = JSON.parse(localStorage.getItem('connHistory')) || [];
+                list = list.filter(item => (typeof item === 'string' ? item : item.url) !== urlToDelete);
+                localStorage.setItem('connHistory', JSON.stringify(list));
+                renderConnHistoryList();
+                showScanToast("ลบประวัติการเชื่อมต่อสำเร็จ", "success");
+            }, 500);
+        }
+
         function selectAndConnectApi(url) {
             document.getElementById('pc-ip-input').value = url;
             saveConnection();
-            closeConnConfigModal();
-        }
-
-        function deleteConnHistoryItem(urlToDelete) {
-            if (!confirm(`ต้องการลบ "${urlToDelete}" หรือไม่?`)) return;
-            let list = JSON.parse(localStorage.getItem('connHistory')) || [];
-            list = list.filter(item => (typeof item === 'string' ? item : item.url) !== urlToDelete);
-            localStorage.setItem('connHistory', JSON.stringify(list));
-            renderConnHistoryList();
-            showScanToast("ลบประวัติแล้ว", "info");
         }
 
         function initRealtimeStream() {
@@ -1447,7 +1718,6 @@
             } catch (e) {}
         }
 
-        /* MANUAL ENTRY WITH DUPLICATE CHECK */
         function submitManualEntry() {
             const inputElem = document.getElementById('manual-code-input');
             const code = inputElem.value.trim();
@@ -1466,9 +1736,45 @@
                 return;
             }
 
-            handleScannedCode(code, type);
-            inputElem.value = '';
+            triggerVibration([80]);
             closeManualEntryModal();
+
+            showStatusPopup("กำลังส่งข้อมูล", `รหัส: ${code}`, "loader-2", "pending");
+
+            const targetUrl = getEndpointUrl();
+            if (targetUrl) {
+                fetch(targetUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ scanned_data: code, type: type, timestamp: new Date().toISOString() })
+                })
+                .then(res => {
+                    if (res.ok) {
+                        saveToHistory(code, type, 'success');
+                        setTimeout(() => {
+                            showStatusPopup("ส่งสำเร็จ", `รหัส: ${code}`, "check-circle-2", "success");
+                        }, 400);
+                    } else {
+                        saveToHistory(code, type, 'failed');
+                        setTimeout(() => {
+                            showStatusPopup("ส่งไม่สำเร็จ", `เซิร์ฟเวอร์ตอบสนองผิดพลาด`, "x-octagon", "error");
+                        }, 400);
+                    }
+                })
+                .catch(() => {
+                    saveToHistory(code, type, 'failed');
+                    setTimeout(() => {
+                        showStatusPopup("เชื่อมต่อล้มเหลว", `ไม่สามารถส่งข้อมูลไป PC ได้`, "wifi-off", "error");
+                    }, 400);
+                });
+            } else {
+                saveToHistory(code, type, 'pending');
+                setTimeout(() => {
+                    showStatusPopup("บันทึก (รอส่ง)", `ยังไม่ได้ตั้งค่าเชื่อมต่อ PC`, "clock", "pending");
+                }, 400);
+            }
+
+            inputElem.value = '';
         }
 
         function saveManualAsPending() {
@@ -1490,25 +1796,10 @@
             }
 
             saveToHistory(code, type, 'pending');
-            showScanToast("บันทึกรายการ (รอส่ง) สำเร็จ", "success");
             inputElem.value = '';
             closeManualEntryModal();
-        }
 
-        async function initTesseractWorker() {
-            if (!tesseractWorker) {
-                try {
-                    showScanToast("กำลังโหลดระบบ OCR Serial...", "info");
-                    tesseractWorker = await Tesseract.createWorker('eng');
-                    await tesseractWorker.setParameters({
-                        tessedit_char_whitelist: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-',
-                        tessedit_pageseg_mode: Tesseract.PSM.SINGLE_LINE,
-                    });
-                    showScanToast("ระบบ OCR พร้อมใช้งานแล้ว", "success");
-                } catch (e) {
-                    showScanToast("ไม่สามารถเริ่มระบบ OCR ได้", "error");
-                }
-            }
+            showStatusPopup("บันทึก (รอส่ง)", `รหัส: ${code}`, "clock", "pending");
         }
 
         async function toggleScanEngineMode() {
@@ -1516,6 +1807,7 @@
             const label = document.getElementById('scan-engine-label');
             const hudBadge = document.getElementById('mode-hud-badge');
             const statusText = document.getElementById('scan-status');
+            const cameraBtn = document.getElementById('btn-toggle-camera');
 
             if (currentScanEngine === 'barcode') {
                 currentScanEngine = 'sn_ocr';
@@ -1523,16 +1815,33 @@
                 label.textContent = 'ซีเรียล SN';
                 hudBadge.textContent = 'ซีเรียลนัมเบอร์ (SN)';
                 hudBadge.classList.add('batch-mode');
-                statusText.innerHTML = '<i data-lucide="text-cursor"></i> นำป้าย Serial Number มาไว้ในกรอบ';
-                await initTesseractWorker();
+                
+                if (isCameraActive) {
+                    toggleCamera();
+                }
+                
+                cameraBtn.disabled = true;
+                cameraBtn.style.opacity = '0.5';
+                cameraBtn.style.cursor = 'not-allowed';
+                
+                statusText.innerHTML = '<span style="color: #ef4444; font-weight: 600; display: inline-flex; align-items: center; gap: 6px;"><i data-lucide="alert-octagon"></i> โหมดนี้อยู่ในการปรับปรุง/พัฒนา ยังไม่สามารถใช้งานได้เด้อ</span>';
             } else {
                 currentScanEngine = 'barcode';
                 btn.classList.remove('active');
                 label.textContent = 'บาร์โค้ด';
                 hudBadge.textContent = 'บาร์โค้ด / QR';
                 hudBadge.classList.remove('batch-mode');
-                statusText.innerHTML = '<i data-lucide="scan-line"></i> นำบาร์โค้ดหรือซีเรียลมาไว้ในกรอบเพื่อสแกน';
+                
+                cameraBtn.disabled = false;
+                cameraBtn.style.opacity = '1';
+                cameraBtn.style.cursor = 'pointer';
+                
+                statusText.innerHTML = '<i data-lucide="scan-line"></i> นำบาร์โค้ดหรือQRไว้ในกรอบเพื่อสแกน';
                 showScanToast("เปลี่ยนเป็นโหมด Barcode / QR แล้ว", 'info');
+                
+                if (!isCameraActive) {
+                    toggleCamera();
+                }
             }
             refreshIcons();
         }
@@ -1571,6 +1880,9 @@
         }
 
         function toggleCamera() {
+            const cameraBtn = document.getElementById('btn-toggle-camera');
+            if (cameraBtn && cameraBtn.disabled) return;
+
             const video = document.getElementById('camera-feed');
             const viewport = document.getElementById('viewport-wrapper');
             const btn = document.getElementById('btn-toggle-camera');
@@ -1588,7 +1900,7 @@
                 statusText.innerHTML = '<i data-lucide="video-off"></i> กล้องถูกปิดใช้งาน';
                 viewport.classList.add('camera-paused');
                 liveBadge.classList.remove('live');
-                liveBadge.innerHTML = '<span class="hud-dot"></span> พักการทำงาน';
+                liveBadge.innerHTML = '<span class="hud-dot"></span> OFF';
                 showScanToast("ปิดกล้องแล้ว", 'off');
             } else {
                 startCamera();
@@ -1597,7 +1909,7 @@
                 icon.setAttribute('data-lucide', 'camera');
                 viewport.classList.remove('camera-paused');
                 liveBadge.classList.add('live');
-                liveBadge.innerHTML = '<span class="hud-dot"></span> กำลังสตรีม';
+                liveBadge.innerHTML = '<span class="hud-dot"></span> ON';
                 showScanToast("เปิดกล้องแล้ว", 'success');
             }
             refreshIcons();
@@ -1677,26 +1989,6 @@
                             emptyFrames = 0;
                             const scannedValue = barcodes[0].rawValue ? barcodes[0].rawValue.trim() : '';
                             if (scannedValue) handleScannedCode(scannedValue, `บาร์โค้ด (${barcodes[0].format.toUpperCase()})`);
-                        }
-                    } catch (e) {} finally { isDetectingFrame = false; }
-                } else if (currentScanEngine === 'sn_ocr' && tesseractWorker) {
-                    isDetectingFrame = true;
-                    try {
-                        const canvas = document.getElementById('ocr-canvas');
-                        const ctx = canvas.getContext('2d', { willReadFrequently: true });
-                        const vw = video.videoWidth, vh = video.videoHeight;
-                        const cropW = vw * 0.70, cropH = vh * 0.35;
-                        const cropX = (vw - cropW) / 2, cropY = (vh - cropH) / 2;
-
-                        canvas.width = cropW * 1.5; canvas.height = cropH * 1.5;
-                        ctx.drawImage(video, cropX, cropY, cropW, cropH, 0, 0, canvas.width, canvas.height);
-                        
-                        const result = await tesseractWorker.recognize(canvas);
-                        const text = result.data.text ? result.data.text.trim() : '';
-                        const lines = text.split('\n').map(l => l.replace(/[^A-Z0-9\-]/g, '').trim()).filter(l => l.length >= 6);
-                        
-                        if (lines.length > 0 && lines[0] !== lastScannedCode) {
-                            handleScannedCode(lines[0], 'Serial Number (SN)');
                         }
                     } catch (e) {} finally { isDetectingFrame = false; }
                 }
@@ -1800,7 +2092,6 @@
             });
         }
 
-        /* UPSERT & REMOVE LOGIC */
         function saveToHistory(dataText, dataType, status = 'pending') {
             let history = JSON.parse(localStorage.getItem('scanHistory')) || [];
             const now = new Date();
@@ -1861,7 +2152,6 @@
             }
         }
 
-        /* REFACTORED HISTORY RENDERING & FILTERING */
         function renderRecentHistory() {
             const recentContainer = document.getElementById('recent-list');
             const history = JSON.parse(localStorage.getItem('scanHistory')) || [];
@@ -1956,7 +2246,6 @@
             `;
         }
 
-        /* SCOPED SWIPE GESTURE EVENT HANDLERS (UPDATED FOR RIGHT SWIPE) */
         function attachSwipeListeners(containerId) {
             const container = document.getElementById(containerId);
             if (!container) return;
@@ -1991,8 +2280,8 @@
                     card.style.transition = 'transform 0.2s ease';
                     
                     if (currentX > threshold) {
-                        card.style.transform = `translateX(100%)`;
-                        setTimeout(() => deleteHistoryItem(dataId), 200);
+                        card.style.transform = `translateX(0)`;
+                        promptDeleteHistoryItem(dataId);
                     } else {
                         card.style.transform = `translateX(0)`;
                     }
@@ -2001,7 +2290,27 @@
             });
         }
 
-        function deleteHistoryItem(dataText) {
+        function promptDeleteHistoryItem(dataText) {
+            document.getElementById('confirm-delete-history-text').textContent = `คุณต้องการลบรายการ "${dataText}" ออกจากประวัติการสแกนใช่หรือไม่?`;
+            const confirmBtn = document.getElementById('confirm-delete-history-btn');
+            
+            const newBtn = confirmBtn.cloneNode(true);
+            confirmBtn.parentNode.replaceChild(newBtn, confirmBtn);
+
+            newBtn.onclick = () => {
+                executeDeleteHistoryItem(dataText);
+            };
+
+            document.getElementById('confirm-delete-history-modal').classList.add('active');
+            refreshIcons();
+        }
+
+        function closeConfirmDeleteHistoryModal() {
+            document.getElementById('confirm-delete-history-modal').classList.remove('active');
+        }
+
+        function executeDeleteHistoryItem(dataText) {
+            closeConfirmDeleteHistoryModal();
             let history = JSON.parse(localStorage.getItem('scanHistory')) || [];
             history = history.filter(item => item.data !== dataText);
             localStorage.setItem('scanHistory', JSON.stringify(history));
@@ -2009,7 +2318,8 @@
             if (document.getElementById('history-edge-panel').classList.contains('active')) {
                 filterFullHistory();
             }
-            showScanToast("ลบรายการเรียบร้อย", "info");
+            
+            showStatusPopup("ลบสำเร็จ", `ลบรายการเรียบร้อยแล้ว`, "check", "success");
         }
 
         function selectHistoryItemForResend(dataText) {
@@ -2019,17 +2329,30 @@
             showResult(item.data, item.type);
         }
 
-        function clearAllHistory() { 
-            if (confirm("คุณต้องการล้างประวัติการสแกนทั้งหมดหรือไม่?")) { 
-                localStorage.removeItem('scanHistory'); 
-                renderRecentHistory(); 
-                filterFullHistory(); 
-                showScanToast("ล้างประวัติทั้งหมดเรียบร้อย", "info");
-            } 
+        function promptClearAllHistory() {
+            const history = JSON.parse(localStorage.getItem('scanHistory')) || [];
+            if (history.length === 0) {
+                showScanToast("ไม่มีประวัติการสแกนให้ล้าง", "warning");
+                return;
+            }
+            document.getElementById('confirm-clear-all-history-modal').classList.add('active');
+            refreshIcons();
         }
 
-        /* EXPORT & COPY UTILITIES */
-        function exportHistoryCSV() {
+        function closeConfirmClearAllModal() {
+            document.getElementById('confirm-clear-all-history-modal').classList.remove('active');
+        }
+
+        function executeClearAllHistory() {
+            closeConfirmClearAllModal();
+            localStorage.removeItem('scanHistory'); 
+            renderRecentHistory(); 
+            filterFullHistory(); 
+            
+            showStatusPopup("ลบสำเร็จ", "ล้างประวัติการสแกนทั้งหมดเรียบร้อย", "check", "success");
+        }
+
+        exportHistoryCSV = function() {
             const list = JSON.parse(localStorage.getItem('scanHistory')) || [];
             if (list.length === 0) {
                 showScanToast("ไม่มีข้อมูลสำหรับส่งออก", "warning");
