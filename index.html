@@ -174,6 +174,34 @@
             animation: rainbowGradient 4s ease infinite;
         }
 
+        /* MODERN RIPPLE & BUTTON FEEDBACK */
+        .btn-ripple-effect {
+            position: relative;
+            overflow: hidden;
+            transform: translate3d(0, 0, 0);
+            transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s ease, background-color 0.2s ease;
+        }
+        .btn-ripple-effect:active {
+            transform: scale(0.95);
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(0);
+            animation: rippleAnim 0.5s linear;
+            pointer-events: none;
+        }
+
+        @keyframes rippleAnim {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
         /* STACKABLE NOTIFICATIONS STYLES */
         .toast-container {
             position: fixed;
@@ -205,7 +233,7 @@
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
             overflow: hidden;
             cursor: pointer;
-            animation: toastEnter 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            animation: toastEnter 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
             transition: all 0.3s ease;
         }
 
@@ -267,14 +295,14 @@
         .toast-progress {
             position: absolute; bottom: 0; left: 0; height: 3px; width: 100%; background: rgba(0, 0, 0, 0.05);
         }
-        .toast-progress-bar { height: 100%; width: 100%; transform-origin: left; animation: progressShrink 0s linear forwards; }
+        .toast-progress-bar { height: 100%; width: 100%; transform-origin: left; animation: progressShrink 3s linear forwards; }
         .cyber-toast.success .toast-progress-bar { background: var(--accent-cyan); }
         .cyber-toast.warning .toast-progress-bar { background: #f59e0b; }
         .cyber-toast.info .toast-progress-bar { background: #3b82f6; }
         .cyber-toast.off .toast-progress-bar { background: #ef4444; }
         .cyber-toast.error .toast-progress-bar { background: #ef4444; }
 
-        @keyframes toastEnter { 0% { opacity: 0; transform: translateY(-15px); } 100% { opacity: 1; transform: translateY(0); } }
+        @keyframes toastEnter { 0% { opacity: 0; transform: translateY(-20px) scale(0.95); } 100% { opacity: 1; transform: translateY(0) scale(1); } }
         @keyframes toastLeave { 0% { opacity: 1; max-height: 80px; } 100% { opacity: 0; max-height: 0; padding: 0; margin: 0; } }
         @keyframes progressShrink { 0% { transform: scaleX(1); } 100% { transform: scaleX(0); } }
 
@@ -538,11 +566,8 @@
             justify-content: center;
             gap: 4px;
             cursor: pointer;
-            transition: all 0.2s ease;
             text-align: center;
         }
-
-        .quick-action-card:active { transform: scale(0.96); background: var(--border-glow); }
 
         .quick-action-icon {
             width: 38px;
@@ -554,9 +579,11 @@
             align-items: center;
             justify-content: center;
             margin-bottom: 2px;
+            transition: transform 0.2s ease;
         }
-
-        .quick-action-icon .lucide { width: 18px; height: 18px; }
+        .quick-action-card:active .quick-action-icon {
+            transform: scale(1.15) rotate(8deg);
+        }
 
         .quick-action-label {
             font-family: var(--font-title);
@@ -643,11 +670,11 @@
             flex-direction: column;
             align-items: center;
             gap: 4px;
-            transition: all 0.2s ease;
             text-align: center;
         }
-        .ext-ctrl-btn.active { color: #ffffff; background: var(--btn-primary-bg); border-color: transparent; }
-        .ext-ctrl-btn .lucide { width: 16px; height: 16px; }
+        .ext-ctrl-btn.active { color: #ffffff; background: var(--btn-primary-bg); border-color: transparent; box-shadow: 0 4px 12px var(--accent-glow); }
+        .ext-ctrl-btn .lucide { width: 16px; height: 16px; transition: transform 0.2s ease; }
+        .ext-ctrl-btn:active .lucide { transform: scale(1.2); }
 
         .scan-target-box { 
             width: 80%; height: 55%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
@@ -686,24 +713,25 @@
             background: var(--btn-primary-bg);
             border: none; color: #ffffff; padding: 10px 16px; border-radius: 12px; 
             font-family: var(--font-title); font-size: 13px; font-weight: 600; cursor: pointer; 
-            transition: all 0.2s ease;
             display: inline-flex; align-items: center; justify-content: center; gap: 6px;
             text-decoration: none; min-height: 42px;
+            box-shadow: 0 4px 15px var(--accent-glow);
         }
-        .conn-btn:active { transform: scale(0.97); }
 
         .btn-secondary {
             background: var(--input-bg);
             border: 1px solid var(--border-glow);
             color: var(--text-main);
+            box-shadow: none;
         }
 
         .btn-test { background: var(--accent-glow); border: 1px solid var(--accent-cyan); color: var(--accent-cyan); }
 
         .today-summary-card { 
             background: var(--card-inner); border: 1px solid var(--border-glow); border-radius: 16px; padding: 14px;
-            cursor: pointer; transition: all 0.2s ease;
+            cursor: pointer; transition: transform 0.2s ease;
         }
+        .today-summary-card:active { transform: scale(0.98); }
         .today-summary-title { font-size: 12px; font-weight: 700; color: var(--accent-cyan); letter-spacing: 0.3px; margin-bottom: 10px; font-family: var(--font-title); display: flex; align-items: center; justify-content: space-between; }
         .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; text-align: center; }
         .stat-item { background: var(--panel-bg); padding: 10px 6px; border-radius: 12px; border: 1px solid var(--border-glow); }
@@ -714,7 +742,7 @@
         
         .history-item { 
             background: var(--history-item-bg); border: 1px solid var(--border-glow); 
-            padding: 12px 14px; border-radius: 14px; font-size: 13px; transition: all 0.2s ease;
+            padding: 12px 14px; border-radius: 14px; font-size: 13px;
             cursor: pointer; display: flex; align-items: center; gap: 12px; position: relative;
             width: 100%;
         }
@@ -754,9 +782,9 @@
         .conn-modal-card {
             position: relative; width: 90%; max-width: 400px; max-height: 85vh; background: var(--panel-bg);
             border: 1px solid var(--border-glow); border-radius: 20px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-            display: flex; flex-direction: column; overflow: hidden; transform: translateY(15px); transition: transform 0.25s ease; margin: auto;
+            display: flex; flex-direction: column; overflow: hidden; transform: translateY(20px) scale(0.95); transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); margin: auto;
         }
-        .edge-panel-overlay.active .conn-modal-card { transform: translateY(0); }
+        .edge-panel-overlay.active .conn-modal-card { transform: translateY(0) scale(1); }
 
         .edge-panel-header {
             padding: 14px 16px; border-bottom: 1px solid var(--border-glow);
@@ -787,7 +815,7 @@
             position: fixed; top: 0; right: 0; bottom: 0;
             width: 100%; max-width: 440px; height: 100vh; height: 100dvh;
             background: var(--panel-bg); display: flex; flex-direction: column; overflow: hidden;
-            transform: translateX(100%); transition: transform 0.3s ease; z-index: 1001;
+            transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.1, 0.9, 0.2, 1); z-index: 1001;
             box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
         }
         .edge-panel-overlay.active .edge-panel-card { transform: translateX(0); }
@@ -812,6 +840,7 @@
         }
         .filter-tab-btn.active {
             background: var(--btn-primary-bg); color: #ffffff; border-color: transparent;
+            box-shadow: 0 2px 8px var(--accent-glow);
         }
 
         .edge-panel-toolbar {
@@ -828,14 +857,18 @@
         .modal-history-item {
             background: var(--card-inner); border: 1px solid var(--border-glow); 
             padding: 10px 12px; border-radius: 12px; font-size: 12px; display: flex; align-items: center; gap: 10px; cursor: pointer;
+            transition: transform 0.15s ease;
         }
+        .modal-history-item:active { transform: scale(0.98); }
         .modal-history-item.active-conn { border-color: var(--accent-cyan); background: var(--accent-glow); }
 
         .icon-btn {
             background: var(--input-bg); border: 1px solid var(--border-glow); color: var(--text-sub); cursor: pointer;
             padding: 4px; border-radius: 8px; display: flex; align-items: center; justify-content: center;
             min-width: 30px; min-height: 30px; flex-shrink: 0;
+            transition: all 0.2s ease;
         }
+        .icon-btn:active { transform: scale(0.9); }
         .icon-btn.primary { color: var(--accent-cyan); }
         .icon-btn.danger { color: #ef4444; }
     </style>
@@ -864,7 +897,7 @@
                     </select>
                 </div>
 
-                <button id="fullscreen-toggle-btn" class="fullscreen-btn" onclick="toggleFullScreen()" title="สลับโหมดเต็มหน้าจอ">
+                <button id="fullscreen-toggle-btn" class="fullscreen-btn btn-ripple-effect" onclick="toggleFullScreen()" title="สลับโหมดเต็มหน้าจอ">
                     <i data-lucide="maximize" id="fullscreen-icon"></i>
                 </button>
             </div>
@@ -875,19 +908,19 @@
             
             <!-- Quick Action Toolbar Grid -->
             <div class="dashboard-quick-actions">
-                <div class="quick-action-card" onclick="openConnConfigModal()" title="ตั้งค่าเชื่อมต่อ PC Host">
+                <div class="quick-action-card btn-ripple-effect" onclick="openConnConfigModal()" title="ตั้งค่าเชื่อมต่อ PC Host">
                     <div class="quick-action-icon"><i data-lucide="network"></i></div>
                     <span class="quick-action-label">เชื่อมต่อ PC</span>
                     <span class="quick-action-value"><span id="conn-status-badge" class="conn-status-badge">ออฟไลน์</span></span>
                 </div>
 
-                <div class="quick-action-card" onclick="openManualEntryModal()" title="พิมพ์รหัสด้วยตนเอง">
+                <div class="quick-action-card btn-ripple-effect" onclick="openManualEntryModal()" title="พิมพ์รหัสด้วยตนเอง">
                     <div class="quick-action-icon"><i data-lucide="keyboard"></i></div>
                     <span class="quick-action-label">กรอก SN</span>
                     <span class="quick-action-value">Manual</span>
                 </div>
 
-                <div class="quick-action-card" onclick="openSeqGeneratorModal()" title="สร้างรหัสเรียงลำดับต่อเนื่องอัตโนมัติ">
+                <div class="quick-action-card btn-ripple-effect" onclick="openSeqGeneratorModal()" title="สร้างรหัสเรียงลำดับต่อเนื่องอัตโนมัติ">
                     <div class="quick-action-icon"><i data-lucide="list-ordered"></i></div>
                     <span class="quick-action-label">RUN SN</span>
                     <span class="quick-action-value">Auto</span>
@@ -927,19 +960,19 @@
 
                 <!-- External Controls Grid -->
                 <div class="external-controls-bar">
-                    <button id="btn-toggle-scan-engine" class="ext-ctrl-btn" onclick="toggleScanEngineMode()">
+                    <button id="btn-toggle-scan-engine" class="ext-ctrl-btn btn-ripple-effect" onclick="toggleScanEngineMode()">
                         <i data-lucide="cpu" id="scan-engine-icon"></i>
                         <span id="scan-engine-label">บาร์โค้ด</span>
                     </button>
-                    <button id="btn-toggle-continuous" class="ext-ctrl-btn" onclick="toggleContinuousMode()">
+                    <button id="btn-toggle-continuous" class="ext-ctrl-btn btn-ripple-effect" onclick="toggleContinuousMode()">
                         <i data-lucide="repeat"></i>
                         <span id="continuous-label">สแกน(SINGLE)</span>
                     </button>
-                    <button id="btn-toggle-notifications" class="ext-ctrl-btn active" onclick="toggleNotifications()">
+                    <button id="btn-toggle-notifications" class="ext-ctrl-btn active btn-ripple-effect" onclick="toggleNotifications()">
                         <i data-lucide="bell" id="notification-icon"></i>
                         <span>แจ้งเตือน</span>
                     </button>
-                    <button id="btn-toggle-camera" class="ext-ctrl-btn active" onclick="toggleCamera()">
+                    <button id="btn-toggle-camera" class="ext-ctrl-btn active btn-ripple-effect" onclick="toggleCamera()">
                         <i data-lucide="camera" id="camera-icon"></i>
                         <span>กล้อง</span>
                     </button>
@@ -955,10 +988,10 @@
                     <input type="text" id="result-input" class="result-input-field" placeholder="ซีเรียลที่สแกน...">
                     
                     <div class="result-actions">
-                        <button id="send-data-btn" class="conn-btn" style="flex: 2;" onclick="confirmAndSend()">
+                        <button id="send-data-btn" class="conn-btn btn-ripple-effect" style="flex: 2;" onclick="confirmAndSend()">
                             <i data-lucide="send"></i> ส่งไปยัง PC
                         </button>
-                        <button class="conn-btn btn-secondary" style="flex: 1;" onclick="resetScanForNext()">
+                        <button class="conn-btn btn-secondary btn-ripple-effect" style="flex: 1;" onclick="resetScanForNext()">
                             <i data-lucide="refresh-cw"></i> สแกนใหม่
                         </button>
                     </div>
@@ -1011,8 +1044,8 @@
                 </div>
 
                 <div class="conn-actions-grid">
-                    <button class="conn-btn btn-test" onclick="testConnection()"><i data-lucide="activity"></i> ทดสอบ</button>
-                    <button class="conn-btn" onclick="saveConnection()"><i data-lucide="shield-check"></i> บันทึก</button>
+                    <button class="conn-btn btn-test btn-ripple-effect" onclick="testConnection()"><i data-lucide="activity"></i> ทดสอบ</button>
+                    <button class="conn-btn btn-ripple-effect" onclick="saveConnection()"><i data-lucide="shield-check"></i> บันทึก</button>
                 </div>
 
                 <div style="border-top: 1px solid var(--border-glow); padding-top: 12px; margin-top: 4px;">
@@ -1043,8 +1076,8 @@
             <h3 style="font-family: var(--font-title); font-size: 16px; font-weight: 700; margin: 0 0 6px; color: var(--text-main);">ยืนยันการลบ</h3>
             <p id="confirm-delete-text" style="font-size: 12px; color: var(--text-sub); margin: 0 0 16px; word-break: break-all;">คุณต้องการลบประวัติการเชื่อมต่อนี้ใช่หรือไม่?</p>
             <div style="display: flex; gap: 8px;">
-                <button class="conn-btn btn-secondary" onclick="closeConfirmDeleteModal()" style="flex: 1;">ยกเลิก</button>
-                <button class="conn-btn" id="confirm-delete-btn" style="flex: 1; background: #ef4444;">ลบ</button>
+                <button class="conn-btn btn-secondary btn-ripple-effect" onclick="closeConfirmDeleteModal()" style="flex: 1;">ยกเลิก</button>
+                <button class="conn-btn btn-ripple-effect" id="confirm-delete-btn" style="flex: 1; background: #ef4444;">ลบ</button>
             </div>
         </div>
     </div>
@@ -1058,8 +1091,8 @@
             <h3 style="font-family: var(--font-title); font-size: 16px; font-weight: 700; margin: 0 0 6px; color: var(--text-main);">ยืนยันการลบประวัติ</h3>
             <p id="confirm-delete-history-text" style="font-size: 12px; color: var(--text-sub); margin: 0 0 16px; word-break: break-all;">คุณต้องการลบรายการนี้ออกจากประวัติการสแกนใช่หรือไม่?</p>
             <div style="display: flex; gap: 8px;">
-                <button class="conn-btn btn-secondary" onclick="closeConfirmDeleteHistoryModal()" style="flex: 1;">ยกเลิก</button>
-                <button class="conn-btn" id="confirm-delete-history-btn" style="flex: 1; background: #ef4444;">ลบ</button>
+                <button class="conn-btn btn-secondary btn-ripple-effect" onclick="closeConfirmDeleteHistoryModal()" style="flex: 1;">ยกเลิก</button>
+                <button class="conn-btn btn-ripple-effect" id="confirm-delete-history-btn" style="flex: 1; background: #ef4444;">ลบ</button>
             </div>
         </div>
     </div>
@@ -1073,8 +1106,8 @@
             <h3 style="font-family: var(--font-title); font-size: 16px; font-weight: 700; margin: 0 0 6px; color: var(--text-main);">ยืนยันล้างประวัติทั้งหมด</h3>
             <p style="font-size: 12px; color: var(--text-sub); margin: 0 0 16px; word-break: break-all;">คุณต้องการลบประวัติการสแกนทั้งหมดใช่หรือไม่? การกระทำนี้ไม่สามารถย้อนกลับได้</p>
             <div style="display: flex; gap: 8px;">
-                <button class="conn-btn btn-secondary" onclick="closeConfirmClearAllModal()" style="flex: 1;">ยกเลิก</button>
-                <button class="conn-btn" onclick="executeClearAllHistory()" style="flex: 1; background: #ef4444;">ล้างทั้งหมด</button>
+                <button class="conn-btn btn-secondary btn-ripple-effect" onclick="closeConfirmClearAllModal()" style="flex: 1;">ยกเลิก</button>
+                <button class="conn-btn btn-ripple-effect" onclick="executeClearAllHistory()" style="flex: 1; background: #ef4444;">ล้างทั้งหมด</button>
             </div>
         </div>
     </div>
@@ -1091,10 +1124,10 @@
                 <input type="text" id="manual-code-input" class="conn-input" placeholder="กรอกรหัส..." style="background: var(--input-bg); border: 1px solid var(--border-glow); border-radius: 12px; padding: 12px;">
                 
                 <div style="display: flex; gap: 8px;">
-                    <button class="conn-btn btn-secondary" onclick="saveManualAsPending()" style="flex: 1; color: #f59e0b;">
+                    <button class="conn-btn btn-secondary btn-ripple-effect" onclick="saveManualAsPending()" style="flex: 1; color: #f59e0b;">
                         <i data-lucide="save"></i> บันทึก (รอส่ง)
                     </button>
-                    <button class="conn-btn" onclick="submitManualEntry()" style="flex: 1;">
+                    <button class="conn-btn btn-ripple-effect" onclick="submitManualEntry()" style="flex: 1;">
                         <i data-lucide="send"></i> ส่ง
                     </button>
                 </div>
@@ -1115,7 +1148,7 @@
                 <div style="display: flex; flex-direction: column; gap: 10px;">
                     <div>
                         <label style="font-size: 11px; font-weight: 700; color: var(--text-sub); display: block; margin-bottom: 4px; font-family: var(--font-title);">คำนำหน้า</label>
-                        <input type="text" id="seq-prefix-input" class="conn-input" placeholder="เช่น SN-, LOT2026-" oninput="updateSeqPreview()" style="background: var(--input-bg); border: 1px solid var(--border-glow); border-radius: 10px; padding: 10px;">
+                        <input type="text" id="seq-prefix-input" class="conn-input" placeholder="เช่น NEO/AMO/SAAG" oninput="updateSeqPreview()" style="background: var(--input-bg); border: 1px solid var(--border-glow); border-radius: 10px; padding: 10px;">
                     </div>
                     
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
@@ -1139,10 +1172,10 @@
                 </div>
 
                 <div style="display: flex; gap: 8px;">
-                    <button class="conn-btn btn-secondary" onclick="cancelSeqGeneration()" style="flex: 1; color: #ef4444;">
+                    <button class="conn-btn btn-secondary btn-ripple-effect" onclick="cancelSeqGeneration()" style="flex: 1; color: #ef4444;">
                         <i data-lucide="x-circle"></i> ยกเลิก
                     </button>
-                    <button id="btn-generate-seq" class="conn-btn" onclick="generateAndSendSequence()" style="flex: 2;">
+                    <button id="btn-generate-seq" class="conn-btn btn-ripple-effect" onclick="generateAndSendSequence()" style="flex: 2;">
                         <i data-lucide="play" id="btn-generate-seq-icon"></i> <span id="btn-generate-seq-text">สร้าง SN</span>
                     </button>
                 </div>
@@ -1162,27 +1195,27 @@
             <!-- Search Bar -->
             <div class="edge-panel-search-bar">
                 <input type="text" id="modal-search-input" class="conn-input" placeholder="🔍 ค้นหารหัส หรือ ชนิดข้อมูล..." oninput="filterFullHistory()" style="background: var(--input-bg); border: 1px solid var(--border-glow); border-radius: 10px; padding: 8px 12px;">
-                <button class="icon-btn danger" onclick="promptClearAllHistory()" title="ล้างประวัติทั้งหมด" style="height: 38px; width: 38px;">
+                <button class="icon-btn danger btn-ripple-effect" onclick="promptClearAllHistory()" title="ล้างประวัติทั้งหมด" style="height: 38px; width: 38px;">
                     <i data-lucide="trash-2"></i>
                 </button>
             </div>
 
             <!-- Filter Tabs -->
             <div class="history-filter-tabs">
-                <button class="filter-tab-btn active" data-status="all" onclick="setHistoryFilter('all')">ทั้งหมด</button>
-                <button class="filter-tab-btn" data-status="success" onclick="setHistoryFilter('success')">สำเร็จ</button>
-                <button class="filter-tab-btn" data-status="pending" onclick="setHistoryFilter('pending')">รอส่ง</button>
-                <button class="filter-tab-btn" data-status="failed" onclick="setHistoryFilter('failed')">ล้มเหลว</button>
+                <button class="filter-tab-btn active btn-ripple-effect" data-status="all" onclick="setHistoryFilter('all')">ทั้งหมด</button>
+                <button class="filter-tab-btn btn-ripple-effect" data-status="success" onclick="setHistoryFilter('success')">สำเร็จ</button>
+                <button class="filter-tab-btn btn-ripple-effect" data-status="pending" onclick="setHistoryFilter('pending')">รอส่ง</button>
+                <button class="filter-tab-btn btn-ripple-effect" data-status="failed" onclick="setHistoryFilter('failed')">ล้มเหลว</button>
             </div>
 
             <!-- Toolbar Counter & Actions -->
             <div class="edge-panel-toolbar">
                 <span id="full-history-count">0 รายการ</span>
                 <div style="display: flex; gap: 8px;">
-                    <button class="conn-btn btn-secondary" onclick="copyAllHistoryToClipboard()" style="min-height: 28px; padding: 4px 8px; font-size: 11px;">
+                    <button class="conn-btn btn-secondary btn-ripple-effect" onclick="copyAllHistoryToClipboard()" style="min-height: 28px; padding: 4px 8px; font-size: 11px;">
                         <i data-lucide="copy" style="width: 14px; height: 14px;"></i> คัดลอก
                     </button>
-                    <button class="conn-btn btn-secondary" onclick="exportHistoryCSV()" style="min-height: 28px; padding: 4px 8px; font-size: 11px; color: var(--accent-cyan);">
+                    <button class="conn-btn btn-secondary btn-ripple-effect" onclick="exportHistoryCSV()" style="min-height: 28px; padding: 4px 8px; font-size: 11px; color: var(--accent-cyan);">
                         <i data-lucide="download" style="width: 14px; height: 14px;"></i> CSV
                     </button>
                 </div>
@@ -1232,9 +1265,28 @@
             }
         }
 
-        function triggerVibration(pattern = [80]) {
+        function triggerVibration(pattern = [60]) {
             if ('vibrate' in navigator) navigator.vibrate(pattern);
         }
+
+        // RIPPLE EFFECT ENHANCER
+        document.addEventListener('click', function(e) {
+            const target = e.target.closest('.btn-ripple-effect, .quick-action-card');
+            if (!target) return;
+            
+            triggerVibration([40]);
+
+            const rect = target.getBoundingClientRect();
+            const ripple = document.createElement('span');
+            ripple.className = 'ripple';
+            const size = Math.max(rect.width, rect.height);
+            ripple.style.width = ripple.style.height = `${size}px`;
+            ripple.style.left = `${e.clientX - rect.left - size / 2}px`;
+            ripple.style.top = `${e.clientY - rect.top - size / 2}px`;
+            
+            target.appendChild(ripple);
+            setTimeout(() => ripple.remove(), 500);
+        });
 
         function showScanToast(msg, variant = 'success') {
             if (!isNotificationsEnabled && variant !== 'force-show') return;
@@ -1642,13 +1694,13 @@
                 const isCurrent = url === currentUrl;
 
                 return `
-                    <div class="modal-history-item ${isCurrent ? 'active-conn' : ''}" onclick="selectAndConnectApi('${escapeJsString(url)}')">
+                    <div class="modal-history-item btn-ripple-effect ${isCurrent ? 'active-conn' : ''}" onclick="selectAndConnectApi('${escapeJsString(url)}')">
                         <div class="call-log-icon ${isCurrent ? 'success' : 'pending'}"><i data-lucide="globe"></i></div>
                         <div class="call-log-details">
                             <div class="call-log-code" style="color:${isCurrent ? 'var(--accent-cyan)' : 'var(--text-main)'};">${escapeHtml(url)}</div>
                             <div class="call-log-meta">${date ? date : ''} ${isCurrent ? '<strong style="color:var(--accent-cyan);">(ใช้งานอยู่)</strong>' : ''}</div>
                         </div>
-                        <button class="icon-btn danger delete-conn-trigger-btn" data-url="${escapeHtml(url)}" onclick="event.stopPropagation(); promptDeleteConnHistory('${escapeJsString(url)}')"><i data-lucide="trash-2"></i></button>
+                        <button class="icon-btn danger delete-conn-trigger-btn btn-ripple-effect" data-url="${escapeHtml(url)}" onclick="event.stopPropagation(); promptDeleteConnHistory('${escapeJsString(url)}')"><i data-lucide="trash-2"></i></button>
                     </div>
                 `;
             }).join('');
@@ -1736,9 +1788,7 @@
                 return;
             }
 
-            triggerVibration([80]);
             closeManualEntryModal();
-
             showStatusPopup("กำลังส่งข้อมูล", `รหัส: ${code}`, "loader-2", "pending");
 
             const targetUrl = getEndpointUrl();
@@ -2277,7 +2327,7 @@
                 card.addEventListener('touchend', () => {
                     if (!isDragging) return;
                     isDragging = false;
-                    card.style.transition = 'transform 0.2s ease';
+                    card.style.transform = 'transform 0.2s ease';
                     
                     if (currentX > threshold) {
                         card.style.transform = `translateX(0)`;
@@ -2345,57 +2395,69 @@
 
         function executeClearAllHistory() {
             closeConfirmClearAllModal();
-            localStorage.removeItem('scanHistory'); 
-            renderRecentHistory(); 
-            filterFullHistory(); 
-            
-            showStatusPopup("ลบสำเร็จ", "ล้างประวัติการสแกนทั้งหมดเรียบร้อย", "check", "success");
-        }
-
-        exportHistoryCSV = function() {
-            const list = JSON.parse(localStorage.getItem('scanHistory')) || [];
-            if (list.length === 0) {
-                showScanToast("ไม่มีข้อมูลสำหรับส่งออก", "warning");
-                return;
-            }
-            let csvContent = "\uFEFFData,Type,Status,Date,Time\n";
-            list.forEach(item => {
-                csvContent += `"${(item.data || '').replace(/"/g, '""')}","${item.type || ''}","${item.status || ''}","${item.date || ''}","${item.time || ''}"\n`;
-            });
-            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `scan_history_${new Date().toISOString().slice(0, 10)}.csv`;
-            a.click();
-            URL.revokeObjectURL(url);
-            showScanToast("ส่งออกไฟล์ CSV สำเร็จ", "success");
+            localStorage.removeItem('scanHistory');
+            renderRecentHistory();
+            closeHistoryEdgePanel();
+            showStatusPopup("ล้างประวัติ", "ล้างประวัติการสแกนทั้งหมดแล้ว", "check", "success");
         }
 
         function copyAllHistoryToClipboard() {
-            const list = JSON.parse(localStorage.getItem('scanHistory')) || [];
-            if (list.length === 0) {
-                showScanToast("ไม่มีข้อมูลสำหรับคัดลอก", "warning");
+            const history = JSON.parse(localStorage.getItem('scanHistory')) || [];
+            if (history.length === 0) {
+                showScanToast("ไม่มีประวัติให้คัดลอก", "warning");
                 return;
             }
-            const text = list.map(item => item.data).join('\n');
-            navigator.clipboard.writeText(text).then(() => {
-                showScanToast(`คัดลอก ${list.length} รายการแล้ว`, "success");
+            const textToCopy = history.map(item => `${item.data}\t${item.type}\t${item.date} ${item.time}\t${item.status}`).join('\n');
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                showScanToast("คัดลอกประวัติทั้งหมดไปยังคลิปบอร์ดแล้ว", "success");
             }).catch(() => {
                 showScanToast("ไม่สามารถคัดลอกได้", "error");
             });
         }
 
-        function escapeHtml(str) { return str ? String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;") : ''; }
-        function escapeJsString(str) { return str ? String(str).replace(/'/g, "\\'").replace(/"/g, '\\"') : ''; }
+        function exportHistoryCSV() {
+            const history = JSON.parse(localStorage.getItem('scanHistory')) || [];
+            if (history.length === 0) {
+                showScanToast("ไม่มีประวัติให้ส่งออก", "warning");
+                return;
+            }
+            let csvContent = "\uFEFFData,Type,Date,Time,Status\n";
+            history.forEach(item => {
+                csvContent += `"${item.data}","${item.type}","${item.date}","${item.time}","${item.status}"\n`;
+            });
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.setAttribute('href', url);
+            a.setAttribute('download', `scander_history_${new Date().toISOString().slice(0,10)}.csv`);
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            showScanToast("ส่งออกไฟล์ CSV สำเร็จ", "success");
+        }
 
-        window.onload = () => {
+        function escapeHtml(str) {
+            if (!str) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+
+        function escapeJsString(str) {
+            if (!str) return '';
+            return String(str).replace(/'/g, "\\'").replace(/"/g, '\\"');
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
             initTheme();
             loadConnection();
-            startCamera();
             renderRecentHistory();
+            startCamera();
             refreshIcons();
-        };
+        });
     </script>
 </body>
 </html>
